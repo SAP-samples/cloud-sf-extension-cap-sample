@@ -2,9 +2,8 @@
     "name": "cloud-sf-extension-cap-sample",
     "version": "1.0.0",
     "description": "Successfactors Extension Application",
-    "repository": "https://github.wdf.sap.corp/refapps/cloud-sf-extension-cap-sample.git",
-    "license": "UNLICENSED",
-    "private": true,
+    "repository": "https://github.com/SAP-samples/cloud-sf-extension-cap-sample.git",
+    "license": "Apache License 2.0",
     "dependencies": {
         "@sap/audit-logging": "^3.1.0",
         "@sap/cds": "^3.33.1",
@@ -14,20 +13,14 @@
         "@sap/xsenv": "^2.2.0",
         "@sap/xssec": "2.2.5",
         "express": "^4",
-        "passport": "^0.4.1",
-        "node-fetch": "^2.6.0",
-        "qs": "^6.9.3"
-    },
-    "devDependencies": {
-        "jest": "^25.2.2"
+        "passport": "^0.4.1"
     },
     "engines": {
         "node": "^10"
     },
     "scripts": {
         "start": "npx cds run",
-        "build": "cds build/all --clean",
-        "test": "jest"
+        "build": "cds build/all --clean"
     },
     "cds": {
         "requires": {
