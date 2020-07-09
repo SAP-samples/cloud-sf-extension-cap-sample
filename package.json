@@ -1,0 +1,48 @@
+{
+    "name": "cloud-sf-extension-cap-sample",
+    "version": "1.0.0",
+    "description": "Successfactors Extension Application",
+    "repository": "https://github.wdf.sap.corp/refapps/cloud-sf-extension-cap-sample.git",
+    "license": "UNLICENSED",
+    "private": true,
+    "dependencies": {
+        "@sap/audit-logging": "^3.1.0",
+        "@sap/cds": "^3.33.1",
+        "@sap/cds-rest": "^1.3.0",
+        "@sap/hana-client": "^2.4.196",
+        "@sap/xb-msg-amqp-v100": "^0.9.19",
+        "@sap/xsenv": "^2.2.0",
+        "@sap/xssec": "2.2.5",
+        "express": "^4",
+        "passport": "^0.4.1",
+        "node-fetch": "^2.6.0",
+        "qs": "^6.9.3"
+    },
+    "devDependencies": {
+        "jest": "^25.2.2"
+    },
+    "engines": {
+        "node": "^10"
+    },
+    "scripts": {
+        "start": "npx cds run",
+        "build": "cds build/all --clean",
+        "test": "jest"
+    },
+    "cds": {
+        "requires": {
+            "uaa": {
+                "kind": "xsuaa"
+            },
+            "messaging": {
+                "kind": "enterprise-messaging"
+            },
+            "db": {
+                "kind": "hana"
+            }
+        },
+        "odata": {
+            "version": "v4"
+        }
+    }
+}

@@ -1,0 +1,15 @@
+{
+	"authenticationMethod": "route",
+	"routes": [{
+		"source": "^/admin/(.*)$",
+		"target": "/admin/$1",
+		"authenticationType": "xsuaa",
+		"destination": "srv_api",
+		"csrfProtection": false
+	}, {
+		"source": "^(.*)$",
+		"target": "$1",
+		"service": "html5-apps-repo-rt",
+		"authenticationType": "xsuaa"
+	}]
+}
