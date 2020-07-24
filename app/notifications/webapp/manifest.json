@@ -114,6 +114,7 @@
 						"settings": {
 							"entitySet": "Notifications",
 							"variantManagement": "Page",
+							"initialLoad": true,
 							"navigation": {
 								"Notifications": {
 									"detail": {

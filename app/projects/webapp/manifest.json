@@ -112,6 +112,7 @@
 						"settings": {
 							"entitySet": "Project",
 							"variantManagement": "Page",
+							"initialLoad": true,
 							"navigation": {
 								"Project": {
 									"detail": {

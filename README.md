@@ -8,6 +8,8 @@ This application showcases:
 2. Building application on SAP Cloud Platform using SAP Cloud Application Programming Model(CAP)
 3. Building and Event driven extension application using SAP CP Enterprise Messaging
 4. Consuming REST API's from SAP SuccessFactors using SAP CP Destination Service
+5. SCI(IAS) Tenant integration with SF
+
 
 ## Business Scenario:
 
@@ -109,9 +111,10 @@ The Run Smooth application is developed using [SAP Cloud Application programming
 | SAP Hana Service                  | 64standard |          1          |
 | Application Runtime              | memory         |          3          |
 | Html5 Applications		    |  app-host	 |	    2	       |
-|Portal		    |  Standard	 |	    1       |
+|Portal [Optional]	    |  Standard	 |	    1       |
 
-11. Subscribe to 'Portal' from Subaccount > Subscriptions
+11. Subscribe to 'Portal' from Subaccount > Subscriptions. 
+> If you do not have Portal Service enabled in your entitlements, ignore this step.
 
 12. Create SAP HANA Service instance with plan 64standard as described [here](https://help.sap.com/viewer/cc53ad464a57404b8d453bbadbc81ceb/Cloud/en-US/21418824b23a401aa116d9ad42dd5ba6.html)
 > If there are multiple instances of SAP HANA Service in the space where you plan to deploy this application, please modify the mta.yaml as shown below. Replace <database_guid> with the [id of the database](https://help.sap.com/viewer/cc53ad464a57404b8d453bbadbc81ceb/Cloud/en-US/93cdbb1bd50d49fe872e7b648a4d9677.html?q=guid) you would like to bind the application with :
@@ -129,10 +132,11 @@ The Run Smooth application is developed using [SAP Cloud Application programming
 ```
 
 ### Step 4: Deploy the reference application
+> If the application is to be deployed without portal service, please copy  [mta without portal service](documentation/mta_without_portal.yaml) and replace the content of [mta.yaml](mta.yaml) file with it. 
 
 1. Build the application
     `mbt build -p=cf `  
-3. Login to Cloud Foundry by typing the below commands on command prompt
+2. Login to Cloud Foundry by typing the below commands on command prompt
     ```
     cf api <api>
     cf login -u <username> -p <password>
@@ -141,7 +145,7 @@ The Run Smooth application is developed using [SAP Cloud Application programming
 
     Select the org and space when prompted to. For more information on the same refer [link](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/75125ef1e60e490e91eb58fe48c0f9e7.html#loio4ef907afb1254e8286882a2bdef0edf4).
 
-4. Deploy the application
+3. Deploy the application
 
 	Navigate to mta_archives folder and run the below command from CLI
 
@@ -154,8 +158,7 @@ The Run Smooth application is developed using [SAP Cloud Application programming
 2. Follow the steps [here](https://help.sap.com/viewer/bf82e6b26456494cbdd197057c09979f/Cloud/en-US/637d331010e54a2999e2f023d2de1130.html) to add the necessary roles to the user to access the Enterprise Messaging Business Application
 3. Open your global account, then your subaccount.
 4. In the left pane, choose Subscriptions.
-5. Choose Enterprise Messaging and click on `Go to Application` link.
-> The Go to Application link becomes available once the subscription is activated.
+5. Choose Enterprise Messaging and click on `Go to Application` link (after the subscription is activated).
 6. In the application, choose the messaging client (specified in the Project Configuration>Step 2.5) created when the application is deployed.
 7. Go to the tab `Queue`.
 ![Integration type](./documentation/images/queue.png)
@@ -243,57 +246,77 @@ In this step, you will configure the successFactors system to send message to th
       - Select the Integration created in the previous step. Click on `Add integration`.
       - Change the 'Timing' of the Integration to 'When the event is published' and save the flow (`Actions > Save Flow`).
 
+### Step 7: Setup your own IAS tenant for authentication [Optional]
+
+[Configure IAS Tenant](https://github.wdf.sap.corp/refapps/cloud-sf-extension-cap-sample/blob/master/documentation/images/READMEIAS.md)
+
 ## Demo Script
 
 1. In the command line interface run the command `cf apps`
-2. Find URL for app `cloud-sf-extension-cap-sample-approuter` which is the launch URL for Run Smooth application
+   
+2. Find the URL for the app `cloud-sf-extension-cap-sample-approuter` - this is the launch URL for Run Smooth application
+   
+   > If project is deployed without portal service then form the url to run your application like below
+   >
+   >`https://<tenantId>.<appRouterHost>.<domain>/<appName-appVersion>/<resourcePath>`
+   >
+   >Example:
+    ```  https://<approuter-url>/projects-1.0.0/index.html ```
+
 3. Please Check the `Known-issues Section below to edit the destination` 
 4. Launch the URL and login as dleal(David Leal)
 > You can choose any employee who is a Manager.
-4. Click on Project Details tile
+5. Click on Project Details tile
 ![Project Details](./documentation/images/App.png)
-5. Click on a Project from the list.
-6. click on Edit button
+6. Click on a Project from the list. 
+7. Click on Edit button
 ![Project Edit](./documentation/images/Edit.png)
-7. Click on Create Button.
+8. Click on Create Button.
 ![Assign Employee](./documentation/images/Create.png)
-8. Click the Drop-Down
+9. Click the Drop-Down
    ![Drop-down](./documentation/images/Drop-down.png)
-9.  All employees reporting to David Leal is displayed.
-10. Select a employee and assign them to projects. E.g Simon Rampal(srampal)
-11. Login to SF demo instance with sfadmin user.
+10.  All employees reporting to David Leal is displayed.
+11. Select a employee and assign them to projects. E.g Simon Rampal(srampal)
+12. Login to SF demo instance with sfadmin user.
 ![step1](./documentation/images/step1.PNG)
-10. Search for Employee David Leal (dleal) in the Employee Directory
-11. Select Employee David Leal
-12. Click on Actions button and Select Org Chart
+13. Search for Employee David Leal (dleal) in the Employee Directory
+14. Select Employee David Leal
+15. Click on Actions button and Select Org Chart
 ![step4](./documentation/images/step4.PNG)
-13. Choose an employee who is reporting to 'David Leal e.g Simon Rampal(srampal) and assigned to the project in step 8
-14. Click on Take Actions button and Select Termination
+16. Choose an employee who is reporting to 'David Leal e.g Simon Rampal(srampal) and assigned to the project in step 8
+17. Click on Take Actions button and Select Termination
 ![step6](./documentation/images/step6.PNG)
-15. Set values for
+18. Set values for
       - Termination Date (Recommended to use a future date. For example, a date one week from the current date)
       - Termination Reason - Early Retirement
       - Ok to Rehire - Yes
       - Regret Termination - Yes
 ![step7](./documentation/images/step7.PNG)
-16. Click on Save.
-17. In the window `Please confirm your request`, click on the 'Show workflow participants'.
-18. Workflow participants would be shown as 1. Paul Atkins (Production Director); 2. Tessa Walker (HR Business Partner Global), Christine Dolan (Chief Human Resources Officer)
+19. Click on Save.
+20. In the window `Please confirm your request`, click on the 'Show workflow participants'.
+21. Workflow participants would be shown as 1. Paul Atkins (Production Director); 2. Tessa Walker (HR Business Partner Global), Christine Dolan (Chief Human Resources Officer)
 > This means that Paul Atkins and Tessa Walker (or Christine Dolan) must approve this request to proceed.
-19. Click on Confirm button
-20. Use Proxy Now functionality and Select Target User as Paul Atkins(patkins)
+22. Click on Confirm button
+23. Use Proxy Now functionality and Select Target User as Paul Atkins(patkins)
 ![step12](./documentation/images/step12.PNG)
-21. In the Home page of Paul Atkins click on tile Approve Requests
-22. Click on Approve button for the request for approval of Early Retirement of Simon Rampal
-![step14](./documentation/images/step14.PNG)
-23. Use Proxy Now functionality and Select Target User as Tessa Walker(twalker)
-24. In the Home page of Tessa Walker click on tile Approve Requests
+24. In the Home page of Paul Atkins click on tile Approve Requests
 25. Click on Approve button for the request for approval of Early Retirement of Simon Rampal
-26. Open the Web Application UI for Run Smooth application in browser.
-27. Login with user David Leal (dleal).
-28. Click on notifications tile.
+![step14](./documentation/images/step14.PNG)
+26. Use Proxy Now functionality and Select Target User as Tessa Walker(twalker)
+27. In the Home page of Tessa Walker click on tile Approve Requests
+28. Click on Approve button for the request for approval of Early Retirement of Simon Rampal
+29. Open the Web Application UI for Run Smooth application in browser.
+30. Login with user David Leal (dleal).
+31. Click on notifications tile from the approuter URL.
 ![step20](./documentation/images/App.png)
-29. Notification will be displayed regarding Resignation of Simpon Rampal along with his Skillset.
+   
+    > If project is deployed without portal service then form the url to run your application like below :
+    > `https://<tenantId>.<appRouterHost>.<domain>/<appName-appVersion>/<resourcePath>`
+    >
+    > Example:
+    ```https://<approuter-url>/notifications-1.0.0/index.html```
+    
+32.  Notification will be displayed regarding Resignation of Simpon Rampal along with his Skillset.
 ![step21](./documentation/images/Step29.png)
 
 ## Known Issues

@@ -20,7 +20,7 @@ entity EmployeeProjectMapping : cuid {
 
 entity Notifications : cuid {
   message    : String(20);
-  employeeId : String(6);
+  employeeId : String;
   managerId  : String;
   readStatus : Boolean;
   @cds.persistence.skip
