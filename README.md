@@ -8,7 +8,6 @@ This application showcases:
 2. Building application on SAP Cloud Platform using SAP Cloud Application Programming Model(CAP)
 3. Building and Event driven extension application using SAP CP Enterprise Messaging
 4. Consuming REST API's from SAP SuccessFactors using SAP CP Destination Service
-5. SCI(IAS) Tenant integration with SF
 
 
 ## Business Scenario:
@@ -45,10 +44,23 @@ The Run Smooth application is developed using [SAP Cloud Application programming
 	1. cds	 	- `npm install -g @sap/cds` `npm install -g @sap/cds-dk`
 	2. [multiapps plugin](https://github.com/cloudfoundry-incubator/multiapps-cli-plugin) - `cf install-plugin multiapps`  
 	3. mbt         -  `npm install -g mbt`
+* A SAP Cloud Platfrom Account with Cloud Foundry Environment with the following [entitlements](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/c8248745dde24afb91479361de336111.html) enabled:
+
+| Service                           | Plan       | Number of Instances |
+|-----------------------------------|------------|:-------------------:|
+| Destination                       | lite       |          1          |
+| Enterprise Messaging              | default    |          1          |
+| SAP HANA Schemas & HDI Containers | hdi-shared |          1          |
+| SAP SuccessFactors Extensibility  | api-access |          1          |
+| SAP Hana Service                  | 64standard |          1          |
+| Application Runtime              | memory         |          3          |
+| Html5 Applications		    |  app-host	 |	    2	       |
+|Portal [Optional]	    |  Standard	 |	    1       |
+
 
 ## Configuration
 
-### Step 1: Configure trust between SF and SAP CP using Extension Factory
+### Step 1: Configure trust between Successfactors and SAP Cloud Platform using Extension Factory
 
  Follow steps 1, 2 and 4 from this [document](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/9e33934540c44681817567d6072effb2.html) to set up trust and destination to access SuccessFactors system using Extension Factory.
 > Ignore step 3 in the document as the service instance creation is automatically done when the application is deployed as MTA.
@@ -66,11 +78,11 @@ The Run Smooth application is developed using [SAP Cloud Application programming
 
 ### Step 3: Project Configuration
 1. [Clone](https://help.github.com/articles/cloning-a-repository/) this [repository](../..)
-2. Import the downloaded EDMX files using the command ```  cds import <filename>.edmx```
-3. Use the above command to import all the edmx files
-4. Open [mta.yaml](mta.yaml)
+2. Copy the three downloaded EDM files from Step 2 into root folder of the cloned project
+3.  Do a CDS import  ofthe downloaded EDMX files by running the command ```  cds import <filename>.edmx```
+4. In the root folder of the project locate and open [mta.yaml](mta.yaml)
 5. Go to the section `Success Factors Extensibility Service` and modify the SuccessFactors System name as per the name given while registering the System in previous step.
-6. Open the package.json file and add the below credentials section to all the imported edmx files
+6. In the root folder of the clone project open the file package.json and add the below credentials section to all the three imported edmx files
    >        
        "FoundationPlatformPLT": {
           "kind": "odata",
@@ -100,23 +112,15 @@ The Run Smooth application is developed using [SAP Cloud Application programming
 8. Check in your CF account that "default" service plan is available for Enterprise Messaging Service.
 9.  Modify `"emname": "<yourmessageclientname>","namespace": "<yourorgname>/<yourmessageclientname>/<uniqueID>"` with necessary details in the “enterprisemessage.json” file.
 > The `<yourmessageclientname>` and `<uniqueID>` can be any random unique identifier. `<yourorgname>` would be your org name without '-' or any special character.  Please make sure that namespace does not exceed 24 characters. For more details regarding syntax, size and characters allowed in namespace are mentioned [here](https://help.sap.com/viewer/bf82e6b26456494cbdd197057c09979f/Cloud/en-US/5696828fd5724aa5b26412db09163530.html?q=namespace)
-10. Check if the Cloud Foundry account you will be deploying the application has the following [entitlements](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/c8248745dde24afb91479361de336111.html):
 
-| Service                           | Plan       | Number of Instances |
-|-----------------------------------|------------|:-------------------:|
-| Destination                       | lite       |          1          |
-| Enterprise Messaging              | default    |          1          |
-| SAP HANA Schemas & HDI Containers | hdi-shared |          1          |
-| SAP SuccessFactors Extensibility  | api-access |          1          |
-| SAP Hana Service                  | 64standard |          1          |
-| Application Runtime              | memory         |          3          |
-| Html5 Applications		    |  app-host	 |	    2	       |
-|Portal [Optional]	    |  Standard	 |	    1       |
-
-11. Subscribe to 'Portal' from Subaccount > Subscriptions. 
+10 Enable Portal Subscription. 
+  - Navigate to SAP Cloud Platfrom Cockpit, 
+   - Navigate to your subaccount  
+   - Click on Subscriptions. 
+   - Search and local Portal Subscription and enable it
 > If you do not have Portal Service enabled in your entitlements, ignore this step.
 
-12. Create SAP HANA Service instance with plan 64standard as described [here](https://help.sap.com/viewer/cc53ad464a57404b8d453bbadbc81ceb/Cloud/en-US/21418824b23a401aa116d9ad42dd5ba6.html)
+11. Create SAP HANA Service instance with plan 64standard as described [here](https://help.sap.com/viewer/cc53ad464a57404b8d453bbadbc81ceb/Cloud/en-US/21418824b23a401aa116d9ad42dd5ba6.html)
 > If there are multiple instances of SAP HANA Service in the space where you plan to deploy this application, please modify the mta.yaml as shown below. Replace <database_guid> with the [id of the database](https://help.sap.com/viewer/cc53ad464a57404b8d453bbadbc81ceb/Cloud/en-US/93cdbb1bd50d49fe872e7b648a4d9677.html?q=guid) you would like to bind the application with :
  ```
  # Hana HDI Container
@@ -134,7 +138,7 @@ The Run Smooth application is developed using [SAP Cloud Application programming
 ### Step 4: Deploy the reference application
 > If the application is to be deployed without portal service, please copy  [mta without portal service](documentation/mta_without_portal.yaml) and replace the content of [mta.yaml](mta.yaml) file with it. 
 
-1. Build the application
+1. Build the application by running below command from root folder of project
     `mbt build -p=cf `  
 2. Login to Cloud Foundry by typing the below commands on command prompt
     ```
@@ -245,10 +249,6 @@ In this step, you will configure the successFactors system to send message to th
       - Click on `Integration` under `Activities`. (on the right-hand side corner)
       - Select the Integration created in the previous step. Click on `Add integration`.
       - Change the 'Timing' of the Integration to 'When the event is published' and save the flow (`Actions > Save Flow`).
-
-### Step 7: Setup your own IAS tenant for authentication [Optional]
-
-[Configure IAS Tenant](https://github.wdf.sap.corp/refapps/cloud-sf-extension-cap-sample/blob/master/documentation/images/READMEIAS.md)
 
 ## Demo Script
 
