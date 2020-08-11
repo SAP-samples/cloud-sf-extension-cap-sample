@@ -69,15 +69,6 @@ service AdminService @(requires : 'authenticated-user') {
         grant : 'READ',
         where : 'managerId = $user.id'
     }])            as projection on refapp.Notifications;
-    @Capabilities                               : {
-        Insertable : false,
-        Deletable  : false,
-        Updatable  : false
-    }
-    entity notificationscount @(restrict : [{
-        grant : 'READ',
-        where : 'managerId = $user.id'
-    }])            as select from refapp.Notifications;
 }
 
 

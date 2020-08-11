@@ -8,6 +8,7 @@ This application showcases:
 2. Building application on SAP Cloud Platform using SAP Cloud Application Programming Model(CAP)
 3. Building and Event driven extension application using SAP CP Enterprise Messaging
 4. Consuming REST API's from SAP SuccessFactors using SAP CP Destination Service
+5. SCI(IAS) Tenant integration with SF
 
 
 ## Business Scenario:
@@ -38,8 +39,11 @@ The Run Smooth application is developed using [SAP Cloud Application programming
 * [Cloud Foundry Command Line Interface (CLI)](https://github.com/cloudfoundry/cli#downloads)
 * To build the multi target application, we need the [Cloud MTA Build tool](https://sap.github.io/cloud-mta-build-tool/), download the tool from [here](https://sap.github.io/cloud-mta-build-tool/download/)
 * For Windows system, install 'MAKE' from https://sap.github.io/cloud-mta-build-tool/makefile/
->Note: Please set the npm registry for @sap libraries using the command :  
-`npm set @sap:registry=https://npm.sap.com`
+
+If sap-registry is set in your system please delete by using below command.   
+   
+    `npm config delete "@sap:registry"`
+>Note: Minimum version to run the application is CDS : 4.x.x
 * Install the following:
 	1. cds	 	- `npm install -g @sap/cds` `npm install -g @sap/cds-dk`
 	2. [multiapps plugin](https://github.com/cloudfoundry-incubator/multiapps-cli-plugin) - `cf install-plugin multiapps`  
@@ -79,7 +83,7 @@ The Run Smooth application is developed using [SAP Cloud Application programming
 ### Step 3: Project Configuration
 1. [Clone](https://help.github.com/articles/cloning-a-repository/) this [repository](../..)
 2. Copy the three downloaded EDM files from Step 2 into root folder of the cloned project
-3.  Do a CDS import  ofthe downloaded EDMX files by running the command ```  cds import <filename>.edmx```
+3. Import the downloaded EDMX files by running the command ```  cds import <filename>.edmx```
 4. In the root folder of the project locate and open [mta.yaml](mta.yaml)
 5. Go to the section `Success Factors Extensibility Service` and modify the SuccessFactors System name as per the name given while registering the System in previous step.
 6. In the root folder of the clone project open the file package.json and add the below credentials section to all the three imported edmx files
@@ -89,6 +93,7 @@ The Run Smooth application is developed using [SAP Cloud Application programming
           "model": "srv/external/FoundationPlatformPLT",
           "credentials": {
             "destination": "sfextension-service",
+            "path": "/odata/v2",
             "requestTimeout": 18000000
           }
         },
@@ -97,6 +102,7 @@ The Run Smooth application is developed using [SAP Cloud Application programming
           "model": "srv/external/PLTUserManagement",
           "credentials": {
             "destination": "sfextension-service",
+            "path": "/odata/v2",
             "requestTimeout": 18000000
           }
         },
@@ -105,6 +111,7 @@ The Run Smooth application is developed using [SAP Cloud Application programming
           "model": "srv/external/ECSkillsManagement",
           "credentials": {
             "destination": "sfextension-service",
+            "path": "/odata/v2",
             "requestTimeout": 18000000
           }
         }
@@ -262,8 +269,7 @@ In this step, you will configure the successFactors system to send message to th
    >Example:
     ```  https://<approuter-url>/projects-1.0.0/index.html ```
 
-3. Please Check the `Known-issues Section below to edit the destination` 
-4. Launch the URL and login as dleal(David Leal)
+3. Launch the URL and login as dleal(David Leal)
 > You can choose any employee who is a Manager.
 5. Click on Project Details tile
 ![Project Details](./documentation/images/App.png)
@@ -318,14 +324,7 @@ In this step, you will configure the successFactors system to send message to th
 32.  Notification will be displayed regarding Resignation of Simpon Rampal along with his Skillset.
 ![step21](./documentation/images/Step29.png)
 
-## Known Issues
 
-1. Relative path for the application is not supported by CAP, till then please do the below Workaround to Fetch the data from successFactors demo system
-   Open your Cloud Platform org and subaccount and click on the destinations
-   ![Destination-Known](./documentation/images/Destination-Known.png)
-Edit the destination and edit the parameter URL and add `/odata/v2` after the port number.
-Copy the API Key and Paste in the Parameter `Client Key`.
-2. Save the Destination.
 
 ## How to Obtain Support
 

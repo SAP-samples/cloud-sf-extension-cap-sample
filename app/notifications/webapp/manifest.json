@@ -40,7 +40,7 @@
 					"icon": "sap-icon://ui-notifications",
 					"indicatorDataSource": {
 						"dataSource": "AdminService",
-						"path": "notificationscount/$count",
+						"path": "Notifications/$count",
 						"refresh": 10
 					}
 				}
