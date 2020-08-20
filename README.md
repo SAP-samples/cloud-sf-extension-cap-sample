@@ -187,7 +187,7 @@ In this step, you will configure the successFactors system to send message to th
 
 2. Setting Outbound OAuth Configurations. In this step, the credentials required to send messages to the Enterprise Messaging service are set.
 
-   1. In the demo instance search bar, search for [Integration center](https://help.sap.com/viewer/60ba370328e0485797adde67aee846a0/1911/en-US/7ef9c7781afd4ee597e4c09555e4546a.html)
+   1. In the demo instance search bar, search for [Integration center](https://help.sap.com/viewer/60ba370328e0485797adde67aee846a0/2005/en-US/7ef9c7781afd4ee597e4c09555e4546a.html)
    2. Select `Security center`
    3. Select `Outbound OAuth Configurations`
    4. Click on `Add` to create new OAuth configuration
@@ -203,7 +203,7 @@ In this step, you will configure the successFactors system to send message to th
 
       Add new row: key=x-qos. Value =1
 
-3. [Creating outbound integration](https://help.sap.com/viewer/60ba370328e0485797adde67aee846a0/1911/en-US/60b7e3db7a4649c380f1b763dcdd2756.html). An integration specifies the endpoint to which a message should be send along with the content of the message.
+3. [Creating outbound integration](hhttps://help.sap.com/viewer/60ba370328e0485797adde67aee846a0/2005/en-US/755f11067c084481b578dfe7cadb89a9.html). An integration specifies the endpoint to which a message should be send along with the content of the message.
    1. Navigate to integration center.
    2. Select `My Integrations`
    3. Select `Create` > `More Integration Types`
