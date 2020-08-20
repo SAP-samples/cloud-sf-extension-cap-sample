@@ -81,7 +81,7 @@ If sap-registry is set in your system please delete by using below command.
 	- Skills Management API from SAP SuccessFactors
 
 ### Step 3: Project Configuration
-1. [Clone](https://help.github.com/articles/cloning-a-repository/) this [repository](../..)
+1. [Clone](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository) this [repository](../..)
 2. Copy the three downloaded EDM files from Step 2 into root folder of the cloned project
 3. Import the downloaded EDMX files by running the command ```  cds import <filename>.edmx```
 4. In the root folder of the project locate and open [mta.yaml](mta.yaml)
@@ -153,7 +153,7 @@ If sap-registry is set in your system please delete by using below command.
     ```
     `api` - [URL of the Cloud Foundry landscape](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/350356d1dc314d3199dca15bd2ab9b0e.html) that you are trying to connect to.
 
-    Select the org and space when prompted to. For more information on the same refer [link](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/75125ef1e60e490e91eb58fe48c0f9e7.html#loio4ef907afb1254e8286882a2bdef0edf4).
+    Select the org and space when prompted to. For more information on the same refer [link](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/c4c25cc63ac845779f76202360f98694.html).
 
 3. Deploy the application
 
