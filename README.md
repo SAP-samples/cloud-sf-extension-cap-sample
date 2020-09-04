@@ -217,7 +217,7 @@ In this step, you will configure the successFactors system to send message to th
 
    ![Integration type](./documentation/images/integration.PNG)
 
-4. Search for the [Intelligent Service](https://help.sap.com/viewer/b8da92fb08c347cbab0c8fff82af0a3f/1911/en-US/3d91617db9a94903a0237747e4eda11f.html) `Employment Termination`. Select it and click on `Select` button.
+4. Search for the [Intelligent Service](https://help.sap.com/viewer/60ba370328e0485797adde67aee846a0/2005/en-US/c187392494804ee0baf6b4b58bb428b4.html) `Employment Termination`. Select it and click on `Select` button.
 
 5. Provide details for the integration.
    1. Enter name for the integration and click next
