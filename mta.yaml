@@ -9,7 +9,7 @@ build-parameters:
     - builder: custom
       commands:
         - npm install
-        - npx cds build/all
+        - npx -p @sap/cds-dk cds build --production
 version: 1.0.0
 description: Successfactors Extension Application
 modules:
