@@ -187,7 +187,7 @@ In this step, you will configure the successFactors system to send message to th
 
 2. Setting Outbound OAuth Configurations. In this step, the credentials required to send messages to the Enterprise Messaging service are set.
 
-   1. In the demo instance search bar, search for [Integration center](https://help.sap.com/viewer/60ba370328e0485797adde67aee846a0/2005/en-US/7ef9c7781afd4ee597e4c09555e4546a.html)
+   1. In the demo instance search bar, search for [Integration center](https://help.sap.com/viewer/60ba370328e0485797adde67aee846a0/latest/en-US/7ef9c7781afd4ee597e4c09555e4546a.html)
    2. Select `Security center`
    3. Select `Outbound OAuth Configurations`
    4. Click on `Add` to create new OAuth configuration
@@ -203,7 +203,7 @@ In this step, you will configure the successFactors system to send message to th
 
       Add new row: key=x-qos. Value =1
 
-3. [Creating outbound integration](hhttps://help.sap.com/viewer/60ba370328e0485797adde67aee846a0/2005/en-US/755f11067c084481b578dfe7cadb89a9.html). An integration specifies the endpoint to which a message should be send along with the content of the message.
+3. [Creating outbound integration](hhttps://help.sap.com/viewer/60ba370328e0485797adde67aee846a0/latest/en-US/755f11067c084481b578dfe7cadb89a9.html). An integration specifies the endpoint to which a message should be send along with the content of the message.
    1. Navigate to integration center.
    2. Select `My Integrations`
    3. Select `Create` > `More Integration Types`
@@ -217,7 +217,7 @@ In this step, you will configure the successFactors system to send message to th
 
    ![Integration type](./documentation/images/integration.PNG)
 
-4. Search for the [Intelligent Service](https://help.sap.com/viewer/60ba370328e0485797adde67aee846a0/2005/en-US/c187392494804ee0baf6b4b58bb428b4.html) `Employment Termination`. Select it and click on `Select` button.
+4. Search for the [Intelligent Service](https://help.sap.com/viewer/60ba370328e0485797adde67aee846a0/latest/en-US/c187392494804ee0baf6b4b58bb428b4.html) `Employment Termination`. Select it and click on `Select` button.
 
 5. Provide details for the integration.
    1. Enter name for the integration and click next
