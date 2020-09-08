@@ -203,7 +203,7 @@ In this step, you will configure the successFactors system to send message to th
 
       Add new row: key=x-qos. Value =1
 
-3. [Creating outbound integration](hhttps://help.sap.com/viewer/60ba370328e0485797adde67aee846a0/latest/en-US/755f11067c084481b578dfe7cadb89a9.html). An integration specifies the endpoint to which a message should be send along with the content of the message.
+3. [Creating outbound integration](https://help.sap.com/viewer/60ba370328e0485797adde67aee846a0/latest/en-US/755f11067c084481b578dfe7cadb89a9.html). An integration specifies the endpoint to which a message should be send along with the content of the message.
    1. Navigate to integration center.
    2. Select `My Integrations`
    3. Select `Create` > `More Integration Types`
