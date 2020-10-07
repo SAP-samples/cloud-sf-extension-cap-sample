@@ -8,7 +8,6 @@ This application showcases:
 2. Building application on SAP Cloud Platform using SAP Cloud Application Programming Model(CAP)
 3. Building and Event driven extension application using SAP CP Enterprise Messaging
 4. Consuming REST API's from SAP SuccessFactors using SAP CP Destination Service
-5. SCI(IAS) Tenant integration with SF
 
 
 ## Business Scenario:
