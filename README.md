@@ -1,4 +1,5 @@
 # SAP SucessFactors Extension Application - "Run Smooth"
+[![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/cloud-sf-extension-cap-sample)](https://api.reuse.software/info/github.com/SAP-samples/cloud-sf-extension-cap-sample)
 
 ## Description:
 `Run Smooth` is a reference application which showcases how to build an event driven extensions for SAP SuccessFactors using the capabilities provided by [SAP Cloud Platform Extension Factory](https://help.sap.com/viewer/7b98ddc13f8d4a3ba08a74042a0baa7f/Cloud/en-US). This solution is developed by extending the Employee Central module of SAP SuccessFactors to build an event driven application.
