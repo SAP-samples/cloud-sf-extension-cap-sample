@@ -17,13 +17,7 @@ module.exports = async srv => {
   //* External Read on User Info *//
   srv.on('READ', 'Users', async (req) => {
     if (!req.user) return;
-    const empId = req.user.id,
-      notificationidn = req.params[0];
-    if (!notificationidn) {
-      const query = `/User('${empId}')/directReports?$format=json`,
-        response = await usermanage.tx(req).run(query)
-      return response.map(row => ({ employeeid: row.userId, employeename: row.defaultFullName }))
-    }
+    const empId = req.user.id;
     if (req.params.length === 2) {
       const mappingid = req.params[1].ID;
       const userid = await cds.run(SELECT.one.from(Mappings).where({ ID: mappingid }).columns('employeeId')),
@@ -31,25 +25,24 @@ module.exports = async srv => {
         queryad = SELECT.from(userInfo).where({ employeeid: empIduser }),
         employeedetails = await usermanage.tx(req).run(queryad);
       return employeedetails[0]
-    } else {
+    } else  if (req.params.length === 1){
       const notificationid = req.params[0].ID,
         userid = await cds.run(SELECT.one.from(Notifications).where({ ID: notificationid }).columns('employeeId')),
         empIduser = userid.employeeId,
         queryad = SELECT.from(userInfo).where({ employeeid: empIduser }),
         employeedetails = await usermanage.tx(req).run(queryad);
       return employeedetails[0]
+    } else {
+      const tx = usermanage.transaction(req)
+      const response = await tx.get(`/User('${empId}')/directReports?$format=json`)
+     return response.map(row => ({ employeeid: row.userId, employeename: row.defaultFullName }))
     }
   })
 
   //* External Read on User Photo Details *//
   srv.on('READ', 'Userphoto', async  req => {
     if (!req.user) return;
-    const mappingid = req.params[0]
-    if (!mappingid) {
-      const empId = req.user.id,
-        queryad = SELECT.from(userPic).where({ employeeid: empId, phototype: 20 });
-      return photomanage.tx(req).run(queryad)
-    }
+    const mappingid = req.params
     if (req.params.length === 2) { 
       const mappingidpic = req.params[1].ID,
        userid = await cds.run(SELECT.one.from(Mappings).where({ ID: mappingidpic }).columns('employeeId')),
@@ -66,7 +59,7 @@ module.exports = async srv => {
         contentType = 'image/png';
       obj['*@odata.mediaContentType'] = contentType
       return obj
-    } else {
+    } else  if (req.params.length === 1){
       const notificationpic = req.params[0].ID,
       userid = await cds.run(SELECT.one.from(Notifications).where({ ID: notificationpic }).columns('employeeId')),
         empId = userid.employeeId,
@@ -82,6 +75,11 @@ module.exports = async srv => {
         contentType = 'image/png';
       obj['*@odata.mediaContentType'] = contentType
       return obj
+    } else {
+      const empId = req.user.id,
+        queryad = SELECT.from(userPic).where({ employeeid: empId, phototype: 20 });
+      return photomanage.tx(req).run(queryad)
+
     }
   })
 
@@ -108,18 +106,21 @@ module.exports = async srv => {
     if (!req.user) return;
     const user = req.data;
     const tx = cds.transaction(req);
-    const projectid = req.query.SELECT.where[2].val;
+    const projectid = req.params[0].ID;
+    //req.query.SELECT.where[2].val;
     const affectedRows = await tx.run(SELECT.one.from(Project).where({ ID: projectid }).columns(['criticality','projectName']));
     if (affectedRows.criticality !== user.criticality) {
       return tx.run(
         UPDATE(Project).set({ criticality: user.criticality }).where({ ID: projectid })
-      ).then(
+
+    ).then(() => {
         req.info({
-          "code": 201,
-          "message": `Project ${affectedRows.projectName} Status Changed Successfully`,
-          "numericSeverity": 1
+            "code": 201,
+            "message": `Project ${affectedRows.projectName} Status Changed Successfully`,
+            "numericSeverity": 1
         })
-      )
+        return { criticality: user.criticality }
+    })
     }
     else {
       let criticalitystatus = _computeCriticality(user.criticality)
@@ -194,7 +195,6 @@ module.exports = async srv => {
       }
     })
   })
-
   //* Success After Creating *//
   srv.after("CREATE", "Project", async (req, res) => {
     const project = res.data;
@@ -299,3 +299,4 @@ module.exports = async srv => {
     }
   }
 }
+

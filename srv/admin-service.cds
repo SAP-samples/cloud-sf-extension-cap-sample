@@ -17,14 +17,8 @@ service AdminService @(requires : 'authenticated-user') {
         @(
             Common.SideEffects              : {
                 EffectTypes      : #ValueChange,
-                TargetProperties : [
-                criticality,
-                status.crticality,
-                status.StatusI
-                ],
                 TargetEntities   : [
-                Project,
-                Status
+                status
                 ]
             },
             cds.odata.bindingparameter.name : '_it',
@@ -65,10 +59,13 @@ service AdminService @(requires : 'authenticated-user') {
     ID,
     employeeId
     ]
-    entity Notifications @(restrict : [{
+    entity Notifications @(restrict : [
+            {
         grant : 'READ',
         where : 'managerId = $user.id'
-    }])            as projection on refapp.Notifications;
+    },
+     { grant:'DELETE', to:'authenticated-user' }
+     ])            as projection on refapp.Notifications;
 }
 
 
