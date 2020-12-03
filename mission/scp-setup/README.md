@@ -53,12 +53,12 @@ Before running the booster please check for which regions and infrastructures th
 
    ![Booster](./images/booster-03.png)
 
-5. Check Prerequisites. If Ok press Next - otherwise check 
+5. Check Prerequisites. If Ok press Next - otherwise check the error message.
    ![Booster](./images/booster-04.png)
 
 6. Setup Subaccount
    
-   You find the list of the Services that will acctivated by the Booster. For this mission the Countinuous Integration & Delivery service is optional, if you don't want to use it you can remove it.
+   You find the list of the Services that will acctivated by the Booster. For this mission the Countinuous Integration & Delivery service is optional, if you don't want to use it you can remove it. The Extension Center and Extension Factory service are not needed for the mission - click on the basket to remove them.
    
    ![Booster](./images/booster-05.png)
 
