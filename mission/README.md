@@ -48,14 +48,14 @@ For running this mission you need a SAP Cloud Platform account with the followin
 
 ## Step-by-Steps Guides
 
-* [Get the Successfactor APIs](../api-hub/README.md) 
-* [Setup your SAP Cloud Platform Account using Boosters](../scp-setup/README.md) 
-* [Setup Trust between your SAP Cloud Platform and your SAP SuccessFactors account](../trust-setup/README.md)
-* [Configure, deploy and build the CAP Extension Application](../extension-app/README.md)
-* [Integrate SAP Continuous Integration & Delivery (optional)](../cicd/README.md) 
-* [Confgure the SAP Enterprise Messaging Service](../ems-config/README.md) 
-* [Configure Eventing in SAP SuccessFactors](../sf-configuration/README.md)
-* [Run the Demo Application](../run-demo/README.md)
+* [Get the Successfactor APIs](./api-hub/README.md) 
+* [Setup your SAP Cloud Platform Account using Boosters](./scp-setup/README.md) 
+* [Setup Trust between your SAP Cloud Platform and your SAP SuccessFactors account](./trust-setup/README.md)
+* [Configure, deploy and build the CAP Extension Application](./extension-app/README.md)
+* [Integrate SAP Continuous Integration & Delivery (optional)](./cicd/README.md) 
+* [Confgure the SAP Enterprise Messaging Service](./ems-config/README.md) 
+* [Configure Eventing in SAP SuccessFactors](./sf-configuration/README.md)
+* [Run the Demo Application](./run-demo/README.md)
 
 
 
