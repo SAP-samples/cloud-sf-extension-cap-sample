@@ -126,7 +126,19 @@ If sap-registry is set in your system please delete by using below command.
    - Search and local Portal Subscription and enable it
 > If you do not have Portal Service enabled in your entitlements, ignore this step.
 
-9. Create SAP HANA Service instance with plan 64standard as described [here](https://help.sap.com/viewer/cc53ad464a57404b8d453bbadbc81ceb/Cloud/en-US/21418824b23a401aa116d9ad42dd5ba6.html)
+9.There are two options with respect to HANA to continue:
+   
+   option 1: Create SAP HANA Service instance with plan 64standard as described [here](https://help.sap.com/viewer/cc53ad464a57404b8d453bbadbc81ceb/Cloud/en-US/21418824b23a401aa116d9ad42dd5ba6.html)
+   The application is configured for SAP HANA Cloud  Service instance.
+   Remove the following snippet from package.json to adapt it to SAP HANA Service instance.
+   ```
+   "hana": {
+      "deploy-format": "hdbtable"
+   },
+   ```
+   
+   option 2: Create SAP HANA Cloud service instance with plan hana as described [here](https://help.sap.com/viewer/db19c7071e5f4101837e23f06e576495/2020_03_QRC/en-US/f7febb16072b41f7ac90abf5ea1d4b86.html)
+   
 > If there are multiple instances of SAP HANA Service in the space where you plan to deploy this application, please modify the mta.yaml as shown below. Replace <database_guid> with the [id of the database](https://help.sap.com/viewer/cc53ad464a57404b8d453bbadbc81ceb/Cloud/en-US/93cdbb1bd50d49fe872e7b648a4d9677.html?q=guid) you would like to bind the application with :
  ```
  # Hana HDI Container
@@ -140,6 +152,7 @@ If sap-registry is set in your system please delete by using below command.
     properties:
       hdi-container-name: '${service-name}'
 ```
+
 
 ### Step 4: Deploy the reference application
 > If the application is to be deployed without portal service, please copy  [mta without portal service](documentation/mta_without_portal.yaml) and replace the content of [mta.yaml](mta.yaml) file with it. 
