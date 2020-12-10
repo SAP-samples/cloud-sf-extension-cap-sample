@@ -27,6 +27,9 @@
         "build": "cds build/all --clean"
     },
     "cds": {
+        "hana": {
+           "deploy-format": "hdbtable"
+        },
         "requires": {
             "uaa": {
                 "kind": "xsuaa"
