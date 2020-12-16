@@ -1,4 +1,4 @@
-# Setup of a SAP Cloud Platform Account using Boosters
+# Testing your Scenario by running the Reference Application
 
 ## Introduction
 Let us now try to test the end to end scenario by triggering an 'Employee Termination' event in the SuccessFactors system and then we can view and consume this event in our SAP Cloud Platform extension Application.
