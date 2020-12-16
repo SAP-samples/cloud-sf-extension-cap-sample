@@ -97,7 +97,6 @@ Before running the booster please check for which regions and infrastructures th
     ![Booster](./images/booster-11.png)
 
     Click on Subscriptions - check if the following subscriptions are enabled:
-    * Extension Center
     * SAP Business Application Studio
     * Enterprise Messaging
     * Continuous Integration & Delivery (only when selected in the booster)   
