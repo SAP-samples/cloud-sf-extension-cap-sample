@@ -146,7 +146,7 @@ We recommend using a technical user. However, you can use also use your cloud cr
         uploadFile: 'cloud-sf-extension-cap-sample_1.0.0.mtar'
         artifactType: 'mta'
     mtaBuild:
-        mtaBuildTool: ""cloudMbt""
+        mtaBuildTool: "cloudMbt"
 
 
     ### Stage-specific configuration

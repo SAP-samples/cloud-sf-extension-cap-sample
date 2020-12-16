@@ -150,16 +150,13 @@ For this mission a SAP HANA Cloud Instance is necessary. Use the following steps
 As this booster does not automatically yet subscribe to the SAP Launchpad, we have to manually subscribe to SAP Launchpad and assign the relevant roles as well. 
 
 1. Login to your global SAP Cloud Platform account and navigate to your sub-account.
-2. Click 'Security' and 'Role Collections' and click on the role 'Launchpad Admin'.
+2. Select Subscription and search for Launchpad. Click on the tile to open the Overview page
    
-   ![Launchpad Admin](./images/role-1.png)
-3. Click on 'Edit'.
+   ![Launchpad Admin](./images/launchpad1.png) 
+
+3. Click on Subsribe. If subscription is done go back to the subaccount overview.
    
-   ![Launchpad Admin2](./images/role-2.png)
+   ![Launchpad Admin](./images/launchpad2.png) 
+   ![Launchpad Admin](./images/launchpad3.png) 
 
-4. In the 'Users' section, add the users from the SuccessFactors Identity Provider who you want to have Launchpad Admin roles. Click on 'Save'.
-
-   ![Launchpad Admin3](./images/role-3.png)
-
-5. Now you have assigned relevant users from your SuccessFactors account to have Launchpad Admin role.
 

@@ -107,7 +107,7 @@ Establishing a trust is done be exchanging the SAML certificate of each system.
 
  
    * Click on "Add another Service Provider ACS"
-   * In the "Assertion Consumer Service" field enter the Location URL from the SAP Cloud Platform metadata.xml
+   * In the "Assertion Consumer Service" field enter the Location URL with the HTTP-POST binding from the SAP Cloud Platform metadata.xml
 
       ![Setup Trust](./images/trust-4.png)
 
@@ -145,7 +145,17 @@ Establishing a trust is done be exchanging the SAML certificate of each system.
 
     ![IDP settings ](./images/role-3.png)
 
+13. Click 'Security' and 'Role Collections' and click on the role 'Launchpad Admin'.
+   
+   ![Launchpad Admin](../scp-setup/images/role-1.png)
+14. Click on 'Edit'.
+   
+   ![Launchpad Admin2](../scp-setup/images/role-2.png)
 
+15. In the 'Users' section, add the users from the SuccessFactors Identity Provider who you want to have Launchpad Admin roles. Click on 'Save'.
 
+   ![Launchpad Admin3](../scp-setup/images/role-3.png)
+
+16. Now you have assigned relevant users from your SuccessFactors a
 
 We have finished the system and trust setup.
