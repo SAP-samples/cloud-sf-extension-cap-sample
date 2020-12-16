@@ -1,4 +1,4 @@
-# Configure SuccessFactors Backend
+# Configure Eventing in SAP SuccessFactors System
 
 ## Introduction
    We will see the necessary steps needed for preparing the SuccessFactors backend.
