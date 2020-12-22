@@ -107,17 +107,17 @@ Establishing a trust is done be exchanging the SAML certificate of each system.
 
  
    * Click on "Add another Service Provider ACS"
-   * In the "Assertion Consumer Service" field enter the Location URL with the HTTP-POST binding from the SAP Cloud Platform metadata.xml
+   * For the field "Assertion Consumer Service", copy and paste the URL in the 'Location' with the 'HTTP-POST binding' from the SAP Cloud Platform metadata.xml.
 
       ![Setup Trust](./images/trust-4.png)
 
 
-   * In the "Logout Url" field enter the Location URL of the SingleLogoutService element with the HTTP-POST binding
+   * In the "Logout Url" field, enter the Location URL of the SingleLogoutService element with the 'HTTP-POST binding'
    
       ![Setup Trust](./images/trust-5.png)
 
    
-   * In the "Audience Url" field enter the value of the entityID from the EntityDescriptor section
+   * In the "Audience Url" field, enter the value of the entityID from the EntityDescriptor section
   
       ![Setup Trust](./images/trust-6.png)
 

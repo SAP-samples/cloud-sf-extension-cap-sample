@@ -116,8 +116,13 @@ We recommend using a technical user. However, you can use also use your cloud cr
 1. Go back to your project in SAP Business Application Studio
 
 2. Open a terminal and go to the root folder of your project.
+3. Create pipeline file using the following command in your terminal.
 
-3.  In the file genernated (.pipeline -> .config.yml), replace the content with the following:
+   ```
+   cds add pipeline
+   ```
+
+4.  In the file generated (.pipeline -> .config.yml), replace the content with the following:
 
 
    ```yaml
@@ -184,7 +189,7 @@ We recommend using a technical user. However, you can use also use your cloud cr
       
    ```
 
-4. "Modify the paraters in .pipeline/config.yml with contents specific to your subaccount :
+5. "Modify the paraters in .pipeline/config.yml with contents specific to your subaccount :
   
     * org: '\<org_name\>'
     * space: '\<space_name\>'
@@ -192,13 +197,22 @@ We recommend using a technical user. However, you can use also use your cloud cr
     * apiEndpoint: '\<api end point\>'
     * credentialsId: '\<global cloud credential id in the CI/CD service created in step 8 in the section before e.g: cloud-credentials\>'
 
-5. You find the parameters in your SAP Cloud Platform subaccount overview. Copy the API Endpoint, Org Name 
+6. You find the parameters in your SAP Cloud Platform subaccount overview. Copy the API Endpoint, Org Name 
 
     ![copy Cloud Data](./images/copyCloudData.png)
     
-6. Choose 'Spaces' and copy the space name.
+7. Choose 'Spaces' and copy the space name.
 
     ![copy Space Name](./images/copySpaceName.png)
+    
+8. You can push the modified contents of the project into the Git repository.
+
+   ```
+   git add .
+   git commit -m "Push changes to my project"
+   git push -u origin master
+   
+   ```
 
 ### Setup CI/CD Job
   

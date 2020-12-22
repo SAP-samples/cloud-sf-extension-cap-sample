@@ -103,6 +103,28 @@ Before running the booster please check for which regions and infrastructures th
     
     ![Booster](./images/booster-12.png)
 
+### Configure Entitlements to SAP Portal service
+
+Currently our extension application uses local Fiori Launchpad which comes as part of Portal Service, so the application will create a binding to the portal service instance. You have to configure Entitlements for SAP Portal Service.
+
+1. In your SAP Cloud Platform Cockpit, click 'Entitlements' and click 'Configure Entitlements'.
+
+   ![entitlement01](./images/entitlement01.png)
+   
+2. Click 'Add Service Plans'.
+
+   ![entitlement02](./images/entitlement02.png)
+   
+3. Search for 'Portal' and select 'Portal' from the list and check the checkbox 'standard' from the Available Plans. Click 'Add 1 Service Plan'.
+
+   ![entitlement03](./images/entitlement03.png)
+   
+4. Click 'Save' to save the changes.
+
+   ![entitlement04](./images/entitlement04.png)
+   
+5. Also check if you have entitlement to SAP HANA Cloud, else configure entitlements in the same way for 'SAP HANA Cloud' service with 'hana' service plan. 
+
 ### B: Create a SAP HANA Cloud Instance
 For this mission a SAP HANA Cloud Instance is necessary. Use the following steps for activating it:
 
@@ -119,18 +141,18 @@ For this mission a SAP HANA Cloud Instance is necessary. Use the following steps
     * Runtime Environment = Cloud Foundry
     * Space = the space you have created with the Booster
    
-    click on **here**
+    click on the link **here**
    
 
     ![HANA](./images/hana-03.png)
 
-4.  Click on Create Instance
+4.  Click 'Create Database' in the opened popup.
 
-    ![HANA](./images/hana-04.png)
+    ![HANA](./images/createDatabase.png)
 
 5.  Enter an instance name - description and password. if everything is correct the "Step 2" button appear - click on it.
 
-    ![HANA](./images/hana-05.png)
+    ![HANA](./images/createDatabase02.png)
 
 6.  Here you can setup the size of the SAP HANA Cloud instance - for the mission you can keep the minimum settings - click on "Step 3"
 
@@ -145,9 +167,9 @@ For this mission a SAP HANA Cloud Instance is necessary. Use the following steps
     ![HANA](./images/hana-08.png)
     
 
-### Subscribe to SAP Launchpad and assign relevant roles
+### Subscribe to SAP Launchpad(optional)
 
-As this booster does not automatically yet subscribe to the SAP Launchpad, we have to manually subscribe to SAP Launchpad and assign the relevant roles as well. 
+As this booster does not automatically yet subscribe to the SAP Launchpad, we can manually subscribe to SAP Launchpad and we will assign the relevant roles in the next step with custom Identity Provider. This step is optional.
 
 1. Login to your global SAP Cloud Platform account and navigate to your sub-account.
 2. Select Subscription and search for Launchpad. Click on the tile to open the Overview page
@@ -158,5 +180,7 @@ As this booster does not automatically yet subscribe to the SAP Launchpad, we ha
    
    ![Launchpad Admin](./images/launchpad2.png) 
    ![Launchpad Admin](./images/launchpad3.png) 
+   
+   
 
 

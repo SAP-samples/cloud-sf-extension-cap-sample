@@ -20,7 +20,8 @@ File / Folder | Purpose
 
 
 
-## ## Step-by-step
+## Step-by-step
+
 ### Create a new application in SAP Business Application Studio
 
 1.	Make sure you have opened your *SAP Cloud Platform Account* and navigate to your *Subaccount* 
@@ -108,7 +109,6 @@ File / Folder | Purpose
     cds import PLTUserManagement.edmx
      ```
 16. Check the srv/external folder of the project - here you find the 3 files and the generated csn files.
-You can delete the 3 files from the project root folder
 
 17. In explorer click on the mta.yaml file in the project root to open it in the editior.
 
