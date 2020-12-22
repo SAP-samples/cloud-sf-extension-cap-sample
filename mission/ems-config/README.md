@@ -26,18 +26,19 @@ The Topic for the messaging was generated at the deployment of the extension app
    ![ems](./images/ems-4.png)
 
 
-## Generate Service Key
+## View Service Key
 
-1. In your SAP Cloud Platform subaccount select Service Instances. Expand the Enterprise Messaging instance and at the ... - Select Create Service Key 
+As we have already deployed our extension application in the previous step, our application would be bound to 'Enterprise Messaging' service instance, we can view the service key in service binding.
+
+1. In your SAP Cloud Platform subaccount select 'Service Instances'. Expand the Enterprise Messaging instance and click the Name of the bound application. 
    
    ![ems](./images/ems-5.png)
-   ![ems](./images/ems-5a.png)
 
-2. New Service Key. Enter a key name e.g. emskey and click on Create.
+2. Click the radiobutton near 'enterprise-messaging' service and click 'Show sensitive data' to view the Service Key details.
    
    ![ems](./images/ems-6.png)
 
-3. Click on the generated key. From the service key displayed, copy the content of the tag "messaging". Copy the clientid, clientsecret, tokenendpoint and Base url to a file. Remove the quotation marks. We will need those parameter for the messaging connection setup in SAP SuccessFactors
+3. From the sensitive data displayed, copy the content of the tag "messaging" for protocol "httprest". Copy the clientid, clientsecret, tokenendpoint and Base url to a file. Remove the quotation marks. We will need those parameter for the messaging connection setup in SAP SuccessFactors.
    
    ![ems](./images/ems-7.png)
 
