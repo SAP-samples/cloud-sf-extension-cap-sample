@@ -1,13 +1,13 @@
-# Mission: Business Events with SAP SuccessFactors and SAP Enterprise Messaging
+# Mission: Business Events with SAP SuccessFactors and SAP Cloud Platform Enterprise Messaging
 
 
 ## Description
 
 This [Mission]() showcases:
 
-* Capabilities of SAP Cloud Platform Extension Factory
-* Building application on SAP Cloud Platform using SAP Cloud Application Programming Model(CAP)
-* Building and Event driven extension application using SAP CP Enterprise Messaging
+* Capabilities of SAP Cloud Platform 
+* Building a reference application on SAP Cloud Platform using SAP Cloud Platform Application Programming Model (CAP)
+* Building an Event driven extension application using SAP CP Enterprise Messaging
 * Consuming REST API's from SAP SuccessFactors using SAP CP Destination Service
 
 ## The Business Scenario
