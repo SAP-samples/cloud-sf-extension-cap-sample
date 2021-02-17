@@ -135,17 +135,19 @@ modules:
   # Launchpad Module
   #####################################################################################################################
   - name: cloud-sf-extension-cap-sample-launchpad
-    type: com.sap.portal.content
+    type: com.sap.application.content
     path: cloud-sf-extension-cap-sample-launchpad
     deployed-after:
       - cloud-sf-extension-cap-sample_ui_deployer
-    parameters:
-      stack: cflinuxfs3
-      memory: 128M
-      buildpack: 'https://github.com/cloudfoundry/nodejs-buildpack/releases/download/v1.6.39/nodejs-buildpack-cflinuxfs3-v1.6.39.zip'
     requires:
       # Portal service
       - name: portal_resources_cloud-sf-extension-cap-sample
+        parameters:
+          content-target: true
+          service-key:
+            name: content-deploy-key #any valid name can be specified, will be used to create the service key for content deployment
+            config: # the service key configs can be defined inline
+              content-endpoint: developer
       # Authentication and Authorization service
       - name: cloud-sf-extension-cap-sample-uaa
       # HTML5 Repository host service
