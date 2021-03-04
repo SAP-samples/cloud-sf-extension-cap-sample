@@ -34,7 +34,7 @@
                 "kind": "xsuaa"
             },
             "messaging": {
-                "kind": "enterprise-messaging"
+                "kind": "enterprise-messaging-shared"
             },
             "db": {
                 "kind": "hana"
