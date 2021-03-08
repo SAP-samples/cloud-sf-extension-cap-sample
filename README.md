@@ -26,7 +26,7 @@ A Manager maintains in the Run Smooth application the staffing details of all th
 
 ### Solution Diagram
 
-![solution diagram](./documentation/images/SolutionDiagram.png)
+![solution diagram](./documentation/images/solution-diagram.JPG)
 
 The Run Smooth application is developed using [SAP Cloud Application programming Model (CAP)](https://cap.cloud.sap/docs/) and runs on the SAP Business Technology Platform, Cloud Foundry Environment. It consumes platform services like Enterprise Messaging, SAP HANA and Destination. The events generated in SuccessFactors are inserted into the Enterprise messaging queue. The application running in Cloud Foundry polls the queue for these messages and inserts them into the HANA database. The run smooth application also makes calls to SF OData APIs to get SF data.
 
