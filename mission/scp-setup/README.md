@@ -1,186 +1,173 @@
-# Setup of a SAP Cloud Platform Account using Boosters
+# Set up a SAP Business Technology Platform Account using Booster
 
 ## Introduction
 
-For running the SuccessFactors extension mission you will need the following services in your SAP Cloud Platform account.
+For running this SAP SuccessFactors extension tutorial, you will need the following services in your SAP Business Technology Platform (SAP BTP) account.
 
 * SAP Business Application Studio
-* SAP Enterprise Messaging
-* SAP Enterprise Messaging Hub
-* SAP Application Runtime
-* SAP HANA Cloud Service
+* Event Mesh
+* Enterprise Messaging Hub
+* Cloud Foundry Runtime
+* SAP HANA Cloud service
 * SAP Portal / SAP Launchpad
-* SAP Continuous Integration & Delivery Service (optional)
+* SAP Continuous Integration & Delivery service (optional)
 
 The entitlement differs for the pricing option of your account:
 
-**Consumption-based SAP Cloud Platform Account:** 
+* **Consumption-based SAP BTP Account:** 
 No entitlement necessary. Be sure that you have enough credits to run the services.
 
-**Subscription-based SAP Cloud Platform Account:** 
-You have to create entitlements for the services above - [see also Entitlements and Quotas](https://help.sap.com/viewer/df50977d8bfa4c9a8a063ddb37113c43/Cloud/en-US/38ecf59cdda64150a102cfaa62d5faab.html#loio363f0f68f9704830ac65c87a2562559b).
+* **Subscription-based SAP BTP Account:** 
+You have to create entitlements for the services above - [See Entitlements and Quotas](https://help.sap.com/viewer/df50977d8bfa4c9a8a063ddb37113c43/Cloud/en-US/38ecf59cdda64150a102cfaa62d5faab.html#loio363f0f68f9704830ac65c87a2562559b).
 
 
-[Check the costs with the SAP Cloud Platform Estimator Tool](https://www.sap.com/products/cloud-platform/pricing/estimator-tool.html?blueprintId=a0ad3bc5-4fcb-4008-b109-bd8f70634d6c)
+To check how much these services would cost, use the [SAP BTP Estimator Tool](https://www.sap.com/products/cloud-platform/pricing/estimator-tool.html?blueprintId=a0ad3bc5-4fcb-4008-b109-bd8f70634d6c)
 
 
-**Booster:**
+You can either set up each service individually or use a dedicated booster that will automate the setup for you. To simplify the setup process, SAP has introduced Boosters. Boosters are a collection of wizards that provides functionalities for specific scenarios to automate and speed up the installation and configuration process of a SAP BTP sub-account. This also includes the user management with the mapping of the respective Administrator and Developer roles.
 
-The setup could be done for each service individually. To simplify the setup process, SAP has introduced Boosters. Boosters are a collection of wizards that provides functionalities for specific scenarios to automate and speed-up the installation and configuration process of a SAP Cloud Platform sub-account. This also includes the user management with the mapping of the respective administrator and developer roles.
-
-Before running the booster please check for which regions and infrastructures the services are available - [see SAP Cloud Platform Regions and Service Portfolio ](https://help.sap.com/doc/aa1ccd10da6c4337aa737df2ead1855b/Cloud/en-US/3b642f68227b4b1398d2ce1a5351389a.html) - unfortunately the booster is not able to check this in advance, so it will fail when you select a region where a service is not available.
+Before running the booster, please check for which regions and infrastructures the services are available. The booster is not able to check this in advance, so it will fail when you select a region where a service is not available.[See SAP Discovery Center Service Catalog](https://help.sap.com/doc/aa1ccd10da6c4337aa737df2ead1855b/Cloud/en-US/3b642f68227b4b1398d2ce1a5351389a.html).
 
 
-**Persona:** SAP Cloud Platform Administrator
+**Persona:** Cloud Administrator (SAP BTP) 
+
+**Abbreviation:** SAP Business Technology Platform = SAP BTP
 
 ## Step-by-step
 
-### A: Run the Booster
-
-1. Start the Booster
-   Login to your global SAP Cloud Platform account.
-   1. Select Boosters in the SAP Cloud Account menu.
-   2. Select Extension Suite
-   3. Select the Booster "Prepare an account for Developing Extension Applications"
+### Prepare a SAP BTP sub-account using Boosters for developing extension applications
+ 
+1. Open your global SAP BTP account cockpit.
+   - Select **Boosters** in the menu.
+   - Select the Booster **Prepare an Account for Developing Extension Applications**
    
    ![Booster](./images/booster-01.png)
 
-2. Booster Overview
+2. Read the **Overview** of the **Prepare an Account for Developing Extension Application** booster.
 
    ![Booster](./images/booster-02.png)
  
-4. Select Components to get an overview of them. Press Start
+3. Choose **Components** to get an overview of the services and components that the booster will set up for you. Press **Start** to start the booster.
 
    ![Booster](./images/booster-03.png)
 
-5. Check Prerequisites. If Ok press Next - otherwise check the error message.
+4. The booster checks whether the prerequisites for completing the booster are met. You will be able to continue only if all the prerequisites are met. Otherwise, you will get an error.
+
    ![Booster](./images/booster-04.png)
 
-6. Setup Subaccount
+5. Now let us setup your BTP Subaccount, To learn more about global and subaccounts, refer to this [Account Model help page](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/8ed4a705efa0431b910056c0acdbf377.html)
    
-   You find the list of the Services that will acctivated by the Booster. For this mission the Countinuous Integration & Delivery service is optional, if you don't want to use it you can remove it. The Extension Center and Extension Factory service are not needed for the mission - click on the basket to remove them.
+You find the list of the Services that will acctivated by the Booster. For this tutorial, the **Continuous Integration & Delivery** service is optional same for the **Launchpad** service, if you don't want to use this service, you can remove this service before running the booster. The **Extension Center**, and **Extension Factory, serverless runtime** services are not needed for this tutorial - select the **Remove** icon to remove them. This means they will not be set up when the Booster is completed. 
    
    ![Booster](./images/booster-05.png)
 
-   1. In the sub section enter a meaningful Subaccount Name - in general it reflects the organisation of your team etc.
-   2. Select your Provider
-   3. Select the Region
-   4. Enter a meaningful Org Name
-   5. Enter a space name - this should reflect the name of your project
-   6. Press Next   
+If you use a subscription based SAP BTP accounts you have to add 3 quota for Cloud Foundry Runtimes.
+
+   ![Booster](./images/booster-05aa.png)
+
+   - For the field **Subaccount Name**, enter a meaningful subaccount name, for example a name which denotes your project name.
+   - Select your **Provider**
+   - Select the **Region**
+   - You can leave the default unique value suggested for **Subdomain**
+   - Enter a meaningful name for the field **Org Name**, for example : SFSFTutorial
+   - Enter a space name, for example, 'dev' or 'test' or 'prod'.
+   - Press **Next**
   
    ![Booster](./images/booster-06.png)
 
-7. Add User
-   1. Enter the User ID (mail address) of all administration users
-   2. Enter the User ID (mail address) of all development users
-   3. Press Next
+6. In the **Add Users** dialog,
+   - Enter the User ID (mail address) of all users with Cloud Administrator role.
+   - Enter the User ID (mail address) of all users with Cloud Application Developer role.
+   - Choose **Next**
    
-   ![Booster](./images/booster-07.png)
+     ![Booster](./images/booster-07.png)
 
-8. Review your settings and press Finish
+7. Review your settings and press **Finish** to complete the Booster.
    
    ![Booster](./images/booster-08.png)
 
-9.  Check the Progess - all sections should get green
+8.  Check the **Progress** window, tasks should become green.
    
     ![Booster](./images/booster-09.png)
 
-10. If you succeed navigate to the new Subaccount.
+9. If the Booster is completed successfully, navigate to your new subaccount.
 
     ![Booster](./images/booster-10.png)
 
-11. Check your subaccount: 
-    Select Security - Role Collection
-    You will find the Extension_App_Administrator and the Extension_App_Developer role collection. If you want to add additional users to the mission you have to assign one of those role collections.
+10. Check the roles of your subaccount, Select **Security**, **Role Collections** and you will find the **Extension_App_Administrator** and the **Extension_App_Developer** role collections. If you want to add additional users to work on this tutorial/subaccount, you have to assign one of those role collections.
 
     ![Booster](./images/booster-11.png)
 
-    Click on Subscriptions - check if the following subscriptions are enabled:
+11. Go back to the Overview of your BTP subaccount.
+
+12. Click **Services** and then choose **Instances and Subscriptions**. Select the tab **Subscriptions**, You should see that the following services have been subscribed:
+
     * SAP Business Application Studio
-    * Enterprise Messaging
-    * Continuous Integration & Delivery (only when selected in the booster)   
+    * SAP Event Mesh
+    * Continuous Integration & Delivery (only when selected in the booster)
     
+
     ![Booster](./images/booster-12.png)
 
-### Configure Entitlements to SAP Portal service
+### Configure Entitlements to SAP Portal and SAP Hana service
 
-Currently our extension application uses local Fiori Launchpad which comes as part of Portal Service, so the application will create a binding to the portal service instance. You have to configure Entitlements for SAP Portal Service.
+Currently, this extension application uses local Fiori Launchpad which comes as part of SAP Cloud Portal service, so the application will create a binding to the portal service instance. You have to configure Entitlements for SAP Cloud Portal service.
 
-1. In your SAP Cloud Platform Cockpit, click 'Entitlements' and click 'Configure Entitlements'.
+1. In your SAP BTP Cockpit, choose **Entitlements** and click **Configure Entitlements**.
 
    ![entitlement01](./images/entitlement01.png)
    
-2. Click 'Add Service Plans'.
+2. Choose **Add Service Plans**.
 
    ![entitlement02](./images/entitlement02.png)
    
-3. Search for 'Portal' and select 'Portal' from the list and check the checkbox 'standard' from the Available Plans. Click 'Add 1 Service Plan'.
+3. Search for **Portal** and select **Portal** from the list and select the **standard** checkbox from the Available Plans. Choose **Add 1 Service Plan**.
 
    ![entitlement03](./images/entitlement03.png)
    
-4. Click 'Save' to save the changes.
+4. Choose **Save** to save the changes.
 
    ![entitlement04](./images/entitlement04.png)
    
-5. Also check if you have entitlement to SAP HANA Cloud, else configure entitlements in the same way for 'SAP HANA Cloud' service with 'hana' service plan. 
+5. Check if you have entitlement to SAP HANA Cloud, if not configure the entitlements in the same way for **SAP HANA Cloud** service with **hana** service plan. 
 
 ### B: Create a SAP HANA Cloud Instance
-For this mission a SAP HANA Cloud Instance is necessary. Use the following steps for activating it:
+For this tutorial, a SAP HANA Cloud Instance is necessary. Use the following steps for activating it:
 
-1.  Select Services - Service Marketplace - SAP HANA Cloud
-    ![HANA](./images/hana-01.png)
+1. Go to your subaccount and choose **Services** - **Service Marketplace** and then **SAP HANA Cloud** service tile.
+   ![HANA](./images/hana-01.png)
 
-2.  Click on Create Instance 
+2. Choose on **Create Instance** 
    
-    ![HANA](./images/hana-02.png)
+   ![HANA](./images/hana-02.png)
 
-3.  In the "New Instance" screen select 
-    * Service = SAP HANA Cloud
-    * Service Plan = Hana
-    * Runtime Environment = Cloud Foundry
-    * Space = the space you have created with the Booster
-   
-    click on the link **here**
-   
+3. In the **New Instance** screen, choose 
+   - In the Service field, select **SAP HANA Cloud**.
+   - In the Service Plan field, select **hana**.
+   - In the Runtime Environment field, select **Cloud Foundry**.
+   - In the Space field, select the space you have created when running the **Prepare an Account for Developing Extension Applications Booster**.
+   - A message **To manage SAP HANA Cloud instances, click here** with a link appears,click on the link **here** to finish the procedure. You are redirected to another page.
 
-    ![HANA](./images/hana-03.png)
+   ![HANA](./images/hana-03.png)
 
-4.  Click 'Create Database' in the opened popup.
+4. Choose **Create Database** in the opened popup.
 
-    ![HANA](./images/createDatabase.png)
+   ![HANA](./images/createDatabase.png)
 
-5.  Enter an instance name - description and password. if everything is correct the "Step 2" button appear - click on it.
+5. Enter an instance name, a description and a password. If everything is correct, the Step 2 button appears. Choose Step 2.
 
-    ![HANA](./images/createDatabase02.png)
+   ![HANA](./images/createDatabase02.png)
 
-6.  Here you can setup the size of the SAP HANA Cloud instance - for the mission you can keep the minimum settings - click on "Step 3"
+6. Set up the size of your in-memory data in your SAP HANA database. For example, 30 GB. Choose **Step 3**.
 
-    ![HANA](./images/hana-06.png)
+   ![HANA](./images/hana-06.png)
 
-7.  Keep the Advanced Settings and click on "Create Instance"
+7. Keep the advanced settings as they are and choose **Create Instance**
 
-    ![HANA](./images/hana-07.png)
+   ![HANA](./images/hana-07.png)
 
-8.  After some minutes the HANA instace is created and you should see a similar card.
+8. When the SAP HANA instance is created, you should see a similar result:
 
     ![HANA](./images/hana-08.png)
     
-
-### Subscribe to SAP Launchpad(optional)
-
-As this booster does not automatically yet subscribe to the SAP Launchpad, we can manually subscribe to SAP Launchpad and we will assign the relevant roles in the next step with custom Identity Provider. This step is optional.
-
-1. Login to your global SAP Cloud Platform account and navigate to your sub-account.
-2. Select Subscription and search for Launchpad. Click on the tile to open the Overview page
-   
-   ![Launchpad Admin](./images/launchpad1.png) 
-
-3. Click on Subsribe. If subscription is done go back to the subaccount overview.
-   
-   ![Launchpad Admin](./images/launchpad2.png) 
-   ![Launchpad Admin](./images/launchpad3.png) 
-   
-   
-
 

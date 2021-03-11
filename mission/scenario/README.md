@@ -1,4 +1,4 @@
-# Mission: Business Events with SAP SuccessFactors and SAP Enterprise Messaging
+# Mission: Business Events with SAP SuccessFactors and SAP Event Mesh
 
 [Link to Mission]()
 
@@ -8,7 +8,7 @@ This application showcases:
 
 * Capabilities of SAP Cloud Platform Extension Factory
 * Building application on SAP Cloud Platform using SAP Cloud Application Programming Model(CAP)
-* Building and Event driven extension application using SAP CP Enterprise Messaging
+* Building and Event driven extension application using SAP CP Event Mesh
 * Consuming REST API's from SAP SuccessFactors using SAP CP Destination Service
 
 ## The Business Scenario
@@ -33,7 +33,7 @@ Features:
 | Service                           | Plan       | Number of Instances |
 |-----------------------------------|------------|:-------------------:|
 | Destination                       | lite       |          1          |
-| Enterprise Messaging              | default    |          1          |
+| Event Mesh              | default    |          1          |
 | SAP HANA Schemas & HDI Containers | hdi-shared |          1          |
 | SAP SuccessFactors Extensibility  | api-access |          1          |
 | SAP Hana Cloud                  | hana |          1          |
@@ -49,6 +49,6 @@ Features:
 * [Setup Trust between your SAP Cloud Platform and your SAP SuccessFactors account](../trust-setup/README.md)
 * [Configure, deploy and build the CAP Extension Application](../extension-app/README.md)
 * [Integrate SAP Continuous Integration & Delivery (optional)](../cicd/README.md) 
-* [Confgure the SAP Enterprise Messaging Service](../ems-config/README.md) 
+* [Confgure the SAP Event Mesh Service](../ems-config/README.md) 
 * [Configure Messaging in SAP SuccessFactors](../sf-configuration/README.md)
 * [Run the Demo Application](../run-demo/README.md)
