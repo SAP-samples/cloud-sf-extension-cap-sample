@@ -249,8 +249,8 @@ In this step, you will configure the successFactors system to send message to th
      E.g For Europe Region Account it could be `https://enterprise-messaging-pubsub.cfapps.eu10.hana.ondemand.com/messagingrest/v1/topics/<topicName>/messages`
       > For <topicName>, use the topic name copied in Step 4.9. Note that the topic name must be double encoded.
       
-      > For example, if your topic name is `sfem/emm/1909/PLTUserManagement/d41d/sfemessage`, then the `/` should be replaced with `%252F`.
-      The resultant topic name will be `sfem%252Femm%252F1909%252FPLTUserManagement%252Fd41d%252Fsfemessage`.
+      > For example, if your topic name is `sfem/emm/1909/sfemessage`, then the `/` should be replaced with `%252F`.
+      The resultant topic name will be `sfem%252Femm%252F1909%252Fsfemessage`.
       
 
       Authentication type: OAuth
