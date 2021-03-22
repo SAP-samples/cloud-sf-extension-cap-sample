@@ -119,7 +119,7 @@ If sap-registry is set in your system please delete by using below command.
 7. a) Open the file “enterprisemessage.json”  in root folder of the project. Modify `"emname": "<yourmessageclientname>","namespace": "<yourorgname>/<yourmessageclientname>/<uniqueID>"` with values for `"<yourmessageclientname>"`,`<yourorgname>/<yourmessageclientname>/<uniqueID>"` as described below.
 > The `<yourmessageclientname>` and `<uniqueID>` can be any random unique identifier. `<yourorgname>` would be your SAP Cloud Platfrom Cloud. Foundry Org name without '-' or any special character.  Please make sure that namespace does not exceed 24 characters. For more details regarding syntax, size and characters allowed in namespace are mentioned [here](https://help.sap.com/viewer/bf82e6b26456494cbdd197057c09979f/Cloud/en-US/5696828fd5724aa5b26412db09163530.html?q=namespace)
 
-7. b) Maintain the namespace for the messaging listener `<namespace>/sfemessage` in (admin-service.js)[/blob/master/srv/admin-service.js#L89] 
+7. b) Maintain the namespace for the messaging listener `<namespace>/sfemessage` in [admin-service.js](/srv/admin-service.js#L89)
 
 8. Enable Portal Subscription. 
   - Navigate to SAP Cloud Platfrom Cockpit, 
