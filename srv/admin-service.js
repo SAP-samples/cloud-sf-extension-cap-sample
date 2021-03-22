@@ -4,6 +4,7 @@ module.exports = async srv => {
   const usermanage = await cds.connect.to('PLTUserManagement'),
     photomanage = await cds.connect.to('FoundationPlatformPLT'),
     skillsmanage = await cds.connect.to('ECSkillsManagement'),
+    messaging = await cds.connect.to('messaging'),
     { Mappings, Notifications, Project } = srv.entities,
     { Users: userInfo } = usermanage.entities,
     { Userphoto: userPic } = photomanage.entities
@@ -85,7 +86,7 @@ module.exports = async srv => {
 
   //* Emnterprise Messaging Configuration *//
   /* For Use Productive use */
-  usermanage.on('sfemessage', async msg => {
+  messaging.on('referenceappscf/emsf/1909/sfemessage', async msg => {
     const message = msg.headers.message,
       employeeId = msg.headers.employeeId,
       managerId = msg.headers.managerId,
