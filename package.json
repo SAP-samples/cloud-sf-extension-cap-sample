@@ -6,8 +6,8 @@
     "license": "Apache License 2.0",
     "dependencies": {
         "@sap/audit-logging": "^3.1.0",
-        "@sap/cds": "^4.1.9",
-        "@sap/cds-runtime": "2.3.1",
+        "@sap/cds": "4.6.5",
+        "@sap/cds-runtime": "2.9.7",
         "@sap/hana-client": "^2.4.196",
         "@sap/xb-msg-amqp-v100": "^0.9.19",
         "@sap/xsenv": "^2.2.0",
