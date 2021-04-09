@@ -7,16 +7,12 @@
     "dependencies": {
         "@sap/audit-logging": "^3.1.0",
         "@sap/cds": "4.6.5",
-        "@sap/cds-runtime": "2.9.7",
         "@sap/hana-client": "^2.4.196",
         "@sap/xb-msg-amqp-v100": "^0.9.19",
         "@sap/xsenv": "^2.2.0",
         "@sap/xssec": "2.2.5",
         "express": "^4",
         "passport": "^0.4.1"
-    },
-    "devDependencies": {
-        "@sap/cds-dk": "^2.0.8"
     },
     "engines": {
         "node": "^10"
