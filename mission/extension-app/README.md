@@ -38,21 +38,18 @@ File / Folder | Purpose
 
    ![Create Dev Space](./images/dev-cap-app-3.png)
  
-5. On the next screen, enter a Dev space name, for example: **BusinessProcess** or **sfmission** and select the type *SAP Cloud Business Application*. Choose *Create Dev Space*
+5. On the next screen, enter a Dev space name, for example: **BusinessProcess** or **sfmission** and select the type *Full Stack Cloud Application*. Choose *Create Dev Space*
 
    ![Configure Dev Space](./images/dev-cap-app-4.png)  
  
 6.	Your Dev Space is now being created. As soon as the Dev Space is available you can click on your dev space name to access it.
 
-7. Click the button **Open Workspace** to open the workspace. 
-
-   ![Open Workspace](./images/dev-cap-app-7.png)
    
-8. Choose *Terminal -> New Terminal* in the menu on the top of your screen.
+7. Choose *Terminal -> New Terminal* in the menu on the top of your screen.
 
     ![Open Terminal](./images/dev-cap-app-5.png)
  
-9. Enter your Github user name and email.
+8. Enter your Github user name and email.
    
    ```bash 
    git config --global user.email "your@email"
@@ -60,13 +57,25 @@ File / Folder | Purpose
    git config --global user.name "your Name"
    ``` 
  
-10.	Clone the project from the SAP samples application repository https://github.com/SAP-samples/cloud-sf-extension-cap-sample.git into your **projects** folder in developer studio.
+9. Click the button **Clone Repository** to clone the source code from SAP samples application repository.
+   
+   ![clone repo1](./images/dev-cap-app-7.png) 
+   
+10.	Enter the URL https://github.com/SAP-samples/cloud-sf-extension-cap-sample.git into your **projects** folder in developer studio.
+
+   ![clone repo2](./images/cloneSampleRepo.png)
+   
+   Alternatively, you could also clone by entering the following command in the Terminal which you opened in Step 7.
 
     ```bash
     git clone https://github.com/SAP-samples/cloud-sf-extension-cap-sample.git 
      ```
 
-11. Let us now login to your SAP BTP account in *SAP Business Application Studio* to deploy your application from *SAP Business Application Studio*.
+11. Click **Open** once the cloning wizard finishes to open the cloned repository. The window refreshes and opens the cloned repository *cloud-sf-extension-cap-sample*.
+
+    ![open repo](./images/cloneSampleRepo2.png)
+    
+12. Let us now login to your SAP BTP account in *SAP Business Application Studio* to deploy your application from *SAP Business Application Studio*.
  
    * Check if you are logged in to your SAP BTP Account from *SAP Business Application Studio*.
      
@@ -106,20 +115,21 @@ File / Folder | Purpose
      ```
 15. Check the **srv/external** folder of the project - here you find the three files and the generated **.csn** files.
 
-16. In the **Explorer**, choose **Projects** > **mta.yaml** file to open it in the editior.
+16. Open mta.yaml file from  **Projects** > **cloud-sf-extension-cap-sample** > **mta.yaml** to open it in the editior.
 
 17. In the section, **SuccessFactors Extensibility Service** replace the value of the **systemName** with your SAP SuccessFactors system that you have registered in the [System and Trust Setup](../trust-setup/README.md). Set the **type** to ***org.cloudfoundry.existing-service***
 
    ![mta](./images/dev-cap-app-mta1.png) 
 
-18. In the **Explorer**, choose **Projects** > **enterprisemessage.json** file to open it in the editor. Modify the values for **emname** and **namespace**.
-
-	"emname": "<yourmessageclientname>",
-	"namespace": "<yourorgname>/<yourmessageclientname>/<uniqueID>"     
+18. Now open the file **enterprisemessage.json**. Modify the values for **emname** and **namespace**. Modify `"emname": "<yourmessageclientname>","namespace": "<yourorgname>/<yourmessageclientname>/<uniqueID>"` with values for `"<yourmessageclientname>"`,`<yourorgname>/<yourmessageclientname>/<uniqueID>"` as described below.  
 		
 	> The `<yourmessageclientname>` and `<uniqueID>` can be any random unique identifier. `<yourorgname>` can be your Org name without '-' or any special character.  Please make sure that namespace does not exceed 24 characters. For more details regarding the syntax, size and characters allowed in namespace are mentioned [here](https://help.sap.com/viewer/bf82e6b26456494cbdd197057c09979f/Cloud/en-US/5696828fd5724aa5b26412db09163530.html?q=namespace).
 
    ![ems](./images/dev-cap-app-ems1.png)    
+   
+   > Copy the value of **namespace** which you would need for the next step.
+   
+19. Open the file **admin-service.js** in the folder **Projects** > **cloud-sf-extension-cap-sample** > **srv**. Search for **messaging.on** in the file, now replace the value  **referenceappscf/emsf/1909/sfemessage** with **`<your namespace>/sfmessage*`*, for example: **eccorg/sfmission/abcd/sfemessage**.
 
 19. In the Explorer, choose **Projects** > **package.json** file to open it in the editor. In the **cds** section, you find the three imported APIs. Add a **credentials** section to each of them. This section contains the destination to the SuccessFactors account which you will create in a later step. As the SAP SuccessFactors APIs use OData V2, you have to set the correct path
 
