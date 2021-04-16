@@ -150,7 +150,7 @@ For this tutorial, a SAP HANA Cloud Instance is necessary. Use the following ste
 
    ![HANA](./images/hana-03.png)
 
-4. Choose **Create Database** in the opened popup.
+4. Choose **Create** and select **SAP HANA Cloud** and login with your credentials in the newly opened tab to create a SAP HANA Cloud database.
 
    ![HANA](./images/createDatabase.png)
 
