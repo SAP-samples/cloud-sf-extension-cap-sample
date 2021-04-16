@@ -117,7 +117,7 @@ File / Folder | Purpose
 
 16. Open mta.yaml file from  **Projects** > **cloud-sf-extension-cap-sample** > **mta.yaml** to open it in the editior.
 
-17. In the section, **SuccessFactors Extensibility Service** replace the value of the **systemName** with your SAP SuccessFactors system that you have registered in the [System and Trust Setup](../trust-setup/README.md). Set the **type** to ***org.cloudfoundry.existing-service***
+17. In the section, **SuccessFactors Extensibility Service** replace the value of the **systemName** with your SAP SuccessFactors system that you have registered in the [System and Trust Setup](../trust-setup/README.md). 
 
    ![mta](./images/dev-cap-app-mta1.png) 
 
@@ -161,22 +161,17 @@ File / Folder | Purpose
 
 ### Build and Deploy
 
-1.	As the update of a SAP SuccessFactors Extensibility service instance doesn't work with an mta deployment, you have to create this service instance manually and use the **org.cloudfoundry.existing-service** parameter in the MTA file. Go to the **Terminal** and execute the following command by replacing the  \<SF systemName\> with the name of your SuccessFactors system that you have created in the [System and Trust Setup](../trust-setup/README.md).
-
-   ```bash
-   cf cs sap-successfactors-extensibility api-access sfextension-service -c '{"systemName" : "<SF systemName>"}'
-   ```
-   Together with this instance, you also have a new destination **sfextension-service** created in your SAP BTP subaccount. It contains all the necessary parameters to connect to your SAP SuccessFactors account:
-
-   ![mta](./images/dev-cap-app-mta4.png) 
-
-2. Build the MTA Archive. Right-click on the **mta.yaml** file and select **Build MTA**.
+1.	Build the MTA Archive. Right-click on the **mta.yaml** file and select **Build MTA**.
    
    ![mta](./images/dev-cap-app-mta2.png) 
 
-3. If the build is successful, you find the generated **mtar** file the **mta_archives** folder. Right-click on this file and select **Deploy MTA Archive**.
+2. If the build is successful, you find the generated **mtar** file the **mta_archives** folder. Right-click on this file and select **Deploy MTA Archive**.
 
    ![mta](./images/dev-cap-app-mta3.png) 
+   
+3. Once the deployment is successful, check the new destination **sfextension-service** created in your SAP BTP subaccount. It contains all the necessary parameters to connect to your SAP SuccessFactors account. 
+
+   ![mta](./images/dev-cap-app-mta4.png) 
 
 4. After deploying the MTA archive, you can check in your SAP BTP space if the applications are deployed and running:
    
