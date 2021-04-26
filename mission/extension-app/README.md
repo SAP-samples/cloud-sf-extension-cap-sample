@@ -45,11 +45,19 @@ File / Folder | Purpose
 6.	Your Dev Space is now being created. As soon as the Dev Space is available you can click on your dev space name to access it.
 
    
-7. Choose *Terminal -> New Terminal* in the menu on the top of your screen.
+7. After the dev space opens, click on **Open Folder** to open the **projects** folder before cloning the sample application.
+
+   ![Open Folder](./images/openFolder.png)
+   
+8. Choose the folder **projects** and click **Open** to open the **projects** folder.
+
+   ![Open Folder](./images/openFolder02.png)
+   
+9. Choose *Terminal -> New Terminal* in the menu on the top of your screen.
 
     ![Open Terminal](./images/dev-cap-app-5.png)
  
-8. Enter your Github user name and email.
+10. Enter your Github user name and email.
    
    ```bash 
    git config --global user.email "your@email"
@@ -57,25 +65,15 @@ File / Folder | Purpose
    git config --global user.name "your Name"
    ``` 
  
-9. Click the button **Clone Repository** to clone the source code from SAP samples application repository.
+11. To clone the sample code in your projects folder, give the following command.
+
+   ```bash
+   git clone https://github.com/SAP-samples/cloud-sf-extension-cap-sample.git
+   ```
    
-   ![clone repo1](./images/dev-cap-app-7.png) 
-   
-10.	Enter the URL https://github.com/SAP-samples/cloud-sf-extension-cap-sample.git into your **projects** folder in developer studio.
-
-   ![clone repo2](./images/cloneSampleRepo.png)
-   
-   Alternatively, you could also clone by entering the following command in the Terminal which you opened in Step 7.
-
-    ```bash
-    git clone https://github.com/SAP-samples/cloud-sf-extension-cap-sample.git 
-     ```
-
-11. Click **Open** once the cloning wizard finishes to open the cloned repository. The window refreshes and opens the cloned repository *cloud-sf-extension-cap-sample*.
-
-    ![open repo](./images/cloneSampleRepo2.png)
+   ![clone repo2](./images/cloneSampleRepo.png)  
     
-12. Let us now login to your SAP BTP account in *SAP Business Application Studio* to deploy your application from *SAP Business Application Studio*.
+12. Let us now login to your SAP BTP account in *SAP Business Application Studio* in order to deploy your application from *SAP Business Application Studio*.
  
    * Check if you are logged in to your SAP BTP Account from *SAP Business Application Studio*.
      
@@ -161,9 +159,9 @@ File / Folder | Purpose
 
 ### Build and Deploy
 
-1.	Build the MTA Archive. Right-click on the **mta.yaml** file and select **Build MTA**.
+1.	Build the MTA Archive. Right-click on the **mta.yaml** file and select **Build MTA Project**.
    
-   ![mta](./images/dev-cap-app-mta2.png) 
+   ![mta](./images/dev-cap-app-mta2.png)
 
 2. If the build is successful, you find the generated **mtar** file the **mta_archives** folder. Right-click on this file and select **Deploy MTA Archive**.
 
