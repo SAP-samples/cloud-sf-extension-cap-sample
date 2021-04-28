@@ -7,8 +7,8 @@
 This application showcases:
 1. Capabilities of SAP Extension Suite
 2. Building application on SAP Business Technology Platform using SAP Cloud Application Programming Model(CAP)
-3. Building and Event driven extension application using SAP CP Enterprise Messaging
-4. Consuming REST API's from SAP SuccessFactors using SAP CP Destination Service
+3. Building and Event driven extension application using SAP BTP Event Mesh
+4. Consuming REST API's from SAP SuccessFactors using SAP BTP Destination Service
 
 
 ## Business Scenario:
