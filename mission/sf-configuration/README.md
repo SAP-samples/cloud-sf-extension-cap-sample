@@ -107,7 +107,7 @@
    - In the  **Authentication Type** field. select **OAuth**
    - in the **OAuth Configurations** field select the previously created OAuth Configuration.
 
-    ![destination Setting1](./images/destinationSetting1.png)
+   ![destination Setting1](./images/destinationSetting1.png)
     
 22. Construct the REST API URL link as shown below :
     - Give the Base url of the queue which was copied from Enterprise Message Service Key in step 4.10. For example for Europe Region Account it could be **`https://enterprise-messaging-pubsub.cfapps.eu10.hana.ondemand.com/messagingrest/v1/topics/<topicName>/messages`**. 
@@ -116,18 +116,18 @@
     -  In the end our final URL looks like : **https://enterprise-messaging-pubsub.cfapps.eu10.hana.ondemand.com/messagingrest/v1/topics/eccorg%252Fsfmission%252Fabcd%252Fsfemessage/messages**.
 
 
-    ![destination Setting2](./images/destinationSetting2.png) 
+   ![destination Setting2](./images/destinationSetting2.png) 
 
-23.  Choose **Next**.
-24.  **Save** the configuration and if any pop up comes up, click on **Save/OK**.
+23. Choose **Next**.
+24. **Save** the configuration and if any pop up comes up, click on **Save/OK**.
     
     ![Save integration](./images/sf-config-15.png)
     
-25.  In Review and Run tab - choose **Run now**.
+25. In Review and Run tab - choose **Run now**.
 
     ![Run integration](./images/sf-config-16.png)
     
-26.  You should see a **Success** message that the integration job was submitted.
+26. You should see a **Success** message that the integration job was submitted.
 
     ![Success integration](./images/sf-config-17.png)
 
