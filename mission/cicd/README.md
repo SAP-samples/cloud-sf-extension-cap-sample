@@ -84,7 +84,7 @@ This step describes how to create a GitHub repository in which you can store the
 
 
   
-### Set up Continuous Integration and Delivery Pipeline 
+### Set up Continuous Integration and Delivery Credentials
 
 1. In your subaccount in the SAP BTP cockpit, choose **Instances and Subscriptions**.
 2. Search for **Continuous Integration & Delivery** and select **Go to Application**.
@@ -108,107 +108,6 @@ We recommend using a technical user. However, you can use also use your cloud cr
   - In the **Password** field enter your SAP BTP user password
 
    ![Cloud Credentials](./images/cloudCredentials.png)
-
-### Create Pipeline in CAP Project
-
-1. Go back to your project in SAP Business Application Studio
-
-2. Open a terminal and go to the root folder of your project.
-3. Create a pipeline file using the following command in your terminal.
-
-   ```
-   cds add pipeline
-   ```
-
-4.  In the file generated (.pipeline -> .config.yml), replace the content with the following - for the **productiveBranch** parameter set your default GitHub repository branch (in general master or main)
-
-
-   ```yaml
-   
-    ### General project setup
-    general:
-    unsafeMode: false
-    projectName: 'cloud-cap-s4ems-bp'
-    productiveBranch: 'main'
-
-    ### Step-specific configuration
-    steps:
-    artifactPrepareVersion:
-        buildTool: 'mta'
-    npmExecute:
-        dockerImage: 'ppiper/node-browsers:v2'
-    cloudFoundryDeploy:
-        dockerImage: 'ppiper/cf-cli'
-        mtaDeployParameters: '-f --version-rule ALL'
-    sapNexusStage:
-        stagingProfile: 'integration'
-        repositoryFormat: 'npm'
-    sapNexusUploadArtifacts:
-        packaging: 'mtar'
-        buildDescriptorFile: 'mta.yaml'
-        uploadFile: 'cloud-sf-extension-cap-sample_1.0.0.mtar'
-        artifactType: 'mta'
-    mtaBuild:
-        mtaBuildTool: "cloudMbt"
-
-
-    ### Stage-specific configuration
-    stages:
-    npmAudit:
-        auditedAdvisories:
-        # high
-        - 550  
-        - 593
-        - 1184
-        - 755
-        - 1065
-        - 1164
-        - 1316
-        - 1324
-        - 1325
-        # moderate
-        - 535
-        - 1300
-    
-    lint:
-        ui5BestPractices:
-        failThreshold:
-            error: 100
-            warning: 500
-            info: 1000
-        
-    productionDeployment:
-        cfTargets:
-        - org:  '<org_name>'
-            space: '<space_name>'
-            appName: 'cloud-sf-extension-cap-sample'
-            apiEndpoint: 'https://api.cf.eu10.hana.ondemand.com'
-            credentialsId: '<credential_id>'
-      
-   ```
-
-5. "Modify the parameters in .pipeline/config.yml with values specific to your subaccount :
-  
-    * **org**: Org name of your SAP BTP subaccount, you find this in your subaccount overview page
-    * **space**: Name of the space where you want deploy the application
-    * **appName**: Name of the application
-    * **apiEndpoint**: API Entpoint, you find this in your subaccount overview page 
-    * **credentialsId**: Name of the SAP BTP credential created in the CI/CD service in step 6 in the section before.
-      
-      ![copy Cloud Data](./images/copyCloudData.png)
-    
-      Choose 'Spaces' and copy the space name.
-
-      ![copy Space Name](./images/copySpaceName.png)
-    
-6. Save the .config.yml file. You can push the modified contents of the project into the Git repository to your default branch (master or main).
-
-   ```
-   git add .
-   git commit -m "Push changes to my project"
-   git push -u origin main
-   
-   ```
 
 ### Set up Continuous Integration & Delivery (CI/CD) Job
   
@@ -243,24 +142,44 @@ We recommend using a technical user. However, you can use also use your cloud cr
     ![add Web Hook](./images/addWebHook1.png)
 
 8. Go back to the SAP Continous Integration & Delivery service Choose the **Jobs** tab and **+** icon to create a new job.
+   
 9.  In the next screen, enter the following inputs :
     
     - In the **Job Name** field for example 'sf-mission'
     - In the **Repository** field select the repository which we have created in step 3.
     - In the **Branch** field select your default branch (master or main)
     - In the **Pipeline** field select **SAP Cloud Application Programming Model**
-    - In the **Version** field select latest or leave the default
+    - The **Version** is set to 1.0 or the latest 
+    - Set the **State** to **on**
     - In the **Build retention** section set **Keep the Logs** = 7 days and **Keep maximum** = 50 build items
     
     ![create CICD Job](./images/repojob.png)
     
-10. Choose **Create** to save the job.
+10. In the **Stages** section do the following:
+    - As **Configuration Mode** select **Job Editor**
+    - As **Build Tool** select **mta**
+    - Set **Release** to **on**
+    - Set **Deploy to Cloud Foundry** to **on**
+    - In the field **API Endpoint** set the API Endpoint of your BTP subaccount
+    - In the field **Org Name** set the organization name of your BTP subaccount
+    - In the field **Space** set the name of the space where you have deployed the app
+    - In the **Credentials** field select the credentials for your cloud account which you have created in the section before 
+  
+     ![create CICD Job](./images/repojob2.png)
+ 
+     >You find the relevant data for your subaccount in the subaccount overview    
+     ![copy Cloud Data](./images/copyCloudData.png)
+      Choose **Spaces** and copy the space name.
+     ![copy Space Name](./images/copySpaceName.png)  
+    
+    
+11. Choose **Create** to save the job.
 
-21. To trigger the pipeline manually, select the CI/CD job you have created and choose the **Trigger build** icon as shown below. 
+12. To trigger the pipeline manually, select the CI/CD job you have created and choose the **Trigger build** icon as shown below. 
 
     ![manual trigger Job](./images/triggerbuild.png)
     
-12. You can see the successful log results of **Build** and **Deploy**. To view the full log file, click on the respective tile.
+13. The job take some minutes. After it has finished you can see the log results of **Build** and **Deploy**. To view the full log file, click on the respective tile.
 	
     ![Build Deploy Results](./images/buildDeployResults.png)   
 
