@@ -65,7 +65,7 @@ Before running the booster, please check for which regions and infrastructures t
 
      ![Booster](./images/booster-05.png)
 
-   - If you use a subscription based SAP BTP accounts you have to add 3 quota for Cloud Foundry Runtimes.
+   - If you use a subscription based SAP BTP accounts you have to increase quota for Cloud Foundry Runtime to 3.
 
      ![Booster](./images/booster-05aa.png)
 
