@@ -31,7 +31,7 @@ In SAP API Business Hub, you can discover and consume digital content packages w
     ![EDMX User Management](./images/api-3.png) 
     
 11. Go back to the homepage of **SAP API Business Hub** and search for **Skills Management** in the Search bar.
-12. Click on the search result **Skills Management** API found in **SAP SuccessFactors Foundation/Platform**.
+12. Click on the search result **Skills Management** API found in **SAP SuccessFactors Employee Central**.
 9. Choose the tab **Details**.	
 10. Click the button **Download API Specification** and select **EDMX** to download the EDMX file to your local folder.
 
