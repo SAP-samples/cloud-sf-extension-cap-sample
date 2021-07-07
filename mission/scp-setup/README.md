@@ -57,15 +57,19 @@ Before running the booster, please check for which regions and infrastructures t
 
 5. Now let us setup your BTP Subaccount, To learn more about global and subaccounts, refer to this [Account Model help page](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/8ed4a705efa0431b910056c0acdbf377.html)
    
-   You find the list of the Services that will be activated by the Booster. For this tutorial, there are also optional services like : **Continuous Integration & Delivery** service, if you don't want to use these services, you can remove this service before running the booster. The **Extension Center**, and **Extension Factory, serverless runtime** services are not needed for this tutorial - select the **Remove** icon to remove them. This means they will not be set up when the Booster is completed. 
-We will need the **SAP Launchpad** service to run the sample HTML5 applications which use 'Managed Application Router', refer to [SAP Help - Developing HTML5 Applications in the Cloud Foundry Environment](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/11d77aa154f64c2e83cc9652a78bb985.html), so do not remove the **SAP Launchpad Service**.
-   
-   ![Booster](./images/booster-05.png)
+   - You find the list of the Services that will be activated by the Booster. For this tutorial, there are also optional services like : **Continuous Integration & Delivery** service, if you don't want to use these services, you can remove this service before running the booster. 
+   - The **Extension Center**, **Extension Factory, serverless runtime** service, **Application Logging**, **Application Autoscaler service** and **SAP Cloud Transport Management service** are not needed for this tutorial 
+   - Select the **Remove** icon to remove them. This means they will not be set up when the Booster is completed.
+   - We will need the **SAP Launchpad** service to run the sample HTML5 applications which use 'Managed Application Router', refer to [SAP Help - Developing HTML5 Applications in the Cloud Foundry Environment](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/11d77aa154f64c2e83cc9652a78bb985.html), so do not remove the **SAP Launchpad Service**.
+   - Depending on if you have a **Cloud credit** based account or a **Subscription** account, below screenshot might vary accordingly: 
 
-If you use a subscription based SAP BTP accounts you have to add 3 quota for Cloud Foundry Runtimes.
+     ![Booster](./images/booster-05.png)
 
-   ![Booster](./images/booster-05aa.png)
+   - If you use a subscription based SAP BTP accounts you have to add 3 quota for Cloud Foundry Runtimes.
 
+     ![Booster](./images/booster-05aa.png)
+
+6. In the Setup Subaccount step,
    - For the field **Subaccount Name**, enter a meaningful subaccount name, for example a name which denotes your project name.
    - Select your **Provider**
    - Select the **Region**
@@ -76,32 +80,32 @@ If you use a subscription based SAP BTP accounts you have to add 3 quota for Clo
   
    ![Booster](./images/booster-06.png)
 
-6. In the **Add Users** dialog,
+7. In the **Add Users** dialog,
    - Enter the User ID (mail address) of all users with Cloud Administrator role.
    - Enter the User ID (mail address) of all users with Cloud Application Developer role.
    - Choose **Next**
    
      ![Booster](./images/booster-07.png)
 
-7. Review your settings and press **Finish** to complete the Booster.
+8. Review your settings and press **Finish** to complete the Booster.
    
    ![Booster](./images/booster-08.png)
 
-8.  Check the **Progress** window, tasks should become green.
+9.  Check the **Progress** window, tasks should become green.
    
     ![Booster](./images/booster-09.png)
 
-9. If the Booster is completed successfully, navigate to your new subaccount.
+10. If the Booster is completed successfully, navigate to your new subaccount.
 
     ![Booster](./images/booster-10.png)
 
-10. Check the roles of your subaccount, Select **Security**, **Role Collections** and you will find the **Extension_App_Administrator** and the **Extension_App_Developer** role collections. If you want to add additional users to work on this tutorial/subaccount, you have to assign one of those role collections.
+11. Check the roles of your subaccount, Select **Security**, **Role Collections** and you will find the **Extension_App_Administrator** and the **Extension_App_Developer** role collections. If you want to add additional users to work on this tutorial/subaccount, you have to assign one of those role collections.
 
     ![Booster](./images/booster-11.png)
 
-11. Go back to the Overview of your BTP subaccount.
+12. Go back to the Overview of your BTP subaccount.
 
-12. Click **Services** and then choose **Instances and Subscriptions**. Select the tab **Subscriptions**, You should see that the following services have been subscribed:
+13. Click **Services** and then choose **Instances and Subscriptions**. Select the tab **Subscriptions**, You should see that the following services have been subscribed:
 
     * SAP Business Application Studio
     * SAP Event Mesh

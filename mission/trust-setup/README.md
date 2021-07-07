@@ -125,8 +125,8 @@ Establishing a trust is done by exchanging the SAML certificate of each system.
    
 7.	Choose **Add another Service Provider ACS** and fill in the following fields:
    - Assertion Consumer Service: The assertion consumer service URL. This is the value of the Location attribute of the AssertionConsumerService element with the HTTP-POST binding you copied in step 5.
-   - Logout URL: The logout URL. This is the value of the Location attribute of the SingleLogoutService element with the HTTP-POST binding you copied in step 1.
-   - Audience Url: The audience URL. This is the value of the EntityID attribute of EntityDescriptor element you copied in step 1.
+   - Logout URL: The logout URL. This is the value of the Location attribute of the SingleLogoutService element with the HTTP-POST binding you copied in step 5.
+   - Audience Url: The audience URL. This is the value of the EntityID attribute of EntityDescriptor element you copied in step 5.
      
      ![Setup Trust](./images/sf-5.png)
 
@@ -151,11 +151,11 @@ You can set the SAP SuccessFactors Identity Provider as the 'default' Identity P
     
     ![IDP settings ](./images/scp-11.png)
 
-4. Repeat step 11 for the **Extension_App_Developer** role collection and add all SAP SuccessFactors users that need the Developer role.
+4. Repeat step 3 for the **Extension_App_Developer** role collection and add all SAP SuccessFactors users that need the Developer role.
 
 5. In addition, you also need to add the administration users to the **Launchpad_Admin** role collection.
 
-6. Repeat step 11 for the  **Launchpad_Admin** role collection and add all SAP SuccessFactors users that need the Launchpad Admin role.
+6. Repeat step 3 for the  **Launchpad_Admin** role collection and add all SAP SuccessFactors users that need the Launchpad Admin role.
 
    
    ![Launchpad Admin](../scp-setup/images/role-1.png)
