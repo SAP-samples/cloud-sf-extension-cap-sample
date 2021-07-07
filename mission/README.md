@@ -55,6 +55,7 @@ For running this mission you need a SAP BTP, Cloud Foundry sub-account with the 
 * [Setup your SAP BTP Account using Boosters](./scp-setup/README.md) 
 * [Setup Trust between your SAP BTP sub-account and your SAP SuccessFactors account](./trust-setup/README.md)
 * [Configure, deploy and build the CAP Extension Application](./extension-app/README.md)
+* [Create SAP Launchpad site and add extension applications(optional)](./launchpad/README.md)
 * [Integrate SAP Continuous Integration & Delivery (optional)](./cicd/README.md) 
 * [Confgure the SAP Event Mesh Service](./ems-config/README.md) 
 * [Configure Eventing in SAP SuccessFactors](./sf-configuration/README.md)

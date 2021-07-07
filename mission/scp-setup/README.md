@@ -9,7 +9,7 @@ For running this SAP SuccessFactors extension tutorial, you will need the follow
 * Enterprise Messaging Hub
 * Cloud Foundry Runtime
 * SAP HANA Cloud service
-* SAP Portal / SAP Launchpad
+* SAP Launchpad
 * SAP Continuous Integration & Delivery service (optional)
 
 The entitlement differs for the pricing option of your account:
@@ -57,7 +57,8 @@ Before running the booster, please check for which regions and infrastructures t
 
 5. Now let us setup your BTP Subaccount, To learn more about global and subaccounts, refer to this [Account Model help page](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/8ed4a705efa0431b910056c0acdbf377.html)
    
-You find the list of the Services that will acctivated by the Booster. For this tutorial, the **Continuous Integration & Delivery** service is optional same for the **Launchpad** service, if you don't want to use this service, you can remove this service before running the booster. The **Extension Center**, and **Extension Factory, serverless runtime** services are not needed for this tutorial - select the **Remove** icon to remove them. This means they will not be set up when the Booster is completed. 
+   You find the list of the Services that will be activated by the Booster. For this tutorial, there are also optional services like : **Continuous Integration & Delivery** service, if you don't want to use these services, you can remove this service before running the booster. The **Extension Center**, and **Extension Factory, serverless runtime** services are not needed for this tutorial - select the **Remove** icon to remove them. This means they will not be set up when the Booster is completed. 
+We will need the **SAP Launchpad** service to run the sample HTML5 applications which use 'Managed Application Router', refer to [SAP Help - Developing HTML5 Applications in the Cloud Foundry Environment](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/11d77aa154f64c2e83cc9652a78bb985.html), so do not remove the **SAP Launchpad Service**.
    
    ![Booster](./images/booster-05.png)
 
@@ -109,19 +110,18 @@ If you use a subscription based SAP BTP accounts you have to add 3 quota for Clo
 
     ![Booster](./images/booster-12.png)
 
-### Configure Entitlements to SAP Portal and SAP Hana service
+### Configure Entitlements to SAP HANA service
 
-Currently, this extension application uses local Fiori Launchpad which comes as part of SAP Cloud Portal service, so the application will create a binding to the portal service instance. You have to configure Entitlements for SAP Cloud Portal service.
 
-1. In your SAP BTP Cockpit, choose **Entitlements** and click **Configure Entitlements**.
+1. In your SAP BTP Cockpit, choose **Entitlements** and choose **Entity Assignments**, select your sub-account and click **Configure Entitlements**.
 
-   ![entitlement01](./images/entitlement01.png)
+   ![entitlement01](./images/configureEntitlement1.png)
    
 2. Choose **Add Service Plans**.
 
    ![entitlement02](./images/entitlement02.png)
    
-3. Search for **Portal** and select **Portal** from the list and select the **standard** checkbox from the Available Plans. Choose **Add 1 Service Plan**.
+3. Search for **hana** and select **SAP HANA Cloud** from the list and select the **hana** checkbox from the Available Plans. Choose **Add 1 Service Plan**.
 
    ![entitlement03](./images/entitlement03.png)
    
@@ -129,7 +129,6 @@ Currently, this extension application uses local Fiori Launchpad which comes as 
 
    ![entitlement04](./images/entitlement04.png)
    
-5. Check if you have entitlement to SAP HANA Cloud, if not configure the entitlements in the same way for **SAP HANA Cloud** service with **hana** service plan. 
 
 ### B: Create a SAP HANA Cloud Instance
 For this tutorial, a SAP HANA Cloud Instance is necessary. Use the following steps for activating it:
