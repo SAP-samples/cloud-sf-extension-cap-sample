@@ -91,7 +91,7 @@
 		},
 		"routing": {
 			"routes": [{
-				"pattern": "",
+				"pattern": ":?query:",
 				"name": "ProjectList",
 				"target": "ProjectList"
 			}, {
@@ -145,6 +145,7 @@
 									"tableSettings": {
 										"type": "ResponsiveTable",
 										"enableExport": false,
+										"enablePaste": false,
 										"creationMode": {
 											"name": "Inline",
 											"createAtEnd": true
@@ -177,6 +178,10 @@
 		"_version": "1.1.0",
 		"uri": ""
 	},
+      "sap.cloud": {
+        "public": true,
+        "service": "sap.sf"
+    },
 	"sap.platform.hcp": {
 		"_version": "1.1.0",
 		"uri": ""

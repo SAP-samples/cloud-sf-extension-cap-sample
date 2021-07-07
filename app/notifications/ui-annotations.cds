@@ -15,7 +15,7 @@ annotate AdminService.Notifications with {
   @UI.MultiLineText;
   createdAt
   @Common.Label    : '{i18n>createdAt}'
-  @UI.MultiLineText : true
+ // @UI.MultiLineText : true
   @UI.HiddenFilter : true
   @odata.contained : true;
 }
@@ -74,7 +74,7 @@ annotate AdminService.Notifications with @(UI : {
       $Type : 'UI.DataField',
     },
     Description    : {
-      Value : userinfo_employeename,
+      Value : 'sdsdsd',
       Label : '{i18n>empname}',
       $Type : 'UI.DataField',
     }

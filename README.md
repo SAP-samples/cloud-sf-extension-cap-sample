@@ -1,14 +1,16 @@
 # SAP SucessFactors Extension Application - "Run Smooth"
+
 [![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/cloud-sf-extension-cap-sample)](https://api.reuse.software/info/github.com/SAP-samples/cloud-sf-extension-cap-sample)
 
 ## Description:
-`Run Smooth` is a reference application which showcases how to build an event driven extensions for SAP SuccessFactors using the capabilities provided by [SAP Extension Suite](https://help.sap.com/viewer/7b98ddc13f8d4a3ba08a74042a0baa7f/Cloud/en-US). This solution is developed by extending the Employee Central module of SAP SuccessFactors to build an event driven application.
+`Run Smooth` is a reference application which showcases how to build an event driven extensions for SAP SuccessFactors using the capabilities provided by [SAP Cloud Platform Extension Factory](https://help.sap.com/viewer/7b98ddc13f8d4a3ba08a74042a0baa7f/Cloud/en-US). This solution is developed by extending the Employee Central module of SAP SuccessFactors to build an event driven application.
 
 This application showcases:
-1. Capabilities of SAP Extension Suite
-2. Building application on SAP Business Technology Platform using SAP Cloud Application Programming Model(CAP)
-3. Building and Event driven extension application using SAP BTP Event Mesh
-4. Consuming REST API's from SAP SuccessFactors using SAP BTP Destination Service
+1. Capabilities of SAP Cloud Platform Extension Factory
+2. Building application on SAP Cloud Platform using SAP Cloud Application Programming Model(CAP)
+3. Building and Event driven extension application using SAP CP Enterprise Messaging
+4. Consuming REST API's from SAP SuccessFactors using SAP CP Destination Service
+5. SCI(IAS) Tenant integration with SF
 
 
 ## Business Scenario:
@@ -26,9 +28,9 @@ A Manager maintains in the Run Smooth application the staffing details of all th
 
 ### Solution Diagram
 
-![solution diagram](./documentation/images/solution-diagram.JPG)
+![solution diagram](./documentation/images/SolutionDiagram.PNG)
 
-The Run Smooth application is developed using [SAP Cloud Application programming Model (CAP)](https://cap.cloud.sap/docs/) and runs on the SAP Business Technology Platform, Cloud Foundry Environment. It consumes platform services like Enterprise Messaging, SAP HANA and Destination. The events generated in SuccessFactors are inserted into the Enterprise messaging queue. The application running in Cloud Foundry polls the queue for these messages and inserts them into the HANA database. The run smooth application also makes calls to SF OData APIs to get SF data.
+The Run Smooth application is developed using [SAP Cloud Application programming Model (CAP)](https://cap.cloud.sap/docs/) and runs on the SAP Cloud Platform, Cloud Foundry Environment. It consumes platform services like Enterprise Messaging, SAP HANA and Destination. The events generated in SuccessFactors are inserted into the Enterprise messaging queue. The application running in Cloud Foundry polls the queue for these messages and inserts them into the HANA database. The run smooth application also makes calls to SF OData APIs to get SF data.
 
 > Note: SAP fiori elements floorplans for OData V4 is in Lab preview and would be GA later this year.
 
@@ -39,32 +41,19 @@ The Run Smooth application is developed using [SAP Cloud Application programming
 * [Cloud Foundry Command Line Interface (CLI)](https://github.com/cloudfoundry/cli#downloads)
 * To build the multi target application, we need the [Cloud MTA Build tool](https://sap.github.io/cloud-mta-build-tool/), download the tool from [here](https://sap.github.io/cloud-mta-build-tool/download/)
 * For Windows system, install 'MAKE' from https://sap.github.io/cloud-mta-build-tool/makefile/
-
+>Note: @sap Node.js packages have moved from https://npm.sap.com to the default registry https://registry.npmjs.org.
 If sap-registry is set in your system please delete by using below command.   
    
     `npm config delete "@sap:registry"`
 >Note: Minimum version to run the application is CDS : 4.x.x
 * Install the following:
-	1. cds	 	- `npm install -g @sap/cds` `npm install -g @sap/cds-dk`
-	2. [multiapps plugin](https://github.com/cloudfoundry-incubator/multiapps-cli-plugin) - `cf install-plugin multiapps`  
-	3. mbt         -  `npm install -g mbt`
-* A SAP Cloud Platfrom Account with Cloud Foundry Environment with the following [entitlements](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/c8248745dde24afb91479361de336111.html) enabled:
-
-| Service                           | Plan       | Number of Instances |
-|-----------------------------------|------------|:-------------------:|
-| Destination                       | lite       |          1          |
-| Enterprise Messaging              | default    |          1          |
-| SAP HANA Schemas & HDI Containers | hdi-shared |          1          |
-| SAP SuccessFactors Extensibility  | api-access |          1          |
-| SAP Hana Service                  | 64standard |          1          |
-| Application Runtime              | memory         |          3          |
-| Html5 Applications		    |  app-host	 |	    2	       |
-|Portal [Optional]	    |  Standard	 |	    1       |
-
+  1. cds    - `npm install -g @sap/cds` `npm install -g @sap/cds-dk`
+  2. [multiapps plugin](https://github.com/cloudfoundry-incubator/multiapps-cli-plugin) - `cf install-plugin multiapps`  
+  3. mbt         -  `npm install -g mbt`
 
 ## Configuration
 
-### Step 1: Configure trust between Successfactors and SAP Business Technology Platform using SAP Extension Suite
+### Step 1: Configure trust between SF and SAP CP using Extension Factory
 
  Follow steps 1, 2 and 4 from this [document](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/9e33934540c44681817567d6072effb2.html) to set up trust and destination to access SuccessFactors system using Extension Factory.
 > Ignore step 3 in the document as the service instance creation is automatically done when the application is deployed as MTA.
@@ -77,16 +66,16 @@ If sap-registry is set in your system please delete by using below command.
 5. Click on Download Specifications
 6. Choose EDMX. The edmx file is now saved in the local machine
 7. Similarly download 
-	- User Management API from SAP SuccessFactors
-	- Skills Management API from SAP SuccessFactors
+  - User Management API from SAP SuccessFactors
+  - Skills Management API from SAP SuccessFactors
 
 ### Step 3: Project Configuration
 1. [Clone](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository) this [repository](../..)
-2. Copy the three downloaded EDM files from Step 2 into root folder of the cloned project
-3. Import the downloaded EDMX files by running the command ```  cds import <filename>.edmx```
-4. In the root folder of the project locate and open [mta.yaml](mta.yaml)
+2. Import the downloaded EDMX files using the command ```  cds import <filename>.edmx```
+3. Use the above command to import all the edmx files
+4. Open [mta.yaml](mta.yaml)
 5. Go to the section `Success Factors Extensibility Service` and modify the SuccessFactors System name as per the name given while registering the System in previous step.
-6. In the root folder of the clone project open the file package.json and add the below credentials section to all the three imported edmx files
+6. Open the package.json file and add the below credentials section to all the imported edmx files
    >        
        "FoundationPlatformPLT": {
           "kind": "odata",
@@ -115,22 +104,31 @@ If sap-registry is set in your system please delete by using below command.
             "requestTimeout": 18000000
           }
         }
+7. Go to the section `Enterprise Messaging Service`
+8.  Check in your CF account that "default" service plan is available for Enterprise Messaging Service.
+9.  Modify `"emname": "<yourmessageclientname>","namespace": "<yourorgname>/<yourmessageclientname>/<uniqueID>"` with necessary details in the “enterprisemessage.json” file.
+> The `<yourmessageclientname>` and `<uniqueID>` can be any random unique identifier. `<yourorgname>` would be your org name without '-' or any special character.  Please make sure that namespace does not exceed 24 characters. For more details regarding syntax, size and characters allowed in namespace are mentioned [here](https://help.sap.com/viewer/bf82e6b26456494cbdd197057c09979f/Cloud/en-US/5696828fd5724aa5b26412db09163530.html?q=namespace)
+10. Check if the Cloud Foundry account you will be deploying the application has the following [entitlements](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/c8248745dde24afb91479361de336111.html):
 
-7. a) Open the file “enterprisemessage.json”  in root folder of the project. Modify `"emname": "<yourmessageclientname>","namespace": "<yourorgname>/<yourmessageclientname>/<uniqueID>"` with values for `"<yourmessageclientname>"`,`<yourorgname>/<yourmessageclientname>/<uniqueID>"` as described below.
-> The `<yourmessageclientname>` and `<uniqueID>` can be any random unique identifier. `<yourorgname>` would be your SAP Cloud Platfrom Cloud. Foundry Org name without '-' or any special character.  Please make sure that namespace does not exceed 24 characters. For more details regarding syntax, size and characters allowed in namespace are mentioned [here](https://help.sap.com/viewer/bf82e6b26456494cbdd197057c09979f/Cloud/en-US/5696828fd5724aa5b26412db09163530.html?q=namespace)
+| Service                           | Plan       | Number of Instances |
+|-----------------------------------|------------|:-------------------:|
+| Destination                       | lite       |          1          |
+| Enterprise Messaging              | default    |          1          |
+| SAP HANA Schemas & HDI Containers | hdi-shared |          1          |
+| SAP SuccessFactors Extensibility  | api-access |          1          |
+| SAP Hana Service  | 64standard|          1          |
+| SAP HANA Cloud                    | Hana       |  1                  |
+| Application Runtime              | memory         |          3          |
+| Html5 Applications        |  app-host  |      2        |
+|Launchpad Service      |  Standard  |      1       |
+>It is not necessary to have entitlements for both SAP HANA Service and SAP HANA Cloud. Either one of the service instances can be used for deploying the application.
 
-7. b) Maintain the namespace for the messaging listener `<namespace>/sfemessage` in [admin-service.js](/srv/admin-service.js#L89)
+1.  Subscribe to 'Launchpad Service' from Subaccount > Subscriptions. 
+> Assign Rolee `Launchpad_Admin` for Lunchpad service from trust configuration to your user. 
 
-8. Enable Portal Subscription. 
-  - Navigate to SAP Cloud Platfrom Cockpit, 
-   - Navigate to your subaccount  
-   - Click on Subscriptions. 
-   - Search and local Portal Subscription and enable it
-> If you do not have Portal Service enabled in your entitlements, ignore this step.
-
-9.There are two options with respect to HANA to continue:
+1.  There are two options to continue:
    
-   option 1: Create SAP HANA Service instance with plan 64standard as described [here](https://help.sap.com/viewer/cc53ad464a57404b8d453bbadbc81ceb/Cloud/en-US/21418824b23a401aa116d9ad42dd5ba6.html)
+   option 1: Create SAP HANA Service instance with plan 64standard as described                                                                    [here](https://help.sap.com/viewer/cc53ad464a57404b8d453bbadbc81ceb/Cloud/en-US/21418824b23a401aa116d9ad42dd5ba6.html)
    The application is configured for SAP HANA Cloud  Service instance.
    Remove the following snippet from package.json to adapt it to SAP HANA Service instance.
    ```
@@ -139,7 +137,7 @@ If sap-registry is set in your system please delete by using below command.
    },
    ```
    
-   option 2: Create SAP HANA Cloud service instance with plan hana as described [here](https://help.sap.com/viewer/db19c7071e5f4101837e23f06e576495/2020_03_QRC/en-US/f7febb16072b41f7ac90abf5ea1d4b86.html)
+   option 2: Create SAP HANA Cloud service instance with plan hana as described                                                                    [here](https://help.sap.com/viewer/db19c7071e5f4101837e23f06e576495/2020_03_QRC/en-US/f7febb16072b41f7ac90abf5ea1d4b86.html)
    
 > If there are multiple instances of SAP HANA Service in the space where you plan to deploy this application, please modify the mta.yaml as shown below. Replace <database_guid> with the [id of the database](https://help.sap.com/viewer/cc53ad464a57404b8d453bbadbc81ceb/Cloud/en-US/93cdbb1bd50d49fe872e7b648a4d9677.html?q=guid) you would like to bind the application with :
  ```
@@ -155,11 +153,10 @@ If sap-registry is set in your system please delete by using below command.
       hdi-container-name: '${service-name}'
 ```
 
-
 ### Step 4: Deploy the reference application
 > If the application is to be deployed without portal service, please copy  [mta without portal service](documentation/mta_without_portal.yaml) and replace the content of [mta.yaml](mta.yaml) file with it. 
 
-1. Build the application by running below command from root folder of project
+1. Build the application
     `mbt build -p=cf `  
 2. Login to Cloud Foundry by typing the below commands on command prompt
     ```
@@ -172,13 +169,41 @@ If sap-registry is set in your system please delete by using below command.
 
 3. Deploy the application
 
-	Navigate to mta_archives folder and run the below command from CLI
+  Navigate to mta_archives folder and run the below command from CLI
 
    `cf deploy cloud-sf-extension-cap-sample_0.0.1.mtar`
    
    > In case you need to deploy the application again, delete the sfextension-service instance and then deploy. 
 
-### Step 5: Enterprise Messaging Application
+### Step 5: Integrate the Applicaion to Success Factors Home Page
+1. Login to SF demo instance with sfadmin user.
+![step1](./documentation/images/step1.PNG)
+
+2. Search and select Manage Home Page.
+![sfhome](./documentation/images/sfhomepage1.png)
+
+3. Click on Add Custom Tile.
+![sfhome](./documentation/images/sfhomepage2.png)
+
+4. Enter the Tile Name as `Run Smooth and` Click on Step2.
+![sfhome](./documentation/images/sfhomepage1-1.png)
+
+5. Enter the title as `Run Smoothand`, Subtitle as `SAP CP SFSF Extension Sample App` add an icon to your tile and Click on Step3.
+![sfhome](./documentation/images/sfhomepage1-2.png)
+
+6. Enter the Target as URL, check `Open Link in New Window/Tab`, add the approuter URL to URL and then Click on Step4.
+![sfhome](./documentation/images/sfhomepage5.png)
+
+7. Click on Save.
+![sfhome](./documentation/images/sfhomepage6.png)
+
+7. Navigate back to Home Page.
+![sfhome](./documentation/images/sfhomepage7.png)
+
+8. We can see the newly created `Run Smooth` tile in the Home Page.
+![sfhome](./documentation/images/sfhomepage1-3.png)
+ 
+### Step 6: Enterprise Messaging Application
 1. Follow the steps [here](https://help.sap.com/viewer/bf82e6b26456494cbdd197057c09979f/Cloud/en-US/d6389ec67f2e451b8d4cadc19c4bc369.html) to subscribe to the Enterprise Messaging Business Application
 2. Follow the steps [here](https://help.sap.com/viewer/bf82e6b26456494cbdd197057c09979f/Cloud/en-US/637d331010e54a2999e2f023d2de1130.html) to add the necessary roles to the user to access the Enterprise Messaging Business Application
 3. Open your global account, then your subaccount.
@@ -191,9 +216,9 @@ If sap-registry is set in your system please delete by using below command.
 9. From the pop-up window, please note the topic name for future reference (Step 5.5.8)
 10. Create Service Keys for Enterprise Messaging Service by following steps [here](https://help.sap.com/viewer/bf82e6b26456494cbdd197057c09979f/Cloud/en-US/577ea7ce5cef4e2ea974c03d5549b3ff.html). Note down the client id, client secret, Token URL and Base URL from the service key which is shown as a json.
 
-### Step 6: Setting up SuccessFactors system
+### Step 7: Setting up SuccessFactors system
 
-In this step, you will configure the successFactors system to send message to the SAP Enterprise Messaging.
+In this step, you will configure the successFactors system to send message to the Enterprise Messaging service on Cloud platform.
 
 1. Login to the sf demo instance.
 
@@ -212,7 +237,7 @@ In this step, you will configure the successFactors system to send message to th
 
       Grant Type: `Client_Credentials`
 
-      `Client ID`, `Client Secret`, `Token URL`: you can get these details from the service key of the enterprise message service instance you created in Step 5. If there is no existing service key, please create it in the Business Technology Platform cockpit.
+      `Client ID`, `Client Secret`, `Token URL`: you can get these details from the service key of the enterprise message service instance you created in Step 5. If there is no existing service key, please create it in the Cloud Platform cockpit.
 
       Add Custom Header Parameters.
 
@@ -271,79 +296,83 @@ In this step, you will configure the successFactors system to send message to th
       - Select the Integration created in the previous step. Click on `Add integration`.
       - Change the 'Timing' of the Integration to 'When the event is published' and save the flow (`Actions > Save Flow`).
 
+### Step 8: Setup your own IAS tenant for authentication [Optional]
+
+[Configure IAS Tenant](https://github.wdf.sap.corp/refapps/cloud-sf-extension-cap-sample/blob/master/documentation/images/READMEIAS.md)
+
 ## Demo Script
 
-1. In the command line interface run the command `cf apps`
+<!-- 1. In the command line interface run the command `cf apps` -->
    
-2. Find the URL for the app `cloud-sf-extension-cap-sample-approuter` - this is the launch URL for Run Smooth application
+<!-- 2. Find the URL for the app `cloud-sf-extension-cap-sample-approuter` - this is the launch URL for Run Smooth application
    
    > If project is deployed without portal service then form the url to run your application like below
    >
    >`https://<tenantId>.<appRouterHost>.<domain>/<appName-appVersion>/<resourcePath>`
    >
    >Example:
-    ```  https://<approuter-url>/projects-1.0.0/index.html ```
-
+    ```  https://<approuter-url>/projects-1.0.0/index.html ``` -->
+1. Go to `Instance and subscriptions` and open `Launchpad Service`.
+2. Open the Launchpad Site created there. 
 3. Launch the URL and login as dleal(David Leal)
 > You can choose any employee who is a Manager.
-5. Click on Project Details tile
+
+5. If you have integrated your app into SuccessFactors, open your tile from SuccessFactors home page.
+4. Click on Project Details tile
 ![Project Details](./documentation/images/App.png)
-6. Click on a Project from the list. 
-7. Click on Edit button
+
+5. Click on a Project from the list. 
+6. Click on Edit button
 ![Project Edit](./documentation/images/Edit.png)
-8. Click on Create Button.
+7. Click on Create Button.
 ![Assign Employee](./documentation/images/Create.png)
-9. Click the Drop-Down
+8. Click the Drop-Down
    ![Drop-down](./documentation/images/Drop-down.png)
-10.  All employees reporting to David Leal is displayed.
-11. Select a employee and assign them to projects. E.g Simon Rampal(srampal)
-12. Login to SF demo instance with sfadmin user.
+9.  All employees reporting to David Leal is displayed.
+10. Select a employee and assign them to projects. E.g Simon Rampal(srampal)
+11. Login to SF demo instance with sfadmin user.
 ![step1](./documentation/images/step1.PNG)
-13. Search for Employee David Leal (dleal) in the Employee Directory
-14. Select Employee David Leal
-15. Click on Actions button and Select Org Chart
+12. Search for Employee David Leal (dleal) in the Employee Directory
+13. Select Employee David Leal
+14. Click on Actions button and Select Org Chart
 ![step4](./documentation/images/step4.PNG)
-16. Choose an employee who is reporting to 'David Leal e.g Simon Rampal(srampal) and assigned to the project in step 8
-17. Click on Take Actions button and Select Termination
+15. Choose an employee who is reporting to 'David Leal e.g Simon Rampal(srampal) and assigned to the project in step 8
+16. Click on Take Actions button and Select Termination
 ![step6](./documentation/images/step6.PNG)
-18. Set values for
+17. Set values for
       - Termination Date (Recommended to use a future date. For example, a date one week from the current date)
       - Termination Reason - Early Retirement
       - Ok to Rehire - Yes
       - Regret Termination - Yes
 ![step7](./documentation/images/step7.PNG)
-19. Click on Save.
-20. In the window `Please confirm your request`, click on the 'Show workflow participants'.
-21. Workflow participants would be shown as 1. Paul Atkins (Production Director); 2. Tessa Walker (HR Business Partner Global), Christine Dolan (Chief Human Resources Officer)
+18. Click on Save.
+19. In the window `Please confirm your request`, click on the 'Show workflow participants'.
+20. Workflow participants would be shown as 1. Paul Atkins (Production Director); 2. Tessa Walker (HR Business Partner Global), Christine Dolan (Chief Human Resources Officer)
 > This means that Paul Atkins and Tessa Walker (or Christine Dolan) must approve this request to proceed.
-22. Click on Confirm button
-23. Use Proxy Now functionality and Select Target User as Paul Atkins(patkins)
+21. Click on Confirm button
+22. Use Proxy Now functionality and Select Target User as Paul Atkins(patkins)
 ![step12](./documentation/images/step12.PNG)
-24. In the Home page of Paul Atkins click on tile Approve Requests
-25. Click on Approve button for the request for approval of Early Retirement of Simon Rampal
+23. In the Home page of Paul Atkins click on tile Approve Requests
+24. Click on Approve button for the request for approval of Early Retirement of Simon Rampal
 ![step14](./documentation/images/step14.PNG)
-26. Use Proxy Now functionality and Select Target User as Tessa Walker(twalker)
-27. In the Home page of Tessa Walker click on tile Approve Requests
-28. Click on Approve button for the request for approval of Early Retirement of Simon Rampal
-29. Open the Web Application UI for Run Smooth application in browser.
-30. Login with user David Leal (dleal).
-31. Click on notifications tile from the approuter URL.
+25. Use Proxy Now functionality and Select Target User as Tessa Walker(twalker)
+26. In the Home page of Tessa Walker click on tile Approve Requests
+27. Click on Approve button for the request for approval of Early Retirement of Simon Rampal
+28. Open the Web Application UI for Run Smooth application in browser.
+29. Login with user David Leal (dleal).
+30. Click on notifications tile from the Launchpad Site.
 ![step20](./documentation/images/App.png)
    
-    > If project is deployed without portal service then form the url to run your application like below :
-    > `https://<tenantId>.<appRouterHost>.<domain>/<appName-appVersion>/<resourcePath>`
-    >
-    > Example:
-    ```https://<approuter-url>/notifications-1.0.0/index.html```
     
-32.  Notification will be displayed regarding Resignation of Simpon Rampal along with his Skillset.
+1.   Notification will be displayed regarding Resignation of Simpon Rampal along with his Skillset.
 ![step21](./documentation/images/Step29.png)
 
-
+## Known Issues
 
 ## How to Obtain Support
 
 In case you find a bug, or you need additional support, please open an issue here in GitHub.
 
 ## License
-Copyright (c) 2020 SAP SE or an SAP affiliate company. All rights reserved. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](LICENSES/Apache-2.0.txt) file.
+
+Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](/LICENSE) file.

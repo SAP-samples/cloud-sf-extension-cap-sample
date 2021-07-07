@@ -16,9 +16,8 @@ service AdminService @(requires : 'authenticated-user') {
     } actions {
         @(
             Common.SideEffects              : {
-                EffectTypes      : #ValueChange,
                 TargetEntities   : [
-                status
+                _it.status
                 ]
             },
             cds.odata.bindingparameter.name : '_it',
@@ -28,9 +27,10 @@ service AdminService @(requires : 'authenticated-user') {
             UI.Hidden : false,
             title     : '{i18n>ChangeStatus}',
             Common    : {
-                FieldControl     : #Mandatory,
+               FieldControl   : #Mandatory,
                 ValueListWithFixedValues,
                 ValueListMapping : {
+                  
                     CollectionPath : 'Status',
                     Parameters     : [
                     {
@@ -73,8 +73,7 @@ annotate AdminService.Project with @odata.draft.enabled;
 annotate AdminService.Notifications with @odata.draft.enabled;
 
 extend service AdminService with {
-    @Common.SemanticKey : [userinfo_employeename]
+    
     entity Mappings as projection on refapp.EmployeeProjectMapping;
-
     entity Status   as projection on refapp.Status;
 }
