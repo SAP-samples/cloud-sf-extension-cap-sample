@@ -63,6 +63,10 @@
 			"phone": true
 		}
 	},
+	"sap.cloud": {
+		"public": true,
+		"service": "sap.sf"
+	},
 	"sap.ui5": {
 		"resources": {
 			"js": [],
@@ -96,15 +100,18 @@
 			}
 		},
 		"routing": {
-			"routes": [{
-				"pattern": "",
-				"name": "NotificationsList",
-				"target": "NotificationsList"
-			}, {
-				"pattern": "Notifications({key}):?query:",
-				"name": "NotificationsObjectPage",
-				"target": "NotificationsObjectPage"
-			}],
+			"routes": [
+				{
+					"pattern": ":?query:",
+					"name": "NotificationsList",
+					"target": "NotificationsList"
+				},
+				{
+					"pattern": "Notifications({key}):?query:",
+					"name": "NotificationsObjectPage",
+					"target": "NotificationsObjectPage"
+				}
+			],
 			"targets": {
 				"NotificationsList": {
 					"type": "Component",

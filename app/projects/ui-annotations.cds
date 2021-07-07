@@ -6,11 +6,13 @@ annotate AdminService.Project with {
     @Common.Label        : '{i18n>ID}';
     projectName
     @Common.Label        : '{i18n>projectName}'
-    @Common.FieldControl : #Mandatory;
+    @Common.FieldControl : #Mandatory
+    @assert.mandatory: false;
     description
     @UI.MultiLineText
-    @Common.Label        : '{i18n>description}';
-
+    @Common.Label        : '{i18n>description}'
+     @Common.FieldControl : #Mandatory
+     @assert.mandatory: false;
     criticality
     @Common.FieldControl : #Mandatory;
 }
@@ -21,12 +23,11 @@ annotate AdminService.Mappings with {
     employeeId
     @(Common : {
         Label        : '{i18n>employeeId}',
-        FieldControl             : #Mandatory,
+        FieldControl             : identifierFieldControl,
         ValueListWithFixedValues : true,
         ValueList                : {
             CollectionPath : 'Users',
             Label          : 'Users',
-            // SearchSupported : 'true',
             Parameters     : [
             {
                 $Type             : 'Common.ValueListParameterOut',
@@ -34,8 +35,7 @@ annotate AdminService.Mappings with {
                 ValueListProperty : 'employeeid',
             },
             {
-                $Type             : 'Common.ValueListParameterOut',
-                LocalDataProperty : 'userinfo_employeename',
+                $Type             : 'Common.ValueListParameterDisplayOnly',
                 ValueListProperty : 'employeename',
             },
             ]
@@ -43,8 +43,6 @@ annotate AdminService.Mappings with {
     });
     userinfo_employeeid
     @Common.Label        : '{i18n>employeeId}';
-    userinfo_employeename
-    @Common.Label        : '{i18n>empname}';
 }
 
 annotate AdminService.Users with {
@@ -61,7 +59,7 @@ annotate AdminService.Users with @(Communication.Contact : {
         surname : lastName,
         given   : firstName
     },
-    photo : userpic.photo,
+    //photo : userpic.photo,
     title  : jobTitle,
     org : division,
     gender : [{
@@ -88,10 +86,12 @@ annotate AdminService.Project with @(UI : {
     LineItem          : [
     {
         Value : projectName,
+         $Type : 'UI.DataField',
         Label : '{i18n>projectName}'
     },
     {
         Value : description,
+         $Type : 'UI.DataField',
         Label : '{i18n>description}'
     },
     {
@@ -103,7 +103,7 @@ annotate AdminService.Project with @(UI : {
         $Type              : 'UI.DataFieldForAction',
         Label              : 'Change Project Status',
         Action             : 'AdminService.ChangeStatus',
-        InvocationGrouping : #isolated
+        InvocationGrouping : #Isolated
     },
     ],
 
@@ -111,10 +111,12 @@ annotate AdminService.Project with @(UI : {
         TypeName       : 'Project',
         TypeNamePlural : 'Projects',
         Title          : {
+             $Type : 'UI.DataField',
             Label : '{i18n>projectName}',
             Value : projectName
         },
         Description    : {
+             $Type : 'UI.DataField',
             Value : description,
             Label : '{i18n>description}'
         }
@@ -153,29 +155,19 @@ annotate AdminService.Project with @(UI : {
 });
 
 annotate AdminService.Mappings with @(UI : {
-    HeaderInfo          : {
-        // TypeName       : 'Employee',
-        // TypeNamePlural : 'Employees',
-        Title          : {
-            Value : project.projectName,
-            Label : '{i18n>projectName}'
-        },
-        Description    : {
-            Value : project.description,
-            Label : '{i18n>description}'
-        }
-    },
     LineItem            : [
           {
     Label : '{i18n>photo}',
+    $Type : 'UI.DataField',
     Value : userpic.photo
   },
     {
         Value : employeeId,
+         $Type : 'UI.DataField',
         Label : '{i18n>employeeId}'
     },
     {
-        //Value : userinfo_employeename,
+        //Value : userinfo.employeename,
         Label : '{i18n>empname}',
         Target : 'userinfo/@Communication.Contact',
         $Type  : 'UI.DataFieldForAnnotation',

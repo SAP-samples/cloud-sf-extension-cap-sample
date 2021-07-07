@@ -1,0 +1,15 @@
+steps:
+  mtaBuild:
+    buildTarget: 'CF'
+  cloudFoundryDeploy:
+    cloudFoundry:
+      credentialsId: 'pusercf'
+      apiEndpoint: 'https://api.cf.eu10.hana.ondemand.com'
+      org: 'referenceappscf'
+      space: 'CICD_SFSF'
+  cloudFoundryDeleteService:
+    cfApiEndpoint: 'https://api.cf.eu10.hana.ondemand.com'
+    cfOrg: 'referenceappscf'
+    cfSpace: 'CICD_SFSF'
+    cfServiceInstance: 'sfextension-service'
+    cfCredentialsId: 'pusercf'

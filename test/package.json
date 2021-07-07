@@ -1,0 +1,17 @@
+{
+  "name": "integration_test",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "node-fetch": "^2.6.0",
+    "qs": "^6.9.3"
+  },
+  "devDependencies": {
+    "jest": "^25.2.2"
+  }
+}

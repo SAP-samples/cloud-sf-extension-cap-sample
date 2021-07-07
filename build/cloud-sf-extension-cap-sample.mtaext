@@ -1,0 +1,10 @@
+_schema-version: "3.1.0"
+ID: cloud-sf-extension-cap-sample-CONFIG1
+extends: cloud-sf-extension-cap-sample
+
+resources:
+          
+  - name: sfextension-service
+    parameters:
+      config:
+        systemName: SFPART054673

@@ -10,16 +10,13 @@ resources:
 builder:
   customTasks:
   - name: webide-extension-task-updateManifestJson
-    afterTask: generateVersionInfo
+    beforeTask: generateManifestBundle
     configuration:
       appFolder: webapp
       destDir: dist
-  - name: webide-extension-task-resources
-    afterTask: webide-extension-task-updateManifestJson
+  - name: ui5-task-zipper
+    afterTask: generateCachebusterInfo
     configuration:
-      nameSpace: projects 
-  - name: webide-extension-task-copyFile
-    afterTask: webide-extension-task-resources
-    configuration:
-        srcFile: "/xs-app.json" 
-        destFile: "/xs-app.json" 
+      archiveName: projects
+      additionalFiles:
+      - xs-app.json

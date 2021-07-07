@@ -5,7 +5,7 @@ extend service external with {
   //Mashup Entity from SuccessFactors User
     @mashup entity Users as projection on external.User {
      key userId as employeeid ,
-     key defaultFullName as employeename,
+     defaultFullName as employeename,
       email,
       firstName,
       title,
@@ -23,13 +23,6 @@ extend service external with {
       department
 
   };
-    //Enterprsie messaging support for eventing with generic namespace
-        event sfemessage {
-        message    : String;
-        employeeId : String;
-        managerId  : String;
-        readStatus : Boolean;
-    }
 }
  //Mashup Entity from SuccessFactors Photo
 extend service externalphoto with {

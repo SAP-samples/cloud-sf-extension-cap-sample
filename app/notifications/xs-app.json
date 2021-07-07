@@ -9,9 +9,15 @@
 			"source": "^/admin/(.*)$",
 			"target": "/admin/$1",
 			"authenticationType": "xsuaa",
-			"destination": "srv_api",
+			"destination": "cloud-sf-extension-cap-sample-srv",
 			"csrfProtection": false
 		},
+		{
+			"source": "^/resources/(.*)$",
+			"target": "/resources/$1",
+			"authenticationType": "none",
+			"destination": "ui5"
+		  },
 		{
 			"source": "^(.*)$",
 			"target": "$1",

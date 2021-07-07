@@ -14,7 +14,12 @@ module.exports = async srv => {
     Completed: "C",
     INProcess: "I",
   }
-
+  const FieldControl = {
+    Mandatory: 7,
+    Optional: 3,
+    ReadOnly: 1,
+    Inapplicable: 0,
+};
   //* External Read on User Info *//
   srv.on('READ', 'Users', async (req) => {
     if (!req.user) return;
@@ -34,9 +39,9 @@ module.exports = async srv => {
         employeedetails = await usermanage.tx(req).run(queryad);
       return employeedetails[0]
     } else {
-      const tx = usermanage.transaction(req)
-      const response = await tx.get(`/User('${empId}')/directReports?$format=json`)
-     return response.map(row => ({ employeeid: row.userId, employeename: row.defaultFullName }))
+     const tx = usermanage.transaction(req),
+      response = await tx.get(`/User('${empId}')/directReports?$format=json&$select=userId,defaultFullName`);
+    return response.map(row => ({ employeeid: row.userId, employeename: row.defaultFullName }))
     }
   })
 
@@ -144,6 +149,34 @@ module.exports = async srv => {
         return "INProcess";
     }
   }
+  srv.after(["READ", "EDIT"], "Mappings", setTechnicalFlags);
+
+  //* Validating the Selected Employee *//
+  srv.after("PATCH", "Mappings", async (data, req) => {
+    console.log("2")
+    console.log("pathc") 
+    if (!req.user) return;
+    const empdata = data,
+      tx = cds.transaction(req),
+      projecid = empdata.project_ID,
+      personexist = await tx.run(SELECT.from(Mappings).where({ project_ID: projecid }).columns('employeeId'));
+        if (empdata.employeeId != null) {
+          const userid = empdata.employeeId;
+          personexist.forEach(data => {
+            if (data.employeeId === userid) {
+             return req.error(
+               {code: '400', message: `Employee ${userid} is already been assigned, Please Select Different Employee`,
+                numericSeverity:4, target: 'employeeId'});
+            }
+          })
+          empdata.userinfo_employeeid = null
+          req.info({
+            "code": 201,
+            "message": `Employee ${userid} is  been assigned`,
+            "numericSeverity": 1
+          })
+        }
+   });
   //* Updating the Project and Employees Assigned *//
   srv.before(["UPDATE", "CREATE"], async (req) => {
     if (!req.user) return;
@@ -162,10 +195,6 @@ module.exports = async srv => {
       );
     }
     if (!req.user) return;
-    const empdata = req.data,
-      tx = cds.transaction(req),
-      projecid = empdata.ID,
-      personexist = await tx.run(SELECT.from(Mappings).where({ project_ID: projecid }).columns('employeeId'));
     req.data.employees.forEach(emp => {
       if (emp.employeeId === null) {
         return req.reject(
@@ -173,26 +202,6 @@ module.exports = async srv => {
           `Please Select the Employee`,
           `in/employees(ID=${emp.ID},IsActiveEntity=false)/employeeId`
         )
-      }
-      if (emp.userinfo_employeename != null) {
-        const userid = emp.employeeId,
-          username = emp.userinfo_employeename;
-        personexist.forEach(data => {
-          if (data.employeeId === userid) {
-            return req.reject(
-              400,
-              `Employee ${username} is already been assigned`,
-              `in/employees(ID=${emp.ID},IsActiveEntity=false)/employeeId`
-            )
-          }
-        })
-        emp.userinfo_employeeid = null
-        emp.userinfo_employeename = null
-        req.info({
-          "code": 201,
-          "message": `Employee ${username} is  been assigned`,
-          "numericSeverity": 1
-        })
       }
     })
   })
@@ -257,11 +266,11 @@ module.exports = async srv => {
       const empId = each.employeeId,
         query = SELECT.from(userInfo).where({ employeeid: empId }),
         username = await tx.run(query)
-      username.forEach(name => { each.userinfo = name, each.userinfo_employeename = name.employeename, each.userinfo_employeeid = name.employeeid })
+      username.forEach(name => { each.userinfo = name, each.userinfo.defaultFullName = name.employeename, each.userinfo_employeeid = name.employeeid })
 
     } catch (e) {
       console.log(e)
-      each.userinfo_employeename = 'Unknown'
+      each.userinfo.employeename = 'Unknown'
     }
   }
   //* Skills Function *//
@@ -271,7 +280,7 @@ module.exports = async srv => {
         empId = each.employeeId,
         query = `/SkillProfile('${empId}')?$format=json&$expand=externalCodeNav,ratedSkills/skillNav&$select=ratedSkills/skillNav/name_en_US`,
         data = await tx.run(query),
-        skills = data.ratedSkills.results
+        skills = data.ratedSkills
       for (const skill of skills) {
         const skillName = skill.skillNav.name_en_US
         skillArr.push(skillName)
@@ -299,5 +308,26 @@ module.exports = async srv => {
       each.userpic_employeeid = 'Unknown'
     }
   }
+
+   // //*  Setting the flag for existing data while editing *//
+  function setTechnicalFlags(Mappings) {
+
+    function _setFlags(Mappings) {
+      Mappings.isDraft = !Mappings.IsActiveEntity;
+        if (Mappings.IsActiveEntity) {
+          Mappings.identifierFieldControl = FieldControl.Optional;
+        } else if (Mappings.HasActiveEntity) {
+          Mappings.identifierFieldControl = FieldControl.ReadOnly;
+        } else {
+          Mappings.identifierFieldControl = FieldControl.Mandatory;
+        }
+    }
+
+    if (Array.isArray(Mappings)) {
+      Mappings.forEach(_setFlags);
+    } else {
+        _setFlags(Mappings);
+    }
+};
 }
 
