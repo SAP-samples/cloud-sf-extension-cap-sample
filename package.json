@@ -17,9 +17,16 @@
     "engines": {
         "node": "^14"
     },
+    "devDependencies": {
+      "sqlite3": "^5.0.0",
+      "chai": "^4.3.4",
+      "chai-http": "^4.3.0",
+      "mocha": "^9.0.0"
+    },
     "scripts": {
         "start": "cds run",
-        "build": "cds build/all --clean"
+        "build": "cds build/all --clean",
+        "test": "mocha test/chai-test.js --timeout 15000 --exit"
     },
     "cds": {
         "hana": {
@@ -30,10 +37,19 @@
                 "kind": "xsuaa"
             },
             "messaging": {
+              "kind": "local-messaging",
+              "[production]": {
                 "kind": "enterprise-messaging-shared"
+              }
             },
-            "db": {
-                "kind": "hana"
+            "[production]": {
+              "db": {
+                "kind": "hana",
+                "model": [
+                  "db",
+                  "srv"
+                ]
+              }
             }
         },
         "odata": {
