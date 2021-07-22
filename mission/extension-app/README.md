@@ -178,7 +178,7 @@ File / Folder | Purpose
    * You should see then see the application tiles. 
   
    
-   ![mta](./images/app-test-1.png) 
+   ![mta](./images/app-test-1.png)
 
    
    ![mta](./images/app-test-1a.png)
