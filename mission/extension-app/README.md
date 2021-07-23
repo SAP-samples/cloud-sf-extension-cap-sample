@@ -171,22 +171,31 @@ File / Folder | Purpose
 
    ![mta](./images/dev-cap-app-mta4.png) 
 
-4. After deploying the MTA archive, you can check in your SAP BTP space if the applications are deployed and running:
+4. After deploying the MTA archive, you can check in your SAP BTP sub-account if the following applications are deployed and running:
    
-   * Test the application be calling the approuter app.
-   * Log in using your SAP SuccessFactors identity provider with your SuccessFactors user.
-   * You should see then see the application tiles. 
-  
+   * There are 2 applications deployed in your space:	cloud-sf-extension-cap-sample-srv and cloud-sf-extension-cap-sample-db
+
+     ![app 1](./images/app-test-1.png)
    
-   ![mta](./images/app-test-1.png)
+   * In your sub-account level, click **HTML5 Applications** and check the running 2 HTML5 Applications.
 
+     ![apps](./images/app-test-1a.png)
+     
+   * You can click and test both the HTML5 applications.
+   * Click on the **projects** HTML5 application and choose **Projects** tile, Log in using your SAP SuccessFactors identity provider with your SuccessFactors user.
+
+     ![mta](./images/projects01.png) 
+     
+     ![mta](./images/projects02.png) 
+     
+   * Select **notifications** application and choose **Notifications** tile.
+
+     ![mta](./images/notifications1.png) 
+     
+     ![mta](./images/notifications2.png) 
    
-   ![mta](./images/app-test-1a.png)
-
-   ![mta](./images/app-test-2.png) 
- 
-   ![mta](./images/app-test-3.png)
-
-   ![mta](./images/app-test-4.png) 
+   * If you want to add both the applications in a single **Launchpad** site, follow the instructions in [Publishing your application to SAP Launchpad Site](../launchpad/README.md), then you can see both the applications in a single site like below screenshot.
+     
+     ![mta](./images/app-test-4.png) 
  
 **Result**: You have finished the application configuration, for running a full test of the application, you have to first have to setup the eventing service and enable eventing in your SAP SuccessFactors account, which will be part of the next chapters.
