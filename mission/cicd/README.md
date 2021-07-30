@@ -133,7 +133,7 @@ We recommend using a technical user. However, you can use also use your cloud cr
    
      ![copy payload URL](./images/repository3.png)
     
-6. Open your GitHub repository and choose **Settings** --> **Hooks** --> **Add webhook**.
+6. Open your GitHub repository and choose **Settings** --> **Webhooks** --> **Add webhook**.
 
     ![add Web Hook](./images/addWebHook.png)
     
