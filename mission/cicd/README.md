@@ -47,6 +47,10 @@ This step describes how to create a GitHub repository in which you can store the
    
 4. When prompted log into the Application using your custom Identity Provider credentials.
 5. Open the previously created workspace with the CAP application.
+6. Open **mta.yaml** file. When we create a CI/CD pipeline with deployment of application, Currently the update of "SAP SuccessFactors Extensibility service" fails. So we reuse the existing service instance which was created while [Deploying an extension applicaiton](../extension-app/README.md#build-and-deploy). Edit the **sap-successfactors-extensibility** service from **type: org.cloudfoundry.managed-service** to **type: org.cloudfoundry.existing-service**.
+ 
+   ![Open Terminal](./images/editmta.png)
+   
 6. Open a new terminal and navigate to project root folder.
 
    ![Open Terminal](./images/openTerminal.png) 
