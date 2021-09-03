@@ -110,7 +110,7 @@
    ![destination Setting1](./images/destinationSetting1.png)
     
 22. Construct the REST API URL link as shown below :
-    - Give the Base url of the queue which was copied from Enterprise Message Service Key in step 4.10. For example for Europe Region Account it could be **`https://enterprise-messaging-pubsub.cfapps.eu10.hana.ondemand.com/messagingrest/v1/topics/<topicName>/messages`**. 
+    - Give the Base url of the queue which was copied from Enterprise Message Service Key in step 4. For example for Europe Region Account it could be **`https://enterprise-messaging-pubsub.cfapps.eu10.hana.ondemand.com/messagingrest/v1/topics/<topicName>/messages`**. 
     -  Use the topic name copied from the Subscriptions in Event Mesh Application. Note that the topic name be used after double encoding. For example, if your topic name is **eccorg/sfmission/abcd/sfemessage**, then the / must be replaced with %252F. The resultant topic name will be 
 **eccorg%252Fsfmission%252Fabcd%252Fsfemessage**.
     -  In the end our final URL looks like : **https://enterprise-messaging-pubsub.cfapps.eu10.hana.ondemand.com/messagingrest/v1/topics/eccorg%252Fsfmission%252Fabcd%252Fsfemessage/messages**.
