@@ -36,7 +36,7 @@
    - In the **Grant Type** field select **Client_Credentials**
    - In the **Client ID** field set the **Client id** of the Event Mesh instance copied in previous step
    - In the **Client secret** field enter the **Client secret** of the Event Mesh instance copied in previous step
-   - In the **Token URL** field entet the **Token endpoint URL** of the Event Mesh instance copied in previous step
+   - In the **Token URL** field enter the **Token endpoint URL** of the Event Mesh instance copied in previous step
    - Click on **Add New Row** in Custom Parameters.
    - Enter in the key field **x-qos** and in the value field **1**
    - Save the new OAuth Configuration.
