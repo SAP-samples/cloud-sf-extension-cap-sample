@@ -127,11 +127,9 @@ File / Folder | Purpose
    
    > Copy the value of **namespace** which you would need for the next step.
    
-19. Open the file **admin-service.js** in the folder **Projects** > **cloud-sf-extension-cap-sample** > **srv**. Search for **messaging.on** in the file, now replace the value  **referenceappscf/emsf/1909/sfmessage** with **`<your namespace>/sfmessage*`*, for example: **eccorg/sfmission/abcd/sfmessage**.
+19. Open the file **admin-service.js** in the folder **Projects** > **cloud-sf-extension-cap-sample** > **srv**. Search for **messaging.on** in the file, now replace the value  **referenceappscf/emsf/1909/sfmessage** with **`<your namespace>/sfmessage`**, for example: **eccorg/sfmission/abcd/sfmessage**.
 
-19. In the Explorer, choose **Projects** > **package.json** file to open it in the editor. In the **cds** section, you find the three imported APIs. Add a **credentials** section to each of them. This section contains the destination to the SuccessFactors account which you will create in a later step. As the SAP SuccessFactors APIs use OData V2, you have to set the correct path
-
-    Open the package.json from project root folder. In the cds section you find the three imported APIs. Add a credential section to each of them. This section contains the destination to the SuccessFactors account which we will create in a later step. As the SuccessFactors APIs use OData V2 we have to set the correct path.
+19. In the Explorer, choose **Projects** > **cloud-sf-extension-cap-sample** > **package.json** file to open it in the editor. In the **cds** section, you find the three imported APIs. Add a **credentials** section to each of them. This section contains the destination to the SuccessFactors account which you will create in a later step. As the SAP SuccessFactors APIs use OData V2, you have to set the correct path.   
     
     ```bash
      "credentials": {
