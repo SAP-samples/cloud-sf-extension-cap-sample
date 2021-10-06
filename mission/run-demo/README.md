@@ -45,16 +45,16 @@ Let us now try to test the end to end scenario by triggering an **Employee Termi
 
    ![Drop-down](./images/Drop-down.png)
    
-5.  Select an employee, for example Simon Rampal (srampal), and assign him to projects. 
+5. Select an employee, for example Simon Rampal (srampal), and assign him to projects. 
 
-6.   **Save** the changes.
+6. **Save** the changes.
 
-7.   Log in to the SAP SuccessFactors demo instance with the SAP SuccessFactors Admin user, in this case the admin user is **sfadmin**.
+7. Log in to the SAP SuccessFactors demo instance with the SAP SuccessFactors Admin user, in this case the admin user is **sfadmin**.
 
-    ![step1](./images/step1.PNG)
+   ![step1](./images/step1.PNG)
     
-8.   Search for the employee **David Leal** (dleal) in the Employee Directory.
-9.  Choose the employee **David Leal**.
+8. Search for the employee **David Leal** (dleal) in the Employee Directory.
+9. Choose the employee **David Leal**.
 10. Click **Actions** > **Jump To** > **Org Chart**.
     
     ![step4](./images/step4.PNG)
