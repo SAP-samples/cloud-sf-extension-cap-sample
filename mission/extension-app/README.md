@@ -85,13 +85,9 @@ File / Folder | Purpose
 
      ![Login to CF](./images/loginToCF.png) 
     
-   * Enter CF API endpoint or take the default suggested API endpoint. You can find the API endpoint of your region in the overview page of your SAP BTP subaccount in the cockpit. Copy the API Endpoint. Write down the **Org Name** into a text editor of your choice because you will need it in the next step. 
+   * Enter CF API endpoint or take the default suggested API endpoint. You can find the API endpoint of your region in the overview page of your SAP BTP subaccount in the cockpit. Copy the API Endpoint. Write down the **Org Name** and copy the **Space Name** into a text editor of your choice because you will need it in the next step. 
 
      ![copy Cloud Data](./images/copyCloudData.png)
-    
-   * Choose **Spaces** and write down the space name to a text editor of your choice. 
-
-     ![copy Space Name](./images/copySpaceName.png)
      
    * Enter your **email** and **password** when prompted.
    * Select your Cloud Foundry **Org** which you have already written down.
