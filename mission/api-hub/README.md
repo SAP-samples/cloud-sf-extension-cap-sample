@@ -13,27 +13,24 @@ In SAP API Business Hub, you can discover and consume digital content packages w
 
 1.	Open a browser window and then go to [SAP API Business Hub](https://api.sap.com/).
 2. In the Search bar, search for **Common Platform API**.
-3. Click on the search result, **Common Platform API** found in **SAP SuccessFactors Foundation/Platform**.
-4. Choose the tab **Details**.	
-5. Click the button **Download API Specification** and select **EDMX**. 
+3. Click on the search result, **Common Platform API** found in **SAP SuccessFactors Foundation/Platform** with **ODATA V2 API** format.
+4. Scroll down to the section **API Resources** and click the **Download** icon next to **EDMX** to download the EDMX file to a local folder. 
 
    ![EDMX External user](./images/api-1.png)
    
-6. You get a **Login Required** popup. Log on to SAP API Business Hub to download the EDMX file to a local folder.
+5. You get a **Login Required** popup. Log on to SAP API Business Hub and download the EDMX file to a local folder.
 
    ![Login APIHub](./images/api-2.png) 
    
-7. 	Go back to the homepage of **SAP API Business Hub** and search for **User Management** in the Search bar.
-8. Click on the search result **User Management** API found in **SAP SuccessFactors Foundation/Platform**.
-9. Choose the tab **Details**.	
-10. Click the button **Download API Specification** and select **EDMX** to download the EDMX file to a local folder.
+6. 	Go back to the homepage of **SAP API Business Hub** and search for **User Management** in the Search bar.
+7. Click on the search result **User Management** API found in **SAP SuccessFactors Foundation/Platform** with **ODATA V2 API** format.
+8. Scroll down to the section **API Resources** and click the **Download** icon next to **EDMX** to download the EDMX file to a local folder.
 
     ![EDMX User Management](./images/api-3.png) 
     
-11. Go back to the homepage of **SAP API Business Hub** and search for **Skills Management** in the Search bar.
-12. Click on the search result **Skills Management** API found in **SAP SuccessFactors Employee Central**.
-9. Choose the tab **Details**.	
-10. Click the button **Download API Specification** and select **EDMX** to download the EDMX file to your local folder.
+9. Go back to the homepage of **SAP API Business Hub** and search for **Skills Management** in the Search bar.
+10. Click on the search result **Skills Management** API found in **SAP SuccessFactors Employee Central** with **ODATA V2 API** format.
+11. Scroll down to the section **API Resources** and click the **Download** icon next to **EDMX** to download the EDMX file to a local folder.
 
     ![EDMX User Management](./images/api-4.png) 
 
