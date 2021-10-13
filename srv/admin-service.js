@@ -5,9 +5,11 @@ module.exports = async srv => {
     photomanage = await cds.connect.to('FoundationPlatformPLT'),
     skillsmanage = await cds.connect.to('ECSkillsManagement'),
     messaging = await cds.connect.to('messaging'),
+    db = await cds.connect.to('db'),
     { Mappings, Notifications, Project } = srv.entities,
-    { Users: userInfo } = usermanage.entities,
-    { Userphoto: userPic } = photomanage.entities
+    { Users: userInfo } = db.entities,
+    { Userphoto: userPic } = db.entities,
+    { User } = usermanage.entities;
 
   const STATUS = {
     Open: "O",
@@ -39,9 +41,20 @@ module.exports = async srv => {
         employeedetails = await usermanage.tx(req).run(queryad);
       return employeedetails[0]
     } else {
-     const tx = usermanage.transaction(req),
-      response = await tx.get(`/User('${empId}')/directReports?$format=json&$select=userId,defaultFullName`);
-    return response.map(row => ({ employeeid: row.userId, employeename: row.defaultFullName }))
+      const result = await usermanage.run(SELECT.from(User, uinfo => { uinfo.directReports(dr => { dr.userId, dr.defaultFullName }) }).where({
+        userId: empId
+      }).limit(10)),
+        drreporties = result[0]?.directReports;
+      if (drreporties.length >= 1) {
+        return drreporties.map(row => ({ employeeid: row.userId, employeename: row.defaultFullName }))
+      } else {
+        req.error({
+          message: "Logged in user doesn't have any direct reporties",
+          status: 400,
+          numericSeverity: 2
+        });
+        return;
+      }
     }
   })
 
@@ -91,7 +104,7 @@ module.exports = async srv => {
 
   //* Emnterprise Messaging Configuration *//
   /* For Use Productive use */
-  messaging.on('referenceappscf/emsf/1909/sfemessage', async msg => {
+  messaging.on('sfemessage', async msg => {
     const message = msg.headers.message,
       employeeId = msg.headers.employeeId,
       managerId = msg.headers.managerId,
@@ -153,8 +166,6 @@ module.exports = async srv => {
 
   //* Validating the Selected Employee *//
   srv.after("PATCH", "Mappings", async (data, req) => {
-    console.log("2")
-    console.log("pathc") 
     if (!req.user) return;
     const empdata = data,
       tx = cds.transaction(req),
@@ -242,12 +253,13 @@ module.exports = async srv => {
   //* Read Notifications data from employeeid into skills, employee name *//
   srv.on('READ', 'Notifications', async (req, next) => {
     const notifications = await next()
+    const asArray = x => Array.isArray(x) ? x : [ x ];
     if (!req.user) return;
     const txuser = usermanage.tx(req),
       txphoto = photomanage.tx(req),
       txskills = skillsmanage.tx(req);
       await Promise.all(
-        notifications
+        asArray(notifications)
           .filter(notification => notification.employeeId)
           .map(notification =>
             Promise.all([
