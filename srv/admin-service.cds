@@ -73,7 +73,5 @@ annotate AdminService.Project with @odata.draft.enabled;
 annotate AdminService.Notifications with @odata.draft.enabled;
 
 extend service AdminService with {
-    
     entity Mappings as projection on refapp.EmployeeProjectMapping;
-    entity Status   as projection on refapp.Status;
 }
