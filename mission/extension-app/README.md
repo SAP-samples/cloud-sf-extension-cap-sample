@@ -109,6 +109,10 @@ File / Folder | Purpose
      ```
 15. Check the **srv/external** folder of the project - here you find the three files and the generated **.csn** files.
 
+16. Open the **PLTUserManagement.csn** file and search for **reviewFreq" field. Here the field length from the API is of length '200000000' but HANA Cloud Database allows a maximum length of 5000, so edit the length of 'reviewFreq' field as '5000' and click 'Save' to save the changes.
+
+    ![EditCsnFile](./images/editCsnFile.png) 
+
 16. Open mta.yaml file from  **Projects** > **cloud-sf-extension-cap-sample** > **mta.yaml** to open it in the editior.
 
 17. In the section, **SuccessFactors Extensibility Service** replace the value of the **systemName** with your SAP SuccessFactors system that you have registered in the [System and Trust Setup](../trust-setup/README.md). 
