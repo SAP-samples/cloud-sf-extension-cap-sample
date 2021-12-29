@@ -16,16 +16,16 @@ In this section, we describe steps how to configure and run predefined continuou
 This step describes how to create a GitHub repository in which you can store the source code of your project. You need to have a user in the public GitHub to execute the steps below.
 
 1. Open your GitHub home page.
-2. Choose *New* in the 'Repositories' tab to create a new repository.
+2. Choose **New** in the **Repositories** tab to create a new repository.
 
    ![Create GitHub Repo](./images/newRepository.png)
    
 3. Enter the name of the repository. For example, **extendUI**. Do not select the checkbox **Intialize this repository with a README**.
-4. Choose create repository.
+4. Choose **Create repository**.
 
     ![Create GitHub Repo](./images/createGitRepo.png)
 
-5. Copy the GitHub URL of the newly created Git repository.
+5. Copy the GitHub URL of the newly created GitHub repository.
 
    ![Copy GitHub URL](./images/copyGitHubURL.png)
    
@@ -33,8 +33,8 @@ This step describes how to create a GitHub repository in which you can store the
    
 ### Generating OAuth Token
 
-1. As the public Git hub announced deprecation of Basic Authentication, we have described steps how to login with the Access tokens to the Git.
-2. Refer to the public Git Hub link and create a [Personal Access Token](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token).
+1. As the public GitHub announced deprecation of Basic Authentication, we have described steps how to login with the Access tokens to the Git.
+2. Refer to the public GitHub link and create a [Personal Access Token](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token).
 3. You can use these Access tokens when you want to use Git commands instead of giving Git password.
 
 ### Add Git repository to CAP project
@@ -81,7 +81,7 @@ This step describes how to create a GitHub repository in which you can store the
    git push -u origin main
    ```
     
-11. When prompted, enter your GitHub username and Password (or token).
+11. When prompted, enter your GitHub username and password (or token).
     
     ![Git Commit](./images/gitPushRepository.png)
 
