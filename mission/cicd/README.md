@@ -192,6 +192,9 @@ We recommend using a technical user. However, you can use also use your cloud cr
 You have successfully configured and added a Continuous Integration & Continous Delivery pipeline to your cloud application.
 
 ### Related Links
+- [Blog: Achieve Continuous Integration and Delivery using DevOps services in SAP Cloud Platform
+Pipeline for SAP CAP Applications](https://blogs.sap.com/2020/09/07/achieve-continuous-integration-and-delivery-using-devops-services-in-sap-cloud-platform/)
+- [SAP Help: SAP Continous Integration and Delivery Service](https://help.sap.com/viewer/SAP-Cloud-Platform-Continuous-Integration-and-Delivery/bfe48a4b12ed41868f92fa564829f752.html)
 - [Git Basic Authentication](https://developer.github.com/enterprise/2.20/v3/auth/#basic-authentication)
 - [Deprecating password authentication](https://developer.github.com/changes/2020-02-14-deprecating-password-auth/)
 - [Git - Initializing a repository](https://www.atlassian.com/git/tutorials/setting-up-a-repository/git-init)
