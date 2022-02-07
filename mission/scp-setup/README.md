@@ -114,63 +114,13 @@ Before running the booster, please check for which regions and infrastructures t
 
     ![Booster](./images/booster-12.png)
 
-### Configure Entitlements to SAP HANA service
+### Configure Entitlements to SAP HANA Cloud service
 
 
-1. In your SAP BTP Cockpit, choose **Entitlements** and choose **Entity Assignments**, select your sub-account and click **Configure Entitlements**.
-
-   ![entitlement01](./images/configureEntitlement1.png)
-   
-2. Choose **Add Service Plans**.
-
-   ![entitlement02](./images/entitlement02.png)
-   
-3. Search for **hana** and select **SAP HANA Cloud** from the list and select the **hana** checkbox from the Available Plans. Choose **Add 1 Service Plan**.
-
-   ![entitlement03](./images/entitlement03.png)
-   
-4. Choose **Save** to save the changes.
-
-   ![entitlement04](./images/entitlement04.png)
+Execute the following steps to [Configure Entitlements to SAP HANA Cloud service](https://github.com/SAP-samples/cloud-extension-ecc-business-process/tree/mission/mission/scp-setup#configure-entitlements-to-sap-hana-service).
    
 
 ### B: Create a SAP HANA Cloud Instance
-For this tutorial, a SAP HANA Cloud Instance is necessary. Use the following steps for activating it:
 
-1. Go to your subaccount and choose **Services** - **Service Marketplace** and then **SAP HANA Cloud** service tile.
-   ![HANA](./images/hana-01.png)
-
-2. Choose on **Create Instance** 
-   
-   ![HANA](./images/hana-02.png)
-
-3. In the **New Instance** screen, choose 
-   - In the Service field, select **SAP HANA Cloud**.
-   - In the Service Plan field, select **hana**.
-   - In the Runtime Environment field, select **Cloud Foundry**.
-   - In the Space field, select the space you have created when running the **Prepare an Account for Developing Extension Applications Booster**.
-   - A message **To manage SAP HANA Cloud instances, click here** with a link appears,click on the link **here** to finish the procedure. You are redirected to another page.
-
-   ![HANA](./images/hana-03.png)
-
-4. Choose **Create** and select **SAP HANA Cloud** and login with your credentials in the newly opened tab to create a SAP HANA Cloud database.
-
-   ![HANA](./images/createDatabase.png)
-
-5. Enter an instance name, a description and a password. If everything is correct, the Step 2 button appears. Choose Step 2.
-
-   ![HANA](./images/createDatabase02.png)
-
-6. Set up the size of your in-memory data in your SAP HANA database. For example, 30 GB. Choose **Step 3**.
-
-   ![HANA](./images/hana-06.png)
-
-7. Keep the advanced settings as they are and choose **Create Instance**
-
-   ![HANA](./images/hana-07.png)
-
-8. When the SAP HANA instance is created, you should see a similar result:
-
-    ![HANA](./images/hana-08.png)
-    
+For this tutorial, a SAP HANA Cloud service Instance is necessary for persistance. Execute the following steps to [Create a SAP HANA Cloud service instance](https://github.com/SAP-samples/cloud-extension-ecc-business-process/tree/mission/mission/scp-setup#b-create-a-sap-hana-cloud-service-instance).
 

@@ -20,13 +20,13 @@
 
    ![Security Center](./images/sf-config-3.png)
    
-5. Choose **Add** to create a new OAuth configuration.
+4. Choose **Add** to create a new OAuth configuration.
 
    ![OAuth Config1](./images/sf-config-4.png)
    
-6. Configure the OAuth details of the Event Mesh service instance in SAP BTP. To get the service key of the Event Mesh instance, see the last step described in [Viewing service key](../ems-config/README.md#generate-service-key). Copy the values of **Client ID**, **Client Secret** and **Token endpoint** to a text editor of your choice.
+5. Configure the OAuth details of the Event Mesh service instance in SAP BTP. To get the service key of the Event Mesh instance, see the last step described in [Viewing service key](../ems-config/README.md#generate-service-key). Copy the values of **Client ID**, **Client Secret** and **Token endpoint** to a text editor of your choice.
  
-7. In the opened screen for adding new OAuth Configuration, enter the following values:		
+6. In the opened screen for adding new OAuth Configuration, enter the following values:		
    - In the **Configuration Name** field enter a meaningful name, example: **SFMission**
    - In the **OAuth Type** field select **OAuth 2.0**
    - In the **Grant Type** field select **Client_Credentials**
