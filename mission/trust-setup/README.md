@@ -80,7 +80,7 @@ Establishing a trust is done by exchanging the SAML certificate of each system.
 
 1. Get the SAP SuccessFactors SAML metadata file:
 
-   * Go to **https://<sap_successfactors_system>/idp/samlmetadata?company=<company_id>** where:
+   * Go to **https://<sap_successfactors_system>/idp/samlmetadata?company=<company_id>&cert=sha2** where:
      - <sap_successfactors_system> is the hostname of your SAP SuccessFactors system
      - <company_id> is the ID of your SAP SuccessFactors company
    * Save this file on your local system and change its extension to .xml.
