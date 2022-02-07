@@ -74,7 +74,7 @@ Before running the booster, please check for which regions and infrastructures t
    - Select your **Provider**
    - Select the **Region**
    - You can leave the default unique value suggested for **Subdomain**
-   - Enter a meaningful name for the field **Org Name**, for example : SFSFTutorial
+   - Enter a meaningful name for the field **Org Name**, for example : SFSFTutorial, Orgname shoud not have '_' or '-' in the name. 
    - Enter a space name, for example, 'dev' or 'test' or 'prod'.
    - Press **Next**
   

@@ -30,26 +30,40 @@ To connect to a SAP SuccessFactors system, you have to register this system with
 
 2. You see a resulting **Register System** pop-up, Copy the integration token. The token is required for configuring the integration on the SAP SuccessFactors company side. The status of the SAP SuccessFactors system is now pending.
    
-   ![Register SF System](./images/scp-2.png)
+   ![Register SF System11](./images/scp-2.png)
    
-3. Start the automated integration process on the SAP SuccessFactors company side:
-If you do not have permissions to access **SAP SuccessFactors Provisioning** for the corresponding SAP SuccessFactors system, you need to send the integration token to a user with such permissions who will configure the integration on the SAP SuccessFactors system side.
-   - Open SAP SuccessFactors Provisioning.
-   - In the **List of Companies**, choose your SAP SuccessFactors company.
+3. To register an SAP SuccessFactors system, open and log in to your SAP SuccessFactors company instance. 
+4. In the **Admin Center** of your SAP SuccessFactors instance, if you are not using a Administrator user, check if your SuccessFactors user has sufficient roles: [Prerequisites section of this help page](https://help.sap.com/products/BTP/65de2977205c403bbc107264b8eccf4b/e956ba209f30447cb55140e38c15e345.html). 
+   * For demo purposes, see the following steps to assign required roles to your user:
+   * From your **SuccessFactors Admin Center**, Search and Navigate to **Manage Permission Roles**.
+   * Click on **+ Create New** button.
+   * Enter a **Role name** and **Description**.
+   * Click on **Permission** button. The screenshots might vary depending on the version of the SAP SuccessFactors demo instance.
+   
+   ![Register SF System2](./images/sf-2.png)
+     
+   * Under User Permissions, select **Admin Center Permissions** and choose **Select All** on the right.
 
-     ![Register SF System](./images/sf-1.png)
+   ![Register SF System3](./images/sf-3.png)
    
-   - In the **Edit Company Settings** section, choose **Extension Management Configuration**.
+   * Similarly select **Manage Extensions on SAP BTP** and choose **Select All**
+   * Also select **Metadata Framework** and choose **Configure Object Definitions **and **Admin Access to MDF OData API permissions** and choose **Done**.
+   * In section **Grant this role to**, select **Add**.
+   * Select **Everyone(All Employees)** in section 1. 
+   * Select **Done** and choose **Save Changes**.
+
+   ![Register SF System6](./images/sf-6.png)
+
+5. In the **Admin Center** search and select **Extension Center**.
+
+   ![Register SF System1](./images/sf-1.png)
+   
+6. In section **Add Integration with SAP BTP**, paste the **Integration Token** which you copied in step 2 and select **Add**. You can check the **Integration status** after you have added.
+
+   ![Register SF System7](./images/sf-7.png)   
     
-     ![Register SF System](./images/sf-2.png)
-    
-   - In the **Integration Token** input field, paste the integration token.
-   - Choose **Add**.
-   - Wait for the integration to finish. You can check the status of the process with the **Check Status** button next to your system name.
    
-    ![Register SF System](./images/sf-3.png)
-   
-4. In your SAP BTP account the system should now have ths status **Registered**
+7. In your SAP BTP account the system should now have ths status **Registered**
    
    ![Register SF System](./images/scp-4.png)
 
