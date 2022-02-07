@@ -113,13 +113,13 @@ File / Folder | Purpose
 
     ![EditCsnFile](./images/editCsnFile.png) 
 
-16. Open mta.yaml file from  **Projects** > **cloud-sf-extension-cap-sample** > **mta.yaml** to open it in the editior.
+17. Open mta.yaml file from  **Projects** > **cloud-sf-extension-cap-sample** > **mta.yaml** to open it in the editior.
 
-17. In the section, **SuccessFactors Extensibility Service** replace the value of the **systemName** with your SAP SuccessFactors system that you have registered in the [System and Trust Setup](../trust-setup/README.md). 
+18. In the section, **SuccessFactors Extensibility Service** replace the value of the **systemName** with your SAP SuccessFactors system that you have registered in the [System and Trust Setup](../trust-setup/README.md). 
 
    ![mta](./images/dev-cap-app-mta1.png)
 
-18. Now open the file **enterprisemessage.json**. Modify the values for **emname** and **namespace**. Modify `"emname": "<yourmessageclientname>","namespace": "<yourorgname>/<yourmessageclientname>/<uniqueID>"` with values for `"<yourmessageclientname>"`,`<yourorgname>/<yourmessageclientname>/<uniqueID>"` as described below.  
+19. Now open the file **enterprisemessage.json**. Modify the values for **emname** and **namespace**. Modify `"emname": "<yourmessageclientname>","namespace": "<yourorgname>/<yourmessageclientname>/<uniqueID>"` with values for `"<yourmessageclientname>"`,`<yourorgname>/<yourmessageclientname>/<uniqueID>"` as described below.  
 		
 	> The `<yourmessageclientname>` and `<uniqueID>` can be any random unique identifier. `<yourorgname>` can be your Org name without '-' or any special character.  Please make sure that namespace does not exceed 24 characters. For more details regarding the syntax, size and characters allowed in namespace are mentioned [here](https://help.sap.com/viewer/bf82e6b26456494cbdd197057c09979f/Cloud/en-US/5696828fd5724aa5b26412db09163530.html?q=namespace).
 
@@ -127,9 +127,8 @@ File / Folder | Purpose
    
    > Copy the value of **namespace** which you would need for the next step.
    
-19. Open the file **admin-service.js** in the folder **Projects** > **cloud-sf-extension-cap-sample** > **srv**. Search for **messaging.on** in the file, now replace the value  **referenceappscf/emsf/1909/sfmessage** with **`<your namespace>/sfmessage`**, for example: **eccorg/sfmission/abcd/sfmessage**.
 
-19. In the Explorer, choose **Projects** > **cloud-sf-extension-cap-sample** > **package.json** file to open it in the editor. In the **cds** section, you find the three imported APIs. Add a **credentials** section to each of them. This section contains the destination to the SuccessFactors account which you will create in a later step. As the SAP SuccessFactors APIs use OData V2, you have to set the correct path.   
+20. In the Explorer, choose **Projects** > **cloud-sf-extension-cap-sample** > **package.json** file to open it in the editor. In the **cds** section, you find the three imported APIs. Add a **credentials** section to each of them. This section contains the destination to the SuccessFactors account which you will create in a later step. As the SAP SuccessFactors APIs use OData V2, you have to set the correct path.   
     
     ```bash
      "credentials": {
@@ -141,7 +140,7 @@ File / Folder | Purpose
     ![packages.json](./images/dev-cap-app-pjson.png)   
 
 
-20. For this tutorial, you need a SAP HANA Cloud database and SAP HANA Cloud does not support HDBCDS. Therefore we have to change the deploy format to HDBTable. Check in the **pacakge.json** file that you have the following setting in the **cds** section:
+21. For this tutorial, you need a SAP HANA Cloud database and SAP HANA Cloud does not support HDBCDS. Therefore we have to change the deploy format to HDBTable. Check in the **pacakge.json** file that you have the following setting in the **cds** section:
      
      ```bash
      "hana": {
@@ -152,7 +151,7 @@ File / Folder | Purpose
     ![packages.json](./images/dev-cap-app-pjson2.png)   
 
 
-21. Choose **File** > **Save All** 
+22. Choose **File** > **Save All** 
 
 
 ### Build and Deploy
