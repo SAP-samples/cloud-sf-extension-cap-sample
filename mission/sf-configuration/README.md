@@ -12,15 +12,11 @@
 
 
 1. Login to your SAP SuccessFactors instance with your username and password.
-2. In the search bar, search for Integration and Choose **Integration Center**.
+2. In the **Admin Center**, search and choose **Security Center**.
 
    ![Integration Center](./images/sf-config-1.png)
 
-3. In the **Integration Center**, select the tile **Security Center**. If you do not find the tile **Security Center** in the Integration Center, then search for the tile **Security Center**. 
-
-   ![Security Center](./images/sf-config-2.png)
-
-4. Choose **Outbound OAuth Configurations**.
+3. Choose **OAuth Configurations**.
 
    ![Security Center](./images/sf-config-3.png)
    

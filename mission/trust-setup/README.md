@@ -47,7 +47,7 @@ To connect to a SAP SuccessFactors system, you have to register this system with
    ![Register SF System3](./images/sf-3.png)
    
    * Similarly select **Manage Extensions on SAP BTP** and choose **Select All**
-   * Also select **Metadata Framework** and choose **Configure Object Definitions **and **Admin Access to MDF OData API permissions** and choose **Done**.
+   * Also select **Metadata Framework** and choose **Configure Object Definitions** and **Admin Access to MDF OData API permissions** and choose **Done**.
    * In section **Grant this role to**, select **Add**.
    * Select **Everyone(All Employees)** in section 1. 
    * Select **Done** and choose **Save Changes**.
