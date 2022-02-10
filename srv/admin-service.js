@@ -5,7 +5,7 @@ module.exports = async srv => {
     photomanage = await cds.connect.to('FoundationPlatformPLT'),
     skillsmanage = await cds.connect.to('ECSkillsManagement'),
     messaging = await cds.connect.to('messaging'),
-    db = await cds.connect.to('db'),
+     db = await cds.connect.to('db'),
     { Mappings, Notifications, Project } = srv.entities,
     { Users: userInfo } = db.entities,
     { Userphoto: userPic } = db.entities,
@@ -41,21 +41,21 @@ module.exports = async srv => {
         employeedetails = await usermanage.tx(req).run(queryad);
       return employeedetails[0]
     } else {
-      const result = await usermanage.run(SELECT.from(User, uinfo => { uinfo.directReports(dr => { dr.userId, dr.defaultFullName }) }).where({
+      const result = await usermanage.run(SELECT.from(User, uinfo => {uinfo.directReports(dr => { dr.userId, dr.defaultFullName }) }).where({
         userId: empId
-      }).limit(10)),
-        drreporties = result[0]?.directReports;
-      if (drreporties.length >= 1) {
-        return drreporties.map(row => ({ employeeid: row.userId, employeename: row.defaultFullName }))
-      } else {
+        }).limit(10)),
+       drreporties = result[0]?.directReports;
+       if (drreporties.length >= 1){
+        return drreporties.map(row => ({ employeeid: row.userId, employeename: row.defaultFullName  }))
+       } else {
         req.error({
           message: "Logged in user doesn't have any direct reporties",
           status: 400,
           numericSeverity: 2
-        });
-        return;
+         });
+      return;
+       }
       }
-    }
   })
 
   //* External Read on User Photo Details *//
@@ -104,11 +104,11 @@ module.exports = async srv => {
 
   //* Emnterprise Messaging Configuration *//
   /* For Use Productive use */
-  messaging.on('sfemessage', async msg => {
-    const message = msg.headers.message,
-      employeeId = msg.headers.employeeId,
-      managerId = msg.headers.managerId,
-      readStatus = msg.headers.readStatus;
+  messaging.on("sfemessage", async msg => {
+    const message = msg.data.message,
+    employeeId = msg.data.employeeId,
+    managerId = msg.data.managerId,
+    readStatus = msg.data.readStatus;
     console.log('msg => emitting', msg)
     return cds.run(
       INSERT.into(Notifications).entries({
@@ -252,7 +252,7 @@ module.exports = async srv => {
 
   //* Read Notifications data from employeeid into skills, employee name *//
   srv.on('READ', 'Notifications', async (req, next) => {
-    const notifications = await next()
+    const notifications = await next();
     const asArray = x => Array.isArray(x) ? x : [ x ];
     if (!req.user) return;
     const txuser = usermanage.tx(req),
@@ -282,7 +282,7 @@ module.exports = async srv => {
 
     } catch (e) {
       console.log(e)
-      each.userinfo.employeename = 'Unknown'
+     each.employeeId = 'Unknown'
     }
   }
   //* Skills Function *//

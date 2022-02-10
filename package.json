@@ -6,7 +6,7 @@
     "license": "Apache License 2.0",
     "dependencies": {
         "@sap/audit-logging": "^5.0.0",
-        "@sap/cds": "5.5.4",
+        "@sap/cds": "5.8.0",
         "@sap/hana-client": "^2.10.15",
         "@sap/xb-msg-amqp-v100": "^0.9.48",
         "@sap/xsenv": "^3.1.0",
@@ -17,16 +17,9 @@
     "engines": {
         "node": "^14"
     },
-    "devDependencies": {
-      "sqlite3": "^5.0.0",
-      "chai": "^4.3.4",
-      "chai-http": "^4.3.0",
-      "mocha": "^9.0.0"
-    },
     "scripts": {
         "start": "cds run",
-        "build": "cds build/all --clean",
-        "test": "mocha test/chai-test.js --timeout 15000 --exit"
+        "build": "cds build/all --clean"
     },
     "cds": {
         "hana": {
@@ -37,21 +30,15 @@
                 "kind": "xsuaa"
             },
             "messaging": {
-              "kind": "local-messaging",
-              "[production]": {
                 "kind": "enterprise-messaging-shared",
-                "publishPrefix": "$namespace/", 
+                "queue": {
+                    "name": "$namespace/cloud-sf-extension-cap-sample-srv/1234"
+                },
+                "publishPrefix": "$namespace/",
                 "subscribePrefix": "$namespace/"
-              }
             },
-            "[production]": {
-              "db": {
-                "kind": "hana",
-                "model": [
-                  "db",
-                  "srv"
-                ]
-              }
+            "db": {
+                "kind": "hana"
             }
         },
         "odata": {
