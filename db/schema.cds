@@ -2,7 +2,6 @@ namespace sap.sfextension.refapp;
 
 using {cuid} from '@sap/cds/common';
 
-
 entity Project : cuid {
   projectName : String(25);         
   description : String(50);     
@@ -12,6 +11,7 @@ entity Project : cuid {
   employees   : Composition of many EmployeeProjectMapping
                   on employees.project = $self;
 }
+
 
 
 entity EmployeeProjectMapping : cuid {
@@ -37,10 +37,9 @@ entity Notifications : cuid {
   createdAt  : DateTime @cds.on.insert : $now;
   empn       : Association to many EmployeeProjectMapping
                  on empn.employeeId = employeeId;
-   userinfo : Association to Users;
-   userpic : Association to Userphoto;
+  userinfo : Association to Users;
+  userpic : Association to Userphoto;
 }
-
 @cds.autoexpose
 entity Status {
   key id         : String    @(
@@ -61,7 +60,7 @@ using { FoundationPlatformPLT as externalphoto } from '../srv/external/Foundatio
 using { PLTUserManagement as external } from '../srv/external/PLTUserManagement.csn';
 using { ECSkillsManagement as externalskill } from '../srv/external/ECSkillsManagement.csn';
 
-  @cds.persistence.exists:false
+  @cds.persistence.skip
   @cds.autoexpose
     @mashup entity Users as projection on external.User {
      key userId as employeeid ,
@@ -83,10 +82,10 @@ using { ECSkillsManagement as externalskill } from '../srv/external/ECSkillsMana
       department
 
   };
-  @cds.persistence.exists:false
+  @cds.persistence.skip
   @cds.autoexpose
    @mashup entity Userphoto as  projection on externalphoto.Photo {
      key userId as employeeid,
     key photoType as phototype,
       photo as photo,
-  }; 
+  };
