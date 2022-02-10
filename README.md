@@ -367,8 +367,6 @@ In this step, you will configure the successFactors system to send message to th
 1.   Notification will be displayed regarding Resignation of Simpon Rampal along with his Skillset.
 ![step21](./documentation/images/Step29.png)
 
-## Known Issues
-
 ## How to Obtain Support
 
 In case you find a bug, or you need additional support, please open an issue here in GitHub.
