@@ -137,7 +137,7 @@ File / Folder | Purpose
      }
     ``` 
 
-    ![packages.json](./images/dev-cap-app-pjson.png)   
+    ![packages.json](./images/dev-cap-app-pjson.png) 
 
 
 21. For this tutorial, you need a SAP HANA Cloud database and SAP HANA Cloud does not support HDBCDS. Therefore we have to change the deploy format to HDBTable. Check in the **pacakge.json** file that you have the following setting in the **cds** section:

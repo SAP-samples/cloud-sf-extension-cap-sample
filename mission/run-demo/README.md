@@ -55,7 +55,7 @@ Let us now try to test the end to end scenario by triggering an **Employee Termi
     
 8. Search for the employee **David Leal** (dleal) in the Employee Directory.
 9. Choose the employee **David Leal**.
-10. Click **Actions** > **Jump To** > **Org Chart**.
+10. Click **Actions** > **Jump To** > **Org Chart** or choose **Home** and select **Org Chart**.
     
     ![step4](./images/step4.PNG)
 
@@ -68,7 +68,7 @@ Let us now try to test the end to end scenario by triggering an **Employee Termi
 13. Make the following configuration:
       - In the **Termination Date** field, configure a future date. For example, a date one week from the current date
       - In the **Termination Reason**, select **Early Retirement (TERELRT)**
-      - In the **OK to Retire field**, select **Yes**
+      - In the **OK to Rehire** , select **Yes**
       - In the **Regret Termination** field, select **Yes**
       
         ![step7](./images/step7.PNG)
@@ -83,7 +83,10 @@ Let us now try to test the end to end scenario by triggering an **Employee Termi
     
     ![step12](./images/step12.PNG)
     
-19. In the Home page of **Paul Atkins** choose **Approve Requests**.
+19. In the Home page of **Paul Atkins**, select the Notification icon and choose **Approve Requests**. 
+
+    ![step12a](./images/step12a.PNG)
+    
 20. Choose **Approve** for the **Early Retirement for Simon Rampal** request.
     
     ![step14](./images/step14.PNG)
