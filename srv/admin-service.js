@@ -31,14 +31,14 @@ module.exports = async srv => {
       const userid = await cds.run(SELECT.one.from(Mappings).where({ ID: mappingid }).columns('employeeId')),
         empIduser = userid.employeeId,
         queryad = SELECT.from(userInfo).where({ employeeid: empIduser }),
-        employeedetails = await usermanage.tx(req).run(queryad);
+        employeedetails = await usermanage.run(queryad);
       return employeedetails[0]
     } else  if (req.params.length === 1){
       const notificationid = req.params[0].ID,
         userid = await cds.run(SELECT.one.from(Notifications).where({ ID: notificationid }).columns('employeeId')),
         empIduser = userid.employeeId,
         queryad = SELECT.from(userInfo).where({ employeeid: empIduser }),
-        employeedetails = await usermanage.tx(req).run(queryad);
+        employeedetails = await usermanage.run(queryad);
       return employeedetails[0]
     } else {
       const result = await usermanage.run(SELECT.from(User, uinfo => {uinfo.directReports(dr => { dr.userId, dr.defaultFullName }) }).where({
@@ -67,7 +67,7 @@ module.exports = async srv => {
        userid = await cds.run(SELECT.one.from(Mappings).where({ ID: mappingidpic }).columns('employeeId')),
         empId = userid.employeeId,
         queryad = SELECT.from(userPic).where({ employeeid: empId, phototype: 20 }),
-        userphoto = await photomanage.tx(req).run(queryad);
+        userphoto = await photomanage.run(queryad);
       //*  This is primitive logic to stream in case of sqlite *//
       const userPhotonm = userphoto[0].photo
       let imagebuff = new Buffer.from(userPhotonm, 'base64');
@@ -83,7 +83,7 @@ module.exports = async srv => {
       userid = await cds.run(SELECT.one.from(Notifications).where({ ID: notificationpic }).columns('employeeId')),
         empId = userid.employeeId,
         queryad = SELECT.from(userPic).where({ employeeid: empId, phototype: 20 }),
-        userphoto = await photomanage.tx(req).run(queryad);
+        userphoto = await photomanage.run(queryad);
       //*  This is primitive logic to stream in case of sqlite *//
       const userPhotonm = userphoto[0].photo
       let imagebuff = new Buffer.from(userPhotonm, 'base64');
@@ -97,7 +97,7 @@ module.exports = async srv => {
     } else {
       const empId = req.user.id,
         queryad = SELECT.from(userPic).where({ employeeid: empId, phototype: 20 });
-      return photomanage.tx(req).run(queryad)
+      return photomanage.run(queryad)
 
     }
   })
@@ -124,12 +124,12 @@ module.exports = async srv => {
   srv.on('ChangeStatus', 'Project', async (req) => {
     if (!req.user) return;
     const user = req.data;
-    const tx = cds.transaction(req);
+    
     const projectid = req.params[0].ID;
     //req.query.SELECT.where[2].val;
-    const affectedRows = await tx.run(SELECT.one.from(Project).where({ ID: projectid }).columns(['criticality','projectName']));
+    const affectedRows = await cds.run(SELECT.one.from(Project).where({ ID: projectid }).columns(['criticality','projectName']));
     if (affectedRows.criticality !== user.criticality) {
-      return tx.run(
+      return cds.run(
         UPDATE(Project).set({ criticality: user.criticality }).where({ ID: projectid })
 
     ).then(() => {
@@ -168,9 +168,8 @@ module.exports = async srv => {
   srv.after("PATCH", "Mappings", async (data, req) => {
     if (!req.user) return;
     const empdata = data,
-      tx = cds.transaction(req),
       projecid = empdata.project_ID,
-      personexist = await tx.run(SELECT.from(Mappings).where({ project_ID: projecid }).columns('employeeId'));
+      personexist = await cds.run(SELECT.from(Mappings).where({ project_ID: projecid }).columns('employeeId'));
         if (empdata.employeeId != null) {
           const userid = empdata.employeeId;
           personexist.forEach(data => {
@@ -240,12 +239,10 @@ module.exports = async srv => {
   srv.on('READ', 'Mappings', async (req, next) => {
     const mappings = await next()
     if (!req.user) return;
-    const txuser = usermanage.tx(req),
-      txphoto = photomanage.tx(req);
     await Promise.all(
       mappings
         .filter(mapping => mapping.employeeId)
-        .map(mapping => Promise.all([getEmployeeName(mapping, txuser), getPic(mapping, txphoto)]))
+        .map(mapping => Promise.all([getEmployeeName(mapping, usermanage), getPic(mapping, photomanage)]))
     )
     return mappings;
     });
@@ -255,17 +252,14 @@ module.exports = async srv => {
     const notifications = await next();
     const asArray = x => Array.isArray(x) ? x : [ x ];
     if (!req.user) return;
-    const txuser = usermanage.tx(req),
-      txphoto = photomanage.tx(req),
-      txskills = skillsmanage.tx(req);
       await Promise.all(
         asArray(notifications)
           .filter(notification => notification.employeeId)
           .map(notification =>
             Promise.all([
-              getEmployeeName(notification, txuser),
-              getSkills(notification, txskills),
-              getPic(notification, txphoto)
+              getEmployeeName(notification, usermanage),
+              getSkills(notification, skillsmanage),
+              getPic(notification, photomanage)
             ])
           )
       )
