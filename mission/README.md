@@ -41,7 +41,7 @@ In the end, you will be able to develop, deploy, and provision an extension appl
 * [Configure, deploy and build the CAP Extension Application](./extension-app/README.md)
 * [Create SAP Launchpad site and add extension applications(optional)](./launchpad/README.md)
 
-* [Confgure the SAP Event Mesh Service](./ems-config/README.md) 
+* [Configure the SAP Event Mesh Service](./ems-config/README.md) 
 * [Configure Eventing in SAP SuccessFactors](./sf-configuration/README.md)
 * [Integrate SAP Continuous Integration & Delivery (optional)](./cicd/README.md) 
 
