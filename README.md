@@ -36,6 +36,7 @@ The Run Smooth application is developed using [SAP Cloud Application programming
 
 ## Requirements
 * [Node js](https://nodejs.org/en/download/)
+>Make sure you run the latest long-term support (LTS) version of Node.js with an even number like 16. Refrain from using odd versions, for which some modules with native parts will have no support and thus might even fail to install. In case of problems, see the [Troubleshooting guide](https://cap.cloud.sap/docs/advanced/troubleshooting#node-version) for CAP for more details.
 * SuccessFactors test or demo instance.
 >Note: Please do not try running this application against a SuccessFactors productive instance as it involves triggering a Termination Event from SuccessFactors.
 * [Cloud Foundry Command Line Interface (CLI)](https://github.com/cloudfoundry/cli#downloads)
