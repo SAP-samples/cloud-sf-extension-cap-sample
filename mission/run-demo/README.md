@@ -85,7 +85,7 @@ Let us now try to test the end to end scenario by triggering an **Employee Termi
     
 19. In the Home page of **Paul Atkins**, select the Notification icon and choose **Approve Requests**. 
 
-    ![step12a](./images/step12a.PNG)
+    ![step12a](./images/step12a.png)
     
 20. Choose **Approve** for the **Early Retirement for Simon Rampal** request.
     
