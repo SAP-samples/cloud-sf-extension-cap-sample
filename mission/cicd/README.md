@@ -162,14 +162,14 @@ We recommend using a technical user. However, you can use also use your cloud cr
 10. In the **Stages** section do the following:
     - As **Configuration Mode** select **Job Editor**
     - As **Build Tool** select **mta**
-    - Set **Release** to **on**
-    - Set **Deploy to Cloud Foundry** to **on**
+    - In the Release sub-section, choose **Deploy to Cloud Foundry** to **ON**
     - In the field **API Endpoint** set the API Endpoint of your BTP subaccount
     - In the field **Org Name** set the organization name of your BTP subaccount
     - In the field **Space** set the name of the space where you have deployed the app
     - In the **Credentials** field select the credentials for your cloud account which you have created in the section before 
   
      ![create CICD Job](./images/repojob2.png)
+     ![create CICD Job](./images/repojob2a.png)
  
      >You find the relevant data for your subaccount in the subaccount overview    
      ![copy Cloud Data](./images/copyCloudData.png)
