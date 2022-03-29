@@ -157,4 +157,4 @@ Now let us change the setting to consume an event when it is published.
 
 
 ## Summary
-We have established a trust to the SAP Event Mesh service and created an integration job that is triggered when a employment termination is proceeden and puplish it via event. 
+We have established a trust to the SAP Event Mesh service and created an integration job that is triggered when a employment termination is proceeden and publish it via event. 
