@@ -14,12 +14,19 @@
         "express": "^4.17.1",
         "passport": "^0.4.1"
     },
+    "devDependencies": {
+      "sqlite3": "^5.0.0",
+      "chai": "^4.3.4",
+      "chai-http": "^4.3.0",
+      "mocha": "^9.0.0"
+    },
     "engines": {
         "node": "^14"
     },
     "scripts": {
         "start": "cds run",
-        "build": "cds build/all --clean"
+        "build": "cds build/all --clean",
+        "test": "mocha test/chai-test.js --timeout 15000 --exit"
     },
     "cds": {
         "hana": {
