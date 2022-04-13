@@ -238,9 +238,10 @@ module.exports = async srv => {
   //* Read Mappings Data using employeeID into employee name*// 
   srv.on('READ', 'Mappings', async (req, next) => {
     const mappings = await next()
+    const asArray = x => Array.isArray(x) ? x : [ x ];
     if (!req.user) return;
     await Promise.all(
-      mappings
+      asArray(mappings)
         .filter(mapping => mapping.employeeId)
         .map(mapping => Promise.all([getEmployeeName(mapping, usermanage), getPic(mapping, photomanage)]))
     )
