@@ -42,7 +42,7 @@ To connect to a SAP SuccessFactors system, you have to register this system with
    
    ![Register SF System2](./images/sf-2.png)
      
-   * Under User Permissions, select **Admin Center Permissions** and choose **Select All** on the right.
+   * Under **Administrator Permissions**, select **Admin Center Permissions** and choose **Select All** on the right.
 
    ![Register SF System3](./images/sf-3.png)
    
