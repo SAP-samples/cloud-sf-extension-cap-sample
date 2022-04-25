@@ -156,10 +156,13 @@ Establishing a trust is done by exchanging the SAML certificate of each system.
 
 You can set the SAP SuccessFactors Identity Provider as the 'default' Identity Provider for your applications. If not, when you open your extension application, you will be prompted to choose between the default SAP Identity Provider or the configured SuccessFactors Identity Provider. If you disable the Default Identity provider, you will have to login to all SAP BTP Services (like SAP Business Application Studio) and extension applications with your SuccessFactors IDP, so follow the steps to assign the relevant roles to your SFSF user.
 
-1.	Go back to your SAP BTP subaccount cockpit, choose **Security** > **Trust Configuration**, you have now to deactivate the default identity provider. To do that, **Edit** the default identity provider and set its status to **Inactive**. **Save** the changes.
+1.	Go back to your SAP BTP subaccount cockpit, choose **Security** > **Trust Configuration**, you have now to deactivate the default identity provider. To do that, choose **Edit** under **Actions** for the default identity provider.
 
-    ![IDP settings ](./images/scp-9a.png)
-    ![IDP settings ](./images/scp-9b.png)
+   ![IDP settings ](./images/scp-9a.png)
+   
+   In the checkbox for **Available for User Logon**, deselect the option and choose **Save**, so that the default identity provider is not prompted for logon for the BTP applications deployed in this subaccount. 
+   
+   ![IDP settings ](./images/scp-9b.png)
     
 
 2. Map the SAP SuccessFactors user to the SAP BTP User roles. To do that, choose  **Role Collections** and click on the **Extension_App_Administrator** role collection.
