@@ -156,28 +156,28 @@ Establishing a trust is done by exchanging the SAML certificate of each system.
 
 You can set the SAP SuccessFactors Identity Provider as the 'default' Identity Provider for your applications. If not, when you open your extension application, you will be prompted to choose between the default SAP Identity Provider or the configured SuccessFactors Identity Provider. If you disable the Default Identity provider, you will have to login to all SAP BTP Services (like SAP Business Application Studio) and extension applications with your SuccessFactors IDP, so follow the steps to assign the relevant roles to your SFSF user.
 
-1.	Go back to your SAP BTP subaccount cockpit, choose **Security** > **Trust Configuration**, you have now to deactivate the default identity provider. To do that, choose **Edit** under **Actions** for the default identity provider.
+1. Go back to your SAP BTP subaccount cockpit, choose **Security** > **Trust Configuration**, you have now to deactivate the default identity provider. To do that, choose **Edit** under **Actions** for the default identity provider.
 
    ![IDP settings ](./images/scp-9a.png)
    
-   In the checkbox for **Available for User Logon**, deselect the option and choose **Save**, so that the default identity provider is not prompted for logon for the BTP applications deployed in this subaccount. 
+2. In the popup of **Edit Trust Configuration**, for the checkbox **Available for User Logon**, deselect the option and choose **Save**, so that the default identity provider is not prompted as one of the login option for the BTP applications deployed in this subaccount. 
    
    ![IDP settings ](./images/scp-9b.png)
     
 
-2. Map the SAP SuccessFactors user to the SAP BTP User roles. To do that, choose  **Role Collections** and click on the **Extension_App_Administrator** role collection.
+3. Map the SAP SuccessFactors user to the SAP BTP User roles. To do that, choose  **Role Collections** and click on the **Extension_App_Administrator** role collection.
 
     ![IDP settings ](./images/scp-10.png)
 
-3. Edit the **Extension_App_Administrator** role collection and enter all SAP SuccessFactors users who need the Administrator role for the extension application. Enter the SAP SuccessFactors user ID, select the SAP SuccessFactors identity provider and enter the users’ email address. **Save** the changes.
+4. Edit the **Extension_App_Administrator** role collection and enter all SAP SuccessFactors users who need the Administrator role for the extension application. Enter the SAP SuccessFactors user ID, select the SAP SuccessFactors identity provider and enter the users’ email address. **Save** the changes.
     
     ![IDP settings ](./images/scp-11.png)
 
-4. Repeat step 3 for the **Extension_App_Developer** role collection and add all SAP SuccessFactors users that need the Developer role.
+5. Repeat step 4 for the **Extension_App_Developer** role collection and add all SAP SuccessFactors users that need the Developer role.
 
-5. In addition, you also need to add the administration users to the **Launchpad_Admin** role collection.
+6. In addition, you also need to add the administration users to the **Launchpad_Admin** role collection.
 
-6. Repeat step 3 for the  **Launchpad_Admin** role collection and add all SAP SuccessFactors users that need the Launchpad Admin role.
+7. Repeat step 4 for the  **Launchpad_Admin** role collection and add all SAP SuccessFactors users that need the Launchpad Admin role.
 
    
    ![Launchpad Admin](../scp-setup/images/role-1.png)
