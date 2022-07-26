@@ -85,16 +85,17 @@ File / Folder | Purpose
 
        ![Login to CF](./images/loginToCF.png) 
     
-   * Enter CF API endpoint which you copied in step 3 or take the default suggested API endpoint.     
-   * Enter your SAP BTP account **Email** and **Password** when prompted.
+   * Enter CF API endpoint which you copied or take the default suggested API endpoint.     
+   * Enter your SAP BTP account **Email** and **Password**.
 
        ![Login to CF](./images/login1.png)
    
-   * Select your Cloud Foundry **Org** which you have noted down in step 3. 
-   * Select the space name which you have noted down in step 4. Once you have selected the Org and Space, you would login to Cloud Foundry in SAP Business Application Studio.
+   * Select your Cloud Foundry **Org** which you have noted down. 
+   * Select the space name which you have noted down. Once you have selected the Org and Space, you would login to Cloud Foundry in SAP Business Application Studio.
    * Now we have successfully created a workspace and pointed to our desired SAP BTP **Org** and **Space**.
 
       ![Login to CF](./images/login2.png)
+      
 13. In the **Explorer**, choose **Projects**, right-click on the **cloud-sf-extension-cap-sample** project and choose Upload Files.
     
     ![Open Workspace](./images/dev-cap-app-8.png) 
