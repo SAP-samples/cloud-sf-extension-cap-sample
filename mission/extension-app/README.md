@@ -81,23 +81,25 @@ File / Folder | Purpose
     
    * Search for **CF Login**.
     
-   * Select **CF: Login on to Cloud Foundry**.
+   * Select **CF: Login to Cloud Foundry**.
 
-     ![Login to CF](./images/loginToCF.png) 
+       ![Login to CF](./images/loginToCF.png) 
     
-   * Enter CF API endpoint or take the default suggested API endpoint. You can find the API endpoint of your region in the overview page of your SAP BTP subaccount in the cockpit. Copy the API Endpoint. Write down the **Org Name** and copy the **Space Name** into a text editor of your choice because you will need it in the next step. 
+   * Enter CF API endpoint which you copied in step 3 or take the default suggested API endpoint.     
+   * Enter your SAP BTP account **Email** and **Password** when prompted.
 
-     ![copy Cloud Data](./images/copyCloudData.png)
-     
-   * Enter your **email** and **password** when prompted.
-   * Select your Cloud Foundry **Org** which you have already written down.
-   * Select the space name which you have written down. Once you have selected the Org and Space, you would login to your Cloud Foundry account from SAP Business Application Studio.
+       ![Login to CF](./images/login1.png)
+   
+   * Select your Cloud Foundry **Org** which you have noted down in step 3. 
+   * Select the space name which you have noted down in step 4. Once you have selected the Org and Space, you would login to Cloud Foundry in SAP Business Application Studio.
+   * Now we have successfully created a workspace and pointed to our desired SAP BTP **Org** and **Space**.
 
-12. In the **Explorer**, choose **Projects**, right-click on the **cloud-sf-extension-cap-sample** project and choose Upload Files.
+      ![Login to CF](./images/login2.png)
+13. In the **Explorer**, choose **Projects**, right-click on the **cloud-sf-extension-cap-sample** project and choose Upload Files.
     
     ![Open Workspace](./images/dev-cap-app-8.png) 
 
-13. Upload the three SAP SuccessFactors API **.edmx** files which you have downloaded from [SAP API Business Hub](../api-hub/README.md).
+14. Upload the three SAP SuccessFactors API **.edmx** files which you have downloaded from [SAP API Business Hub](../api-hub/README.md).
 14.	Open a new terminal, navigate to the **cloud-sf-extension-cap-sample** folder and import the three **.edmx** files to the project using the **cds import** commands as shown below:
     
     ```bash
