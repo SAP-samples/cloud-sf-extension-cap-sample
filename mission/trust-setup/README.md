@@ -143,11 +143,13 @@ Establishing a trust is done by exchanging the SAML certificate of each system.
    ![Setup Trust](./images/trust-3.png) 
    
 7.	Choose **Add another Service Provider ACS** and fill in the following fields:
-   - Assertion Consumer Service: The assertion consumer service URL. This is the value of the Location attribute of the AssertionConsumerService element with the HTTP-POST binding you copied in step 5.
-   - Logout URL: The logout URL. This is the value of the Location attribute of the SingleLogoutService element with the HTTP-POST binding you copied in step 5.
-   - Audience Url: The audience URL. This is the value of the EntityID attribute of EntityDescriptor element you copied in step 5.
+   - **Assertion Consumer Services**: The assertion consumer service URL. This is the value of the Location attribute of the AssertionConsumerService element with the HTTP-POST binding you copied in step 5.
+   - **Logout URL**: The logout URL. This is the value of the Location attribute of the SingleLogoutService element with the HTTP-POST binding you copied in step 5.
+   - **Audience Url**: The audience URL. This is the value of the EntityID attribute of EntityDescriptor element you copied in step 5.
+   - **Application Name**: Choose **SAP Business Technology Platform** 
+   - **SHA_256 Certificate**: Check the checkbox
      
-     ![Setup Trust](./images/sf-5.png)
+     ![Setup Trust](./images/trust-7.png)
 
 8.	Choose **Save**.
 
