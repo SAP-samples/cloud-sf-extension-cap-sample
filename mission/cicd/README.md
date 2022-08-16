@@ -47,8 +47,9 @@ This step describes how to create a GitHub repository in which you can store the
    
 4. When prompted log into the Application using your custom Identity Provider credentials.
 5. Open the previously created workspace with the CAP application.
-6. Open **mta.yaml** file. 
+6. **Only for SAP SuccessFactors as backend system**: Open **mta.yaml** file. 
    -  Edit the **sap-successfactors-extensibility** service from **type: org.cloudfoundry.managed-service** to **type: org.cloudfoundry.existing-service**. When we create a CI/CD pipeline with deployment of application, Currently the update of "SAP SuccessFactors Extensibility service" fails. So we reuse the existing service instance which was created while [Deploying an extension application](../extension-app/README.md#build-and-deploy). 
+   
    >**Note**: Skip this Step 6 if your backend system is not an SAP SuccessFactors scenario.
  
    ![Open Terminal](./images/editmta.png)
@@ -106,6 +107,7 @@ Let us create Credentials to connect to GitHub to clone the sources. This step i
   - For **Password**, use the personal access token which you created in your GitHub account in the previous section. 
 
      ![Git Commit](./images/gitCredentials.png)
+     
 6. In the Credentials tab, choose **+** (Create Credentials) to configure credentials of a SAP BTP user, who has the appropriate permissions. The user must have the Space Developer role and also be a member of the specified Cloud Foundry organization and space. 
 We recommend using a technical user. However, you can use also use your cloud credentials. 
   - Enter a name for the cloud credentials, ex: cloud-credentials
@@ -124,7 +126,7 @@ We recommend using a technical user. However, you can use also use your cloud cr
    * In the **Clone URL** set the clone URL of your GitHub repository
    * In the **Credentials** field choose the credentials for your GitHub repository which you created in step 5 in the first section  - it is necessary for private GitHub repositories.
    * In the **Type** field chosse GitHub
-   * In the **Weebhook Credential** field choose **\<GENERATE\>**
+   * In the **Webhook Credential** field choose **\<GENERATE\>**
    * Keep the **State** field on
    * Choose **Add** to save the repository  
    
@@ -151,7 +153,7 @@ We recommend using a technical user. However, you can use also use your cloud cr
    
 9.  In the next screen, enter the following inputs :
     
-    - In the **Job Name** field for example 'sf-mission'
+    - In the **Job Name** field for example 'my-mission'
     - In the **Repository** field select the repository which we have created in step 3.
     - In the **Branch** field select your default branch (master or main)
     - In the **Pipeline** field select **SAP Cloud Application Programming Model**
