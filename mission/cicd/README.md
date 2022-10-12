@@ -54,16 +54,16 @@ This step describes how to create a GitHub repository in which you can store the
  
    ![Open Terminal](./images/editmta.png)
    
-6. Open a new terminal and navigate to project root folder.
+7. Open a new terminal and navigate to project root folder.
 
    ![Open Terminal](./images/openTerminal.png) 
    
-7. Enter your email address and user name. You can use the email address which you have used to register the GitHub account.
+8. Enter your email address and user name. You can use the email address which you have used to register the GitHub account.
    ```
    git config --global user.email "you@example.com"
    git config --global user.name "Your Name"
    ```
-8. Now we are initializing a Git repository which can be used to convert an existing, unversioned project to a Git repository or initialize a new, empty repository. To use  other Git commands, you need an initialized repository, so this is usually the first command you'll run in a new project. Use the following commands:
+9. Now we are initializing a Git repository which can be used to convert an existing, unversioned project to a Git repository or initialize a new, empty repository. To use  other Git commands, you need an initialized repository, so this is usually the first command you'll run in a new project. Use the following commands:
 
 	```
     git init
@@ -72,19 +72,19 @@ This step describes how to create a GitHub repository in which you can store the
     ```
    ![Git Commit](./images/commitProject.png)
     
-9. Now take the copied GitHub Repository URL which you created and copied in step 5 of 'Creating GitHub Repository' and add this URL pointing as the remote repository.
+10. Now take the copied GitHub Repository URL which you created and copied in step 5 of 'Creating GitHub Repository' and add this URL pointing as the remote repository.
 
    ```
    git remote add origin <copied Git repository url.git>
    ```
     
-10. Push the commit with project contents to the default branch of this GitHub repository. Check in your GitHub repository if your default branch is master or main.
+11. Push the commit with project contents to the default branch of this GitHub repository. Check in your GitHub repository if your default branch is master or main.
     
    ```
    git push -u origin main
    ```
     
-11. When prompted, enter your GitHub username and Password (or token).
+12. When prompted, enter your GitHub username and Password (or token).
     
     ![Git Commit](./images/gitPushRepository.png)
 
