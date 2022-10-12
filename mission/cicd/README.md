@@ -183,7 +183,7 @@ We recommend using a technical user. However, you can use also use your cloud cr
     
 11. Choose **Create** to save the job.
 
-12. To trigger the pipeline manually, select the CI/CD job you have created and choose the **Trigger build** icon as shown below. 
+12. To trigger the pipeline manually, select the CI/CD job you have created and press the **Run** button as shown below. 
 
     ![manual trigger Job](./images/triggerbuild.png)
     
