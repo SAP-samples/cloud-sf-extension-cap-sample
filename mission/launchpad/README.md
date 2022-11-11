@@ -45,15 +45,16 @@ You can later add this company site into your SAP SuccessFactors Employee Centra
 
    ![addSFSFRole1](./images/addSFSFRole1.png)
    
-6. Enter a meaningful **Title** and **Description** and in the **Assignments** section, Select the **Search** icon which displays both the HTML5 applications, Select the **+** icon next to **Manage Notification** and **Manage Projects** app and Select **Save** to save the new role.
+6. Enter a meaningful **Title** and **Description** and in the **Assignments** section, Select the **Search** icon which displays both the HTML5 applications, Select the **+** icon next to **Manage Notification** and **Manage Projects** app and Select **Save** to save the new role which has now access to the two HTML5 applications.
 
    ![addSFSFRole2](./images/addSFSFRole2.png)
    
-7. Select **back** icon to go back to the previous screen and Select **New** and Select **Group** to create a new group.
+7. Select role **Everyone** and choose **Edit** and like you did in step 6, Select the **+** icon next to **Manage Notification** and **Manage Projects** app and Select **Save** to save the changes. 
+8. Select **back** icon to go back to the previous screen and Select **New** and Select **Group** to create a new group.
 
    ![create Group1](./images/createGroup1.png)
    
-8. Enter a group name, for example: **SFSFGroup** and a valid description. In the **Assignments** section, Select the **Search** icon which displays both the HTML5 applications, Select the **+** icon next to **Manage Notification** and **Manage Projects** app and Select **Save** to save the new group.
+9. Enter a group name, for example: **SFSFGroup** and a valid description. In the **Assignments** section, Select the **Search** icon which displays both the HTML5 applications, Select the **+** icon next to **Manage Notification** and **Manage Projects** app and Select **Save** to save the new group.
 
    ![create Group2](./images/createGroup2.png)
    
