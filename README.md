@@ -13,7 +13,7 @@ In the end, you will be able to develop, deploy, and provision an extension appl
 
 ## The Business Scenario
 
-[Business Scenario](./scenario/README.md) 
+[Business Scenario](../../tree/mission/mission/scenario/README.md) 
 
 
 ## Discover
@@ -40,7 +40,6 @@ In the end, you will be able to develop, deploy, and provision an extension appl
 
 * [Configure, deploy and build the CAP Extension Application](../../tree/mission/mission/extension-app/README.md)
 * [Create SAP Launchpad site and add extension applications(optional)](../../tree/mission/mission/launchpad/README.md)
-
 * [Configure the SAP Event Mesh Service](../../tree/mission/mission/ems-config/README.md) 
 * [Configure Eventing in SAP SuccessFactors](../../tree/mission/mission/sf-configuration/README.md)
 * [Integrate SAP Continuous Integration & Delivery (optional)](../../tree/mission/mission/cicd/README.md) 
