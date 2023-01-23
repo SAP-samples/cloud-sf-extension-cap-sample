@@ -9,7 +9,7 @@ For running this SAP SuccessFactors extension tutorial, you will need the follow
 * Enterprise Messaging Hub
 * Cloud Foundry Runtime
 * SAP HANA Cloud service
-* SAP Launchpad
+* SAP Build Work Zone, standard Edition
 * SAP Continuous Integration & Delivery service (optional)
 
 The entitlement differs for the pricing option of your account:
@@ -60,7 +60,7 @@ Before running the booster, please check for which regions and infrastructures t
    - You find the list of the Services that will be activated by the Booster. For this tutorial, there are also optional services like : **Continuous Integration & Delivery** service, if you don't want to use these services, you can remove this service before running the booster. 
    - The **Extension Center**, **Extension Factory, serverless runtime** service, **Application Logging**, **Application Autoscaler service** and **SAP Cloud Transport Management service** are not needed for this tutorial 
    - Select the **Remove** icon to remove them. This means they will not be set up when the Booster is completed.
-   - We will need the **SAP Launchpad** service to run the sample HTML5 applications which use 'Managed Application Router', refer to [SAP Help - Developing HTML5 Applications in the Cloud Foundry Environment](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/11d77aa154f64c2e83cc9652a78bb985.html), so do not remove the **SAP Launchpad Service**.
+   - We will need the **SAP Build Work Zone, standard Edition** service to run the sample HTML5 applications which use 'Managed Application Router', refer to [SAP Help - Developing HTML5 Applications in the Cloud Foundry Environment](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/11d77aa154f64c2e83cc9652a78bb985.html), so do not remove the **SAP Launchpad Service**.
    - Depending on if you have a **Cloud credit** based account or a **Subscription** account, below screenshot might vary accordingly: 
 
      ![Booster](./images/booster-05.png)

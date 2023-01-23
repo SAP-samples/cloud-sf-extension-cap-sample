@@ -48,4 +48,4 @@ For running this mission you need a SAP BTP, Cloud Foundry sub-account with the 
 | SAP Hana Cloud                    | hana |          1          |
 | Cloud Foundry Runtime   | memory         |          3          |
 | Continuous Integration & Delivery	    |  default	 |	    1	       |
-|Launchpad     |  Standard	 |	    1       |
+| SAP Build Work Zone, standard Edition    |  Standard	 |	    1       |

@@ -194,7 +194,7 @@ File / Folder | Purpose
      
      ![mta](./images/notifications2.png) 
    
-   * If you want to add both the applications in a single **Launchpad** site, follow the instructions in [Publishing your application to SAP Launchpad Site](../launchpad/README.md), then you can see both the applications in a single site like below screenshot.
+   * If you want to add both the applications in a single **SAP Build Work Zone, standard Edition** site, follow the instructions in [Publishing your application to SAP Build Work Zone, standard Edition Site](../launchpad/README.md), then you can see both the applications in a single site like below screenshot.
      
      ![mta](./images/app-test-4.png) 
  
