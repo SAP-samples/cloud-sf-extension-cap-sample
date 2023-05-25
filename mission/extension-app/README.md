@@ -100,7 +100,7 @@ File / Folder | Purpose
     
     ![Open Workspace](./images/dev-cap-app-8.png) 
 
-14. Upload the three SAP SuccessFactors API **.edmx** files which you have downloaded from [SAP API Business Hub](../api-hub/README.md).
+14. Upload the three SAP SuccessFactors API **.edmx** files which you have downloaded from [SAP Business Accelerator Hub](../api-hub/README.md).
 14.	Open a new terminal, navigate to the **cloud-sf-extension-cap-sample** folder and import the three **.edmx** files to the project using the **cds import** commands as shown below:
     
     ```bash
