@@ -125,33 +125,46 @@ We recommend using a technical user. However, you can use also use your cloud cr
    * In the **Name** field set the name for the repository for example: cloud-extension-sf-mission
    * In the **Clone URL** set the clone URL of your GitHub repository
    * In the **Credentials** field choose the credentials for your GitHub repository which you created in step 5 in the first section  - it is necessary for private GitHub repositories.
-   * In the **Type** field chosse GitHub
-   * In the **Webhook Credential** field choose **\<GENERATE\>**
-   * Keep the **State** field on
-   * Choose **Add** to save the repository  
-   
+   * 
    ![create repository](./images/repository1.png)
-
-4. Choose the **Webhook Data** of the created repository
-
-   ![create repository](./images/repository2.png)
-
-
-5. The Webhook Creation pop-up appears. It provides you with the data you need to define a webhook in GitHub. Copy the **Payload URL** and the **Secret** into a text editor of your choice.
+4. At the WEBHOOK EVENT RECEIVER section add the following
    
-     ![copy payload URL](./images/repository3.png)
+   * In the **Type** field chosse GitHub
+   * In the **Webhook Credential** field choose **\Create Credentials\>**
+   * Keep the **State** field on
+  
+   ![add credentials](./images/webhookCredentials01.png)
+
+
+5. In the **Create Credential** window do the following
+   
+   * Enter a name for the credentials
+   * Generate a secret
+   * Copy the secret into a text editor of your choice.
+   * Press Create
+  
+   ![add credentials](./images/webhookCredentials.png)
+
+6. Press *Add* to save the repository 
+   
+   ![add credentials](./images/repositoryAdd.png)
+
+
+7. The Webhook Creation pop-up appears. It provides you with the data you need to define a webhook in GitHub. Copy the **Payload URL** into a text editor of your choice.
+   
+     ![copy payload URL](./images/webhookdata.png)
     
-6. Open your GitHub repository and choose **Settings** --> **Webhooks** --> **Add webhook**.
+8. Open your GitHub repository and choose **Settings** --> **Webhooks** --> **Add webhook**.
 
     ![add Web Hook](./images/addWebHook.png)
     
-7. For the **Payload URL** and **Secret**, paste the values of the Payload URL and Secret fields you copied and saved in step 5. For **Content Type** field, select **application/json** and configure the job to be triggered for every **Push** event and choose **Add Webhook**. Now, any new push request to this repository triggers the CI/CD pipeline you have created.
+9.  For the **Payload URL** and **Secret**, paste the values of the Payload URL and Secret fields you copied and saved in step 5. For **Content Type** field, select **application/json** and configure the job to be triggered for every **Push** event and choose **Add Webhook**. Now, any new push request to this repository triggers the CI/CD pipeline you have created.
    
     ![add Web Hook](./images/addWebHook1.png)
 
-8. Go back to the SAP Continous Integration & Delivery service Choose the **Jobs** tab and **+** icon to create a new job.
+10. Go back to the SAP Continous Integration & Delivery service Choose the **Jobs** tab and **+** icon to create a new job.
    
-9.  In the next screen, enter the following inputs :
+11.  In the next screen, enter the following inputs :
     
     - In the **Job Name** field for example 'my-mission'
     - In the **Repository** field select the repository which we have created in step 3.
@@ -163,7 +176,7 @@ We recommend using a technical user. However, you can use also use your cloud cr
     
     ![create CICD Job](./images/repojob.png)
     
-10. In the **Stages** section do the following:
+12. In the **Stages** section do the following:
     - As **Configuration Mode** select **Job Editor**
     - As **Build Tool** select **mta**
     - In the Release sub-section, choose **Deploy to Cloud Foundry** to **ON**
@@ -181,13 +194,13 @@ We recommend using a technical user. However, you can use also use your cloud cr
      ![copy Space Name](./images/copySpaceName.png)  
     
     
-11. Choose **Create** to save the job.
+13. Choose **Create** to save the job.
 
-12. To trigger the pipeline manually, select the CI/CD job you have created and press the **Run** button as shown below. 
+14. To trigger the pipeline manually, select the CI/CD job you have created and press the **Run** button as shown below. 
 
     ![manual trigger Job](./images/triggerbuild.png)
     
-13. The job take some minutes. After it has finished you can see the log results of **Build** and **Deploy**. To view the full log file, click on the respective tile.
+15. The job take some minutes. After it has finished you can see the log results of **Build** and **Deploy**. To view the full log file, click on the respective tile.
 	
     ![Build Deploy Results](./images/buildDeployResults.png)   
 
