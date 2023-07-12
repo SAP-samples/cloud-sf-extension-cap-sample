@@ -125,8 +125,9 @@ We recommend using a technical user. However, you can use also use your cloud cr
    * In the **Name** field set the name for the repository for example: cloud-extension-sf-mission
    * In the **Clone URL** set the clone URL of your GitHub repository
    * In the **Credentials** field choose the credentials for your GitHub repository which you created in step 5 in the first section  - it is necessary for private GitHub repositories.
-   * 
+  
    ![create repository](./images/repository1.png)
+   
 4. At the WEBHOOK EVENT RECEIVER section add the following
    
    * In the **Type** field chosse GitHub
