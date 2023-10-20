@@ -16,14 +16,14 @@ Persona:
 To connect to a SAP SuccessFactors system, you have to register this system with the SAP BTP global account.
 
 1. Register your SAP SucessFactors System:
-   * In the SAP BTP cockpit, navigate to your global account, and then choose **System Landscape** > **Systems**
-   * In the **Systems** panel, choose **Register System**
+   * In the SAP BTP cockpit, navigate to your global account, and then choose **System Landscape** 
+   * In the **Systems** panel, choose **Add System**
    * In the **Register System** dialog box:
 	  - Enter a name for the system you want to register. Note: Use only printable ASCII characters.
      - In the **Type** dropdown list, select **SAP SuccessFactors**.
-     - Choose **Register**.
+     - Choose **Add**.
 
-       ![Register SF System](./images/scp-1.png)
+       ![Register SF System](./images/scp-1a.png)
    
        SAP BTP generates an integration token that is used for triggering the automated integration on the SAP SuccessFactors company side. To use the token, you need a user with access to SAP SuccessFactors Provisioning.
 
