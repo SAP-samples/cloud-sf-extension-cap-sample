@@ -6,8 +6,8 @@
 	},
 	"routes": [
 		{
-			"source": "^/admin/(.*)$",
-			"target": "/admin/$1",
+			"source": "^/odata/v4/admin/(.*)$",
+			"target": "/odata/v4/admin/$1",
 			"authenticationType": "xsuaa",
 			"destination": "cloud-sf-extension-cap-sample-srv",
 			"csrfProtection": false

@@ -4,7 +4,7 @@ const appenv = cred.application_env_json.VCAP_APPLICATION;
 
 module.exports = {
     "token_url": vcap.xsuaa[0].credentials.url + '/oauth/token',
-    "service_domain": 'https://' + appenv.application_uris[0],
+    "service_domain": 'https://' + appenv.application_uris[0]+'/odata/v4',
     "em_queue_url": vcap["enterprise-messaging"][0].credentials.messaging[2].uri + '/messagingrest/v1/topics/'+process.env.sfQueueTopicName1+'/messages',
     "enterprise_messaging": {
         "grant_type": "client_credentials",

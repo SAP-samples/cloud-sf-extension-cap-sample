@@ -18,7 +18,7 @@ annotate AdminService.Project with {
 }
 
 annotate AdminService.Mappings with {
-    project_ID
+    project
     @Common.Label        : '{i18n>ID}';
     employeeId
     @(Common : {
@@ -41,7 +41,7 @@ annotate AdminService.Mappings with {
             ]
         },
     });
-    userinfo_employeeid
+    userinfo
     @Common.Label        : '{i18n>employeeId}';
 }
 
