@@ -188,7 +188,7 @@ module.exports = async srv => {
         }
    });
   //* Updating the Project and Employees Assigned *//
-  srv.before(["UPDATE", "CREATE"], async (req) => {
+  srv.before(["UPDATE", "CREATE"], "Project", async (req) => {
     if (!req.user) return;
     if (!req.data.projectName) {
       return req.reject(
