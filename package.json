@@ -5,59 +5,83 @@
     "repository": "https://github.com/SAP-samples/cloud-sf-extension-cap-sample.git",
     "license": "Apache License 2.0",
     "dependencies": {
-        "@sap/cds": "^7.1.2",
-        "@sap-cloud-sdk/http-client": "^3.4.0",
-        "@sap-cloud-sdk/util": "^3.4.0",
-        "@sap-cloud-sdk/resilience": "^3.4.0",
-        "@sap/hana-client": "^2.17.22",
-        "@sap/xb-msg-amqp-v100": "^0.9.58",
-        "@sap/xsenv": "^4.0.0",
-        "@sap/xssec": "^3.3.3",
-        "express": "^4.18.2",
-        "passport": "^0.6.0"
+      "@sap/cds": "^7.1.2",
+      "@sap-cloud-sdk/http-client": "^3.4.0",
+      "@sap-cloud-sdk/util": "^3.4.0",
+      "@sap-cloud-sdk/resilience": "^3.4.0",
+      "@sap/hana-client": "^2.17.22",
+      "@sap/xb-msg-amqp-v100": "^0.9.58",
+      "@sap/xsenv": "^4.0.0",
+      "@sap/xssec": "^3.6.0",
+      "express": "^4.18.2",
+      "passport": "^0.6.0"
     },
     "devDependencies": {
-        "@cap-js/sqlite": "^1.1.0",
-        "chai": "^4.3.7",
-        "chai-http": "^4.4.0",
-        "mocha": "^10.2.0"
+      "@cap-js/sqlite": "^1.1.0",
+      "chai": "^4.3.7",
+      "chai-http": "^4.4.0",
+      "mocha": "^10.2.0"
     },
     "engines": {
-        "node": "18.x"
+      "node": "18.x"
     },
     "scripts": {
-        "start": "cds-serve",
-        "build": "cds build/all --clean",
-        "test": "mocha test/chai-test.js --timeout 15000 --exit"
+      "start": "cds-serve",
+      "build": "cds build/all --clean",
+      "test": "mocha test/chai-test.js --timeout 15000 --exit"
     },
     "cds": {
-        "hana": {
-            "deploy-format": "hdbtable"
+      "hana": {
+        "deploy-format": "hdbtable"
+      },
+      "requires": {
+        "uaa": {
+          "kind": "xsuaa"
         },
-        "requires": {
-            "uaa": {
-                "kind": "xsuaa"
-            },
-            "messaging": {
-                "kind": "local-messaging",
-                "[production]": {
-                    "kind": "enterprise-messaging-shared",
-                    "queue": {
-                        "name": "$namespace/cloud-sf-extension-cap-sample-srv/1234"
-                    }
-                },
-                "publishPrefix": "$namespace/",
-                "subscribePrefix": "$namespace/"
-            },
-            "db": {
-                "kind": "sql",
-                "[production]": {
-                    "kind": "hana"
-                }
+        "messaging": {
+          "kind": "local-messaging",
+          "[production]": {
+            "kind": "enterprise-messaging-shared",
+            "queue": {
+              "name": "$namespace/cloud-sf-extension-cap-sample-srv/1234"
             }
+          },
+          "publishPrefix": "$namespace/",
+          "subscribePrefix": "$namespace/"
         },
-        "odata": {
-            "version": "v4"
+        "db": {
+          "kind": "sql",
+          "[production]": {
+            "kind": "hana"
+          }
+        },
+        "ECSkillsManagement": {
+          "kind": "odata-v2",
+          "model": "srv/external/ECSkillsManagement",
+          "credentials": {
+            "destination": "sfextension-service", "path": "/odata/v2",
+            "requestTimeout": 18000000
+          }
+        },
+        "FoundationPlatformPLT": {
+          "kind": "odata-v2",
+          "model": "srv/external/FoundationPlatformPLT",
+          "credentials": {
+            "destination": "sfextension-service", "path": "/odata/v2",
+            "requestTimeout": 18000000
+          }
+        },
+        "PLTUserManagement": {
+          "kind": "odata-v2",
+          "model": "srv/external/PLTUserManagement",
+          "credentials": {
+            "destination": "sfextension-service", "path": "/odata/v2",
+            "requestTimeout": 18000000
+          }
         }
+      },
+      "odata": {
+        "version": "v4"
+      }
     }
-}
+  }
