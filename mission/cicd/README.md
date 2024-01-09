@@ -213,7 +213,5 @@ You have successfully configured and added a Continuous Integration & Continous 
 - [Blog: Achieve Continuous Integration and Delivery using DevOps services in SAP Cloud Platform
 Pipeline for SAP CAP Applications](https://blogs.sap.com/2020/09/07/achieve-continuous-integration-and-delivery-using-devops-services-in-sap-cloud-platform/)
 - [SAP Help: SAP Continous Integration and Delivery Service](https://help.sap.com/docs/CICD_OVERVIEW)
-- [Git Basic Authentication](https://developer.github.com/enterprise/2.20/v3/auth/#basic-authentication)
-- [Deprecating password authentication](https://developer.github.com/changes/2020-02-14-deprecating-password-auth/)
-- [Git - Initializing a repository](https://www.atlassian.com/git/tutorials/setting-up-a-repository/git-init)
+- [Github Security](https://github.blog/category/security/)
 - [Assigning Roles and Permissions for SAP Continuous Integration and Delivery](https://help.sap.com/viewer/99c72101f7ee40d0b2deb4df72ba1ad3/Cloud/en-US/c679ebdbe76142bd9fb1071e5e53511d.html)
