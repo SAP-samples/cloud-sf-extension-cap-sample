@@ -9,6 +9,7 @@ Check if you have the following privileges in SAP Business Technology Platform:
 * You are an administrator of the global account where you want to register your SAP SuccessFactors system.
 * You have a SAP BTP subaccount in the Cloud Foundry or Kyma environment with enabled capabilities for the respective environment.
 
+:exclamation: This mission does not support the BTPEA pricing model.
 
 Check if you have the following privileges in SAP SuccessFactors system:
 
