@@ -1,5 +1,12 @@
 # Mission: Create a Project Management Application consuming Business Events from SAP SuccessFactors and Event Mesh
 [![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/cloud-sf-extension-cap-sample)](https://api.reuse.software/info/github.com/SAP-samples/cloud-sf-extension-cap-sample)
+![](https://img.shields.io/badge/STATUS-NOT%20CURRENTLY%20MAINTAINED-red.svg?longCache=true&style=flat)
+
+## ⚠ ARCHIVED - NO MAINTENANCE ⚠
+
+📢 **Please be aware that this sample is no longer maintained and the repository is archived**
+
+As an alternative, we recommend to use the samples based on the [SAP BTP Developer Guide](https://help.sap.com/docs/btp/btp-developers-guide/tutorials-for-sap-cloud-application-programming-model).
 
 ## Description
 
